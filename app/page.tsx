@@ -45,7 +45,7 @@ export default function Home() {
     mode: "free-snap",
     slides: {
       perView: 3,
-      spacing: 15,
+      spacing: 30,
     },
     breakpoints: {
       "(max-width: 768px)": {
@@ -80,26 +80,26 @@ export default function Home() {
     {
       key: "slide1",
       bg: "/banner_01.jpg",
-      title: "Free Fire",
-      subtitle: "Top up diamonds and enjoy the battle!",
-    },
-    {
-      key: "slide2",
-      bg: "/banner_02.jpg",
       title: "Mobile Legends: Bang Bang",
       subtitle: "Get your Starlight, Diamonds, and more!",
     },
     {
+      key: "slide2",
+      bg: "/banner_02.jpg",
+      title: "Free Fire",
+      subtitle: "Top up your Diamonds and enjoy the battle!",
+    },
+    {
       key: "slide3",
       bg: "/banner_03.jpg",
-      title: "Honor of Kings",
-      subtitle: "Ultimate 5v5 Hero Battle Game",
+      title: "PUBG Mobile",
+      subtitle: "Get your UC and dominate the battleground!",
     },
     {
       key: "slide4",
       bg: "/banner_04.webp",
-      title: "PUBG Mobile",
-      subtitle: "Get your UC and dominate the battleground!",
+      title: "Honor of Kings",
+      subtitle: "Ultimate 5v5 Hero Battle Game",
     },
     {
       key: "slide5",
@@ -124,7 +124,7 @@ export default function Home() {
     swipe: true,
     touchMove: true,
     customPaging: () => (
-      <div className="my-4 h-3 transition-all duration-200">
+      <div className="my-3 h-3 transition-all duration-200">
         <div
           className="!mx-[8px] h-3 w-3 rounded-[4px] bg-blue-600/50 \
           hover:bg-blue-600 [.slick-active_&]:w-6 [.slick-active_&]:bg-blue-600"
@@ -146,7 +146,7 @@ export default function Home() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerPadding: "0%",
+          centerPadding: "18%",
         },
       },
       {
@@ -154,7 +154,7 @@ export default function Home() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerPadding: "0%",
+          centerPadding: "10%",
         },
       },
       {
@@ -162,7 +162,8 @@ export default function Home() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerPadding: "0%",
+          centerPadding: "0",
+          centerMode: false,
         },
       },
     ],
@@ -204,20 +205,20 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-white text-gray-900">
       {/* Hero Section as Simple Carousel */}
-      <section className="relative mb-12 mt-40 max-h-[500px]">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative mb-12 mt-32 max-h-[500px]">
+        <div className="w-full mx-auto -ml-4">
           <Slider
             {...sliderSettings}
-            className="h-full max-h-[500px] [&_.slick-list]:h-full [&_.slick-slide.slick-active]:opacity-100 [&_.slick-slide]:ml-0 [&_.slick-slide]:opacity-70 [&_.slick-slide]:px-2 sm:[&_.slick-slide]:px-3 lg:[&_.slick-slide]:ml-4 [&_.slick-track]:h-full"
+            className="h-full max-h-[500px] [&_.slick-list]:h-full [&_.slick-slide.slick-active]:opacity-100 [&_.slick-slide]:ml-0 [&_.slick-slide]:opacity-70 [&_.slick-slide]:px-2 [&_.slick-track]:h-full"
           >
             {heroSlides.map((slide) => (
-              <div key={slide.key} className="relative aspect-[2/1] flex items-center justify-center">
+              <div key={slide.key} className="relative aspect-[2/1] flex items-center justify-center px-2">
                 <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl">
                   <img src={slide.bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-black/50" />
                   <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full p-6 md:p-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">{slide.title}</h2>
-                    <span className="text-lg md:text-2xl text-white/80 font-medium drop-shadow-lg">{slide.subtitle}</span>
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">{slide.title}</h2>
+                    <span className="text-base sm:text-lg md:text-2xl text-white/80 font-medium drop-shadow-lg">{slide.subtitle}</span>
                   </div>
                 </div>
               </div>

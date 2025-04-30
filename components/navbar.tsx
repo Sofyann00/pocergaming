@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useUser } from "@/contexts/user-context"
-import { User, LogOut, Search } from "lucide-react"
+import { User, LogOut, Search, Menu, X } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +19,7 @@ export function Navbar() {
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
   const [showSearchResults, setShowSearchResults] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const filteredProducts = products.filter(product => 
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -45,6 +46,19 @@ export function Navbar() {
             />
           </Link>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6 text-gray-700" />
+          ) : (
+            <Menu className="h-6 w-6 text-gray-700" />
+          )}
+        </button>
+
         <div className="flex items-center gap-4">
           <div className="relative">
             <input
@@ -141,6 +155,68 @@ export function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-t border-gray-200">
+          <div className="px-4 py-3">
+            {/* Mobile Search */}
+            {/* <div className="relative mb-4">
+              <input
+                type="text"
+                placeholder="Search games..."
+                value={searchQuery}
+                onChange={handleSearch}
+                className="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-2 pl-10 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500"
+              />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
+            </div> */}
+
+            {/* Mobile Navigation Links */}
+            <div className="space-y-2">
+              {user ? (
+                <>
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={() => {
+                      logout()
+                      router.push("/")
+                      setIsMobileMenuOpen(false)
+                    }}
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-red-600 hover:bg-gray-50 rounded-lg flex items-center"
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="block px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Daftar
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

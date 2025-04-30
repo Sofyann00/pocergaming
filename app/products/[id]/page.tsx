@@ -21,7 +21,7 @@ import {
 export default function ProductPage({ params }: { params: { id: string } }) {
   const { addItem } = useCart()
   const { toast } = useToast()
-  const { user } = useUser()
+  const { user, addOrder } = useUser()
   const [selectedItem, setSelectedItem] = useState<any | null>(null)
   const [playerId, setPlayerId] = useState("")
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null)
@@ -68,6 +68,21 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         playerId
       })
 
+      // Add order to user's orders
+      addOrder({
+        items: [{
+          id: selectedItem.id.toString(),
+          name: selectedItem.name,
+          price: selectedItem.price,
+          quantity: 1,
+          image: selectedItem.iconUrl || product.image
+        }],
+        total: selectedItem.price,
+        status: "completed",
+        productName: product.name,
+        itemName: selectedItem.name
+      })
+
       // Send confirmation email via API
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -110,20 +125,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-16">
-      {/* Game Header */}
-      <div className="flex items-center gap-4 mb-8">
-        <div className="relative w-16 h-16">
+    <div className="container mx-auto px-4 py-4 mt-6">
+      {/* Game Header with Banner */}
+      <div className="relative rounded-xl overflow-hidden mb-8">
+        <div className="absolute inset-0">
           <Image
-            src={product.image}
+            src={product.banner}
             alt={product.name}
             fill
-            className="object-cover rounded-lg"
+            className="object-cover"
+            priority
           />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
-        <div>
-          <h1 className="text-3xl font-bold text-black">{product.name}</h1>
-          <p className="text-gray-400">{product.category}</p>
+        <div className="relative flex items-center gap-4 p-6">
+          <div className="relative w-16 h-16">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-white">{product.name}</h1>
+            <p className="text-gray-300">{product.category}</p>
+          </div>
         </div>
       </div>
 

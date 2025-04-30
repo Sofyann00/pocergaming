@@ -16,8 +16,8 @@ type Order = {
   items: OrderItem[];
   total: number;
   status: "pending" | "completed";
-  shippingAddress: string;
-  courier: string;
+  productName: string;
+  itemName: string;
 };
 
 type OrderItem = {

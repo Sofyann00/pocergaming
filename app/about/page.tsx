@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About Us - pocergaming',
-  description: 'Learn about pocergaming, your trusted tax consultation partner in Indonesia',
+  title: 'About Us - PocerGaming',
+  description: 'Your trusted game voucher and top-up provider in Indonesia',
 }
 
 export default function AboutPage() {
@@ -11,10 +11,10 @@ export default function AboutPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white p-8 rounded-lg shadow border border-gray-200">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            About pocergaming
+            About PocerGaming
           </h1>
           <p className="text-sm text-gray-500 italic mb-8">
-            Your Trusted Tax Consultation Partner in Indonesia
+            Your Trusted Game Voucher and Top-Up Provider in Indonesia
           </p>
 
           <section className="space-y-8">
@@ -23,7 +23,7 @@ export default function AboutPage() {
                 Our Story
               </h2>
               <p className="text-gray-600">
-                Founded with a commitment to financial excellence, pocergaming has emerged as a leading tax consultation firm in Indonesia. Our journey began with a clear vision: to help businesses and individuals navigate complex tax regulations and optimize their financial position. What started as a small team of passionate tax professionals has grown into a trusted consultancy delivering exceptional tax services across various industries.
+                Founded by passionate gamers, PocerGaming has emerged as a leading game voucher and top-up provider in Indonesia. Our journey began with a simple mission: to provide gamers with a reliable, fast, and secure way to purchase game credits and vouchers. What started as a small team of gaming enthusiasts has grown into a trusted platform serving thousands of gamers across Indonesia.
               </p>
             </div>
 
@@ -32,12 +32,12 @@ export default function AboutPage() {
                 Why Choose Us
               </h2>
               <ul className="text-gray-600 list-disc pl-5 space-y-2">
-                <li>Expert Team of Certified Tax Professionals</li>
-                <li>Comprehensive Range of Tax Consultation Services</li>
-                <li>Client-Focused Approach</li>
-                <li>Attention to Detail and Compliance</li>
-                <li>Timely Advice and Clear Communication</li>
-                <li>Proven Track Record of Tax Optimization</li>
+                <li>Instant Delivery of Game Vouchers and Credits</li>
+                <li>Wide Range of Popular Games Supported</li>
+                <li>Secure Payment Methods</li>
+                <li>24/7 Customer Support</li>
+                <li>Competitive Prices</li>
+                <li>Trusted by Thousands of Gamers</li>
               </ul>
             </div>
 
@@ -46,7 +46,7 @@ export default function AboutPage() {
                 Our Commitment
               </h2>
               <p className="text-gray-600">
-                At pocergaming, we are committed to providing exceptional tax consultation that protects your financial interests and exceeds your expectations. Our team of skilled tax advisors works tirelessly to understand your unique needs and create tailored tax strategies that minimize liabilities and ensure compliance. We pride ourselves on building long-term professional relationships and ensuring client satisfaction through tax expertise and meticulous attention to detail.
+                At PocerGaming, we are committed to providing the best gaming experience for our customers. We understand the importance of quick and reliable top-up services for gamers. Our team works tirelessly to ensure instant delivery of vouchers and credits, secure transactions, and excellent customer support. We pride ourselves on building trust with our gaming community and ensuring satisfaction through our reliable services.
               </p>
             </div>
 
@@ -55,12 +55,12 @@ export default function AboutPage() {
                 Our Services
               </h2>
               <ul className="text-gray-600 list-disc pl-5 space-y-2">
-                <li>Personal Tax Return Filing</li>
-                <li>Business Tax Planning</li>
-                <li>Corporate Tax Compliance</li>
-                <li>International Tax Advisory</li>
-                <li>Tax Audit Support</li>
-                <li>VAT Registration & Filing</li>
+                <li>Game Voucher Sales</li>
+                <li>In-Game Currency Top-Up</li>
+                <li>Battle Pass and Season Pass</li>
+                <li>Game Item Purchases</li>
+                <li>Premium Account Upgrades</li>
+                <li>Gift Card Services</li>
               </ul>
             </div>
 
@@ -69,9 +69,9 @@ export default function AboutPage() {
                 Office Location
               </h2>
               <div className="text-gray-600">
-                <p>Visit our consultation office:</p>
+                <p>Visit our office:</p>
                 <div className="mt-2">
-                  <p>PT pocergaming INDONESIA</p>
+                  <p>PT DINAMIKA TEKNOLOGI ASIA</p>
                   <p>Gedung Is Plaza Lt. 5</p>
                   <p>Jl Pramuka Kav 150, Utan Kayu Utara</p>
                   <p>Matraman, Jakarta Timur</p>
@@ -83,7 +83,7 @@ export default function AboutPage() {
 
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
-                Office Hours
+                Support Hours
               </h2>
               <div className="text-gray-600 grid grid-cols-2 gap-4">
                 <div>
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <p className="font-medium">Weekends:</p>
-                  <p>Closed</p>
+                  <p>10:00 AM - 3:00 PM</p>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 Contact Information
               </h2>
               <div className="text-gray-600">
-                <p>Get in touch with our tax consultation team:</p>
+                <p>Get in touch with our support team:</p>
                 <div className="mt-2 space-y-1">
                   <p>Phone: (021) 52067542</p>
                   <p>Email: admin@pocergaming.com</p>

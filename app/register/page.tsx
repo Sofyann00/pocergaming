@@ -7,6 +7,7 @@ import { useState } from "react"
 import { useUser } from "@/contexts/user-context"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { Loader2 } from "lucide-react"
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -16,15 +17,18 @@ export default function RegisterPage() {
     confirmPassword: "",
   })
   const [error, setError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const { register } = useUser()
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
+    setIsLoading(true)
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match")
+      setIsLoading(false)
       return
     }
 
@@ -33,6 +37,8 @@ export default function RegisterPage() {
       router.push("/profile")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed")
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -53,6 +59,7 @@ export default function RegisterPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
+                  disabled={isLoading}
                 />
               </div>
               <div>
@@ -64,6 +71,7 @@ export default function RegisterPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
+                  disabled={isLoading}
                 />
               </div>
               <div>
@@ -75,6 +83,7 @@ export default function RegisterPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, password: e.target.value })
                   }
+                  disabled={isLoading}
                 />
               </div>
               <div>
@@ -86,13 +95,21 @@ export default function RegisterPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, confirmPassword: e.target.value })
                   }
+                  disabled={isLoading}
                 />
               </div>
               {error && (
                 <p className="text-sm text-red-500 mt-2">{error}</p>
               )}
-              <Button type="submit" className="w-full">
-                Register
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Registering...
+                  </>
+                ) : (
+                  "Register"
+                )}
               </Button>
               <p className="text-center text-sm text-muted-foreground">
                 Already have an account?{" "}

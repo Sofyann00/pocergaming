@@ -28,6 +28,7 @@ export interface Product {
   image: string;
   category: string;
   quantity?: number;
+  banner: string;
   items: Item[];
   playerId?: string;
 }

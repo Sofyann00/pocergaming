@@ -7,6 +7,7 @@ import { useState } from "react"
 import { useUser } from "@/contexts/user-context"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { Loader2 } from "lucide-react"
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -14,18 +15,22 @@ export default function LoginPage() {
     password: "",
   })
   const [error, setError] = useState("");
-  const { login, isLoading } = useUser();
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useUser();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
+    setIsLoading(true)
     
     try {
       await login(formData.email, formData.password)
       router.push("/profile")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed")
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -47,6 +52,7 @@ export default function LoginPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
+                  disabled={isLoading}
                 />
               </div>
               <div>
@@ -58,13 +64,21 @@ export default function LoginPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, password: e.target.value })
                   }
+                  disabled={isLoading}
                 />
               </div>
               {error && (
                 <p className="text-sm text-red-500 mt-2">{error}</p>
               )}
               <Button type="submit" className="w-full" disabled={isLoading}>
-                Login
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Logging in...
+                  </>
+                ) : (
+                  "Login"
+                )}
               </Button>
               <p className="text-center text-sm text-muted-foreground">
                 Don&apos;t have an account?{" "}

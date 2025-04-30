@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service - pocergaming',
-  description: 'Terms of Service and conditions for using pocergaming tax consultation services',
+  title: 'Terms of Service - PocerGaming',
+  description: 'Terms of Service and conditions for using PocerGaming game voucher and top-up services',
 }
 
 export default function TermsPage() {
@@ -23,34 +23,34 @@ export default function TermsPage() {
                 1. Agreement to Terms
               </h2>
               <p className="text-gray-600">
-                By accessing and using the tax consultation services provided by PT DINAMIKA TEKNOLOGI ASIA (hereinafter referred to as &quot;pocergaming&quot;), you accept and agree to be bound by the terms and provisions of this agreement.
+                By accessing and using the game voucher and top-up services provided by PT DINAMIKA TEKNOLOGI ASIA (hereinafter referred to as "PocerGaming"), you accept and agree to be bound by the terms and provisions of this agreement.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
-                2. Tax Services
+                2. Game Services
               </h2>
               <p className="text-gray-600">
-                pocergaming provides professional tax consultation services including personal tax return filing, business tax planning, tax audit support, corporate tax compliance, international tax advisory, and comprehensive tax solutions. All service listings, including prices, availability, and specifications, are subject to change without prior notice. We guarantee the quality and professionalism of all tax services provided through our platform.
+                PocerGaming provides game voucher and top-up services including in-game currency, battle passes, premium accounts, and various game items. All service listings, including prices, availability, and specifications, are subject to change without prior notice. We guarantee the authenticity and validity of all game vouchers and items provided through our platform.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
-                3. Consultations and Satisfaction
+                3. Purchases and Delivery
               </h2>
               <p className="text-gray-600">
-                All tax consultation services include a specified number of consultation sessions as detailed in each service description. Additional consultations beyond the included amount may incur extra charges. Clients must provide necessary documentation and information within 14 days of the initial consultation. We strive for complete client satisfaction and will work with you to ensure our tax solutions meet your requirements within the agreed scope.
+                All purchases are subject to availability and game platform requirements. Delivery of purchased items is typically instant but may be subject to game server conditions and platform processing times. In case of delivery delays, we will notify you and provide updates on the status of your purchase. Refunds are available only in accordance with our refund policy and game platform terms.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
-                4. Confidentiality and Information Use
+                4. Account and Information Use
               </h2>
               <p className="text-gray-600">
-                All financial and personal information provided to pocergaming will be treated with strict confidentiality as required by professional tax consultation standards. We will not disclose your information to third parties except when required by law or with your explicit permission. pocergaming may use anonymized data for internal research and service improvement purposes.
+                All game account information and personal details provided to PocerGaming will be treated with strict confidentiality. We will not disclose your information to third parties except when required by law or with your explicit permission. PocerGaming may use anonymized data for service improvement and customer support purposes.
               </p>
             </div>
 
@@ -59,16 +59,16 @@ export default function TermsPage() {
                 5. Limitation of Liability
               </h2>
               <p className="text-gray-600">
-                While we guarantee the professionalism and quality of our tax consultation services, pocergaming shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services. This includes but is not limited to tax penalties or interest charges resulting from delayed information submission, inaccurate information provided by clients, or regulatory changes that occur after advice was provided.
+                While we guarantee the authenticity of our game vouchers and items, PocerGaming shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services. This includes but is not limited to game account issues, server problems, or platform-specific restrictions that may affect the use of purchased items.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
-                6. Client Responsibilities
+                6. User Responsibilities
               </h2>
               <p className="text-gray-600">
-                Clients are responsible for providing accurate, complete, and timely information required for tax consultation and preparation services. Clients must review all documents before submission to tax authorities and notify pocergaming promptly of any errors or discrepancies. pocergaming is not responsible for penalties or additional taxes resulting from inaccurate or incomplete information provided by clients.
+                Users are responsible for providing accurate game account information and ensuring compliance with game platform terms of service. Users must verify all purchases before completing transactions and notify PocerGaming promptly of any issues. PocerGaming is not responsible for account issues resulting from incorrect information provided by users or violations of game platform terms.
               </p>
             </div>
 
