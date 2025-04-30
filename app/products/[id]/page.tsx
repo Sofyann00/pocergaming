@@ -9,6 +9,7 @@ import Image from "next/image"
 import { products } from "@/lib/data"
 import { notFound } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { useUser } from "@/contexts/user-context"
 import {
   Dialog,
   DialogContent,
@@ -20,6 +21,7 @@ import {
 export default function ProductPage({ params }: { params: { id: string } }) {
   const { addItem } = useCart()
   const { toast } = useToast()
+  const { user } = useUser()
   const [selectedItem, setSelectedItem] = useState<any | null>(null)
   const [playerId, setPlayerId] = useState("")
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null)
@@ -46,6 +48,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   }
 
   const handlePaymentComplete = async () => {
+    if (!user?.email) {
+      toast({
+        title: "Error",
+        description: "Please log in to complete your purchase.",
+        variant: "destructive"
+      })
+      return
+    }
+
     setIsSendingEmail(true)
     
     try {
@@ -64,7 +75,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: "akibsofyan521@gmail.com", // Replace with actual user email
+          to: user.email,
           productName: product.name,
           itemName: selectedItem.name,
           price: selectedItem.price,
