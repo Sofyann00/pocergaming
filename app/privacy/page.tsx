@@ -110,7 +110,7 @@ export default function PrivacyPage() {
                   <p>Jl Pramuka Kav 150, Utan Kayu Utara</p>
                   <p>Matraman, Jakarta Timur</p>
                   <p>DKI Jakarta, Indonesia</p>
-                  <p>Email: info@pocergaming.com</p>
+                  <p>Email: admin@pocergaming.com</p>
                   <p>Phone: (021) 52067542</p>
                 </div>
               </div>

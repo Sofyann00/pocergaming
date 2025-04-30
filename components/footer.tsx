@@ -63,10 +63,10 @@ export function Footer() {
               <div className="space-y-2">
                 <p>
                   <a
-                    href="mailto:info@pocergaming.com"
+                    href="mailto:admin@pocergaming.com"
                     className="hover:text-gray-900 transition-colors"
                   >
-                    info@pocergaming.com
+                    admin@pocergaming.com
                   </a>
                 </p>
                 <p>

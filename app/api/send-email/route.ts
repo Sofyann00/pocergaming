@@ -6,8 +6,8 @@ const transporter = nodemailer.createTransport({
     port: 465, // Using Mailtrap's alternative port
     secure: true, // Set to false for port 2525
     auth: {
-      user: 'admin@securechaining.com',
-      pass: 'Securechaining123',
+      user: 'admin@pocergaming.com',
+      pass: 'Pocergaming123',
     },
 });
 
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     const { to, productName, itemName, price, playerId } = await request.json();
 
     const mailOptions = {
-      from: 'admin@securechaining.com',
+      from: 'admin@pocergaming.com',
       to,
       subject: 'Purchase Confirmation - PocerGaming',
       html: `

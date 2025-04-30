@@ -106,7 +106,7 @@ export default function AboutPage() {
                 <p>Get in touch with our tax consultation team:</p>
                 <div className="mt-2 space-y-1">
                   <p>Phone: (021) 52067542</p>
-                  <p>Email: info@pocergaming.com</p>
+                  <p>Email: admin@pocergaming.com</p>
                   <p>WhatsApp: +62 812-8845-8953</p>
                 </div>
               </div>
