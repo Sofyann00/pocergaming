@@ -86,7 +86,9 @@ export function CheckoutForm() {
         courier: formData.courier,
         customerName: formData.name,
         customerEmail: formData.email,
-        customerPhone: formData.phone
+        customerPhone: formData.phone,
+        productName: state.items[0]?.name || "",
+        itemName: state.items[0]?.items?.[0]?.name || ""
       }
 
       // Save to MongoDB
