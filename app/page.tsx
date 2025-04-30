@@ -233,13 +233,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-3 py-1 bg-gray-100 text-gray-900 rounded-full text-sm font-medium mb-4 border border-gray-200">
-              Featured Products
+              Produk Unggulan
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Popular</span> Game Vouchers
+              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Voucher Game</span> Terpopuler
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Choose from our wide selection of digital vouchers and in-game credits
+              Pilih dari berbagai macam voucher digital dan kredit game yang kami sediakan
             </p>
           </div>
 
@@ -258,11 +258,11 @@ export default function Home() {
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[90%] flex flex-col items-center space-y-2">
                       <div className="w-full px-3 py-1.5 rounded-full bg-blue-500">
                         <p className="text-white font-medium text-sm text-center break-words line-clamp-2">
-                          {product.name}
+                          More
                         </p>
                       </div>
                       <span className="text-sm text-white font-medium text-center truncate w-full">
-                        {product.category}
+                        {product.name}
                       </span>
                     </div>
                   </div>

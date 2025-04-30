@@ -42,7 +42,7 @@ export function Navbar() {
               alt="pocergaming Logo"
               width={252}
               height={252}
-              className="brightness-100"
+              className="brightness-100 md:block hidden"
             />
           </Link>
         </div>
@@ -140,13 +140,13 @@ export function Navbar() {
               <>
                 <Link 
                   href="/login"
-                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                  className="hidden md:flex px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
                 >
                   Login
                 </Link>
                 <Link 
                   href="/register"
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
+                  className="hidden md:flex px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
                 >
                   Daftar
                 </Link>

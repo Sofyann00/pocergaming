@@ -6,8 +6,8 @@ const transporter = nodemailer.createTransport({
     port: 465, // Using Mailtrap's alternative port
     secure: true, // Set to false for port 2525
     auth: {
-      user: 'admin@pocergaming.com',
-      pass: 'Pocergaming123',
+      user: 'admin@pocergeming.com',
+      pass: 'Pocergeming123!',
     },
 });
 
