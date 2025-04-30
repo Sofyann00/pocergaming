@@ -82,8 +82,8 @@ export default function ProfilePage() {
                   <div className="space-y-2">
                     <p>Status: {order.status}</p>
                     <p>Date: {new Date(order.date).toLocaleDateString()}</p>
-                    <p>Shipping to: {order.shippingAddress}</p>
-                    <p>Courier: {order.courier}</p>
+                    <p>Product: {order.productName}</p>
+                    <p>Item: {order.itemName}</p>
                   </div>
                 </CardContent>
               </Card>
