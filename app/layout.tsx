@@ -39,7 +39,8 @@ export default function RootLayout({
             <UserProvider>
               <FilterProvider>
                 <div className="flex min-h-screen flex-col">
-                  <main className="flex-1">{children}</main>
+                  <Navbar />
+                  <main className="flex-1 pt-16">{children}</main>
                   <Footer />
                 </div>
                 <Toaster />

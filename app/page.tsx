@@ -2,7 +2,7 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Gamepad2, Gift, CreditCard, ArrowRight, Smartphone, Monitor, Globe, Users, LucideProps, CheckCircle2, Zap, Shield, Sparkles, Search, ShoppingCart } from "lucide-react"
+import { ChevronRight, Gamepad2, Gift, CreditCard, ArrowRight, Smartphone, Monitor, Globe, Users, LucideProps, CheckCircle2, Zap, Shield, Sparkles, Search, ShoppingCart, User, LogOut } from "lucide-react"
 import Link from "next/link"
 import { products } from "@/lib/data"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
@@ -12,8 +12,18 @@ import { useRef, useState } from "react"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useUser } from "@/contexts/user-context"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useRouter } from "next/navigation"
 
 export default function Home() {
+  const { user, logout } = useUser()
+  const router = useRouter()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
@@ -193,80 +203,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-white text-gray-900">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-          <img 
-                src="/app_icon.png" 
-                alt="pocergaming Logo"
-                width={252}
-                height={252}
-                className="brightness-100"
-              />
-            {/* <div className="hidden md:flex items-center gap-6">
-              {categories.map((category) => (
-                <Link key={category.name} href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  {category.name}
-                </Link>
-              ))}
-            </div> */}
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search games..."
-                value={searchQuery}
-                onChange={handleSearch}
-                className="bg-gray-100 border border-gray-200 rounded-lg px-4 py-2 pl-10 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 w-64"
-              />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
-              
-              {/* Search Results Dropdown */}
-              {showSearchResults && searchQuery && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto z-50">
-                  {filteredProducts.length > 0 ? (
-                    filteredProducts.map((product) => (
-                      <Link 
-                        key={product.id} 
-                        href={`/products/${product.id}`}
-                        className="flex items-center gap-3 p-3 hover:bg-gray-50 transition-colors"
-                        onClick={() => {
-                          setSearchQuery("")
-                          setShowSearchResults(false)
-                        }}
-                      >
-                        <div className="relative w-10 h-10 flex-shrink-0">
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            fill
-                            className="object-cover rounded-md"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-gray-900 truncate">
-                            {product.name}
-                          </p>
-                          <p className="text-xs text-gray-500 truncate">
-                            {product.category}
-                          </p>
-                        </div>
-                      </Link>
-                    ))
-                  ) : (
-                    <div className="p-3 text-sm text-gray-500 text-center">
-                      No products found
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section as Simple Carousel */}
       <section className="relative mb-12 mt-40 max-h-[500px]">
         <div className="max-w-7xl mx-auto px-4">

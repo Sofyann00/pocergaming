@@ -9,6 +9,7 @@ import Image from "next/image"
 import { products } from "@/lib/data"
 import { notFound } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { sendPurchaseConfirmationEmail } from "@/lib/email"
 import {
   Dialog,
   DialogContent,
@@ -17,43 +18,14 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"
 
-interface DiamondPackage {
-  amount: number
-  price: number
-}
-
-const diamondPackages: DiamondPackage[] = [
-  { amount: 5, price: 1000 },
-  { amount: 10, price: 1990 },
-  { amount: 12, price: 2000 },
-  { amount: 20, price: 4000 },
-  { amount: 50, price: 8000 },
-  { amount: 70, price: 10000 },
-  { amount: 100, price: 16000 },
-  { amount: 140, price: 20000 },
-  { amount: 150, price: 22000 },
-  { amount: 210, price: 33000 },
-  { amount: 280, price: 40000 },
-  { amount: 355, price: 50000 },
-  { amount: 425, price: 60000 },
-  { amount: 495, price: 70000 },
-  { amount: 500, price: 71000 },
-  { amount: 720, price: 100000 },
-  { amount: 860, price: 120000 },
-  { amount: 1000, price: 140000 },
-  { amount: 1075, price: 151000 },
-  { amount: 1440, price: 198650 },
-  { amount: 1450, price: 200000 },
-  { amount: 2160, price: 297250 },
-]
-
 export default function ProductPage({ params }: { params: { id: string } }) {
   const { addItem } = useCart()
   const { toast } = useToast()
-  const [selectedPackage, setSelectedPackage] = useState<DiamondPackage | null>(null)
+  const [selectedItem, setSelectedItem] = useState<any | null>(null)
   const [playerId, setPlayerId] = useState("")
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null)
   const [showPaymentDialog, setShowPaymentDialog] = useState(false)
+  const [isSendingEmail, setIsSendingEmail] = useState(false)
 
   const product = products.find(p => p.id === parseInt(params.id))
 
@@ -62,7 +34,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   }
 
   const handleAddToCart = () => {
-    if (!selectedPackage || !playerId || !selectedPayment) {
+    if (!selectedItem || !playerId || !selectedPayment) {
       toast({
         title: "Missing information",
         description: "Please select a package, enter your Player ID, and choose a payment method.",
@@ -74,19 +46,49 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     setShowPaymentDialog(true)
   }
 
-  const handlePaymentComplete = () => {
-    addItem({
-      ...product,
-      price: selectedPackage!.price,
-      quantity: selectedPackage!.amount,
-      playerId
-    })
+  const handlePaymentComplete = async () => {
+    setIsSendingEmail(true)
     
-    setShowPaymentDialog(false)
-    toast({
-      title: "Added to cart",
-      description: `${selectedPackage!.amount} Diamonds for Player ID ${playerId} has been added to your cart.`,
-    })
+    try {
+      // Add to cart
+      addItem({
+        ...product,
+        price: selectedItem.price,
+        quantity: 1,
+        playerId
+      })
+
+      // Send confirmation email
+      const emailSent = await sendPurchaseConfirmationEmail(
+        "user@example.com", // Replace with actual user email
+        product.name,
+        selectedItem.name,
+        selectedItem.price,
+        playerId
+      )
+
+      if (!emailSent) {
+        toast({
+          title: "Email Error",
+          description: "Failed to send confirmation email, but your purchase was successful.",
+          variant: "destructive"
+        })
+      }
+      
+      setShowPaymentDialog(false)
+      toast({
+        title: "Thank You For Purchasing",
+        description: `Your purchase of ${selectedItem.name} for ${product.name} is being processed. We'll notify you via email once completed.`,
+      })
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An error occurred while processing your purchase. Please try again.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsSendingEmail(false)
+    }
   }
 
   return (
@@ -108,30 +110,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Diamond Packages Grid */}
+        {/* Items Grid */}
         <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-4">
-          {diamondPackages.map((pkg) => (
+          {product.items.map((item) => (
             <button
-              key={pkg.amount}
-              onClick={() => setSelectedPackage(pkg)}
+              key={item.id}
+              onClick={() => setSelectedItem(item)}
               className={cn(
                 "flex items-center gap-2 p-4 rounded-lg border transition-all",
-                selectedPackage?.amount === pkg.amount
+                selectedItem?.id === item.id
                   ? "border-blue-500 bg-blue-500/10"
                   : "border-white/10 hover:border-white/20 bg-white/5"
               )}
             >
-              <Image
-                src="/diamond_img.webp"
-                alt="Diamond"
-                width={24}
-                height={24}
-                className="object-contain"
-              />
+              {item.iconUrl && (
+                <Image
+                  src={item.iconUrl}
+                  alt={item.name}
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+              )}
               <div className="text-left">
-                <p className="font-semibold text-black">{pkg.amount} Diamonds</p>
+                <p className="font-semibold text-black">{item.name}</p>
                 <p className="text-sm text-gray-400">
-                  Rp {pkg.price.toLocaleString('id-ID')},-
+                  Rp {item.price.toLocaleString('id-ID')},-
                 </p>
               </div>
             </button>
@@ -190,7 +194,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   <span className="text-black">QRIS</span>
                 </div>
                 <span className="text-gray-400">
-                  Rp {selectedPackage?.price.toLocaleString('id-ID') ?? '0'},-
+                  Rp {selectedItem?.price.toLocaleString('id-ID') ?? '0'},-
                 </span>
               </button>
 
@@ -205,17 +209,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 )}
               >
                 <div className="flex items-center gap-3">
-                  {/* <Image
-                    src="/va-logo.png"
-                    alt="Virtual Account"
-                    width={60}
-                    height={24}
-                    className="object-contain"
-                  /> */}
                   <span className="text-black">Virtual Account</span>
                 </div>
                 <span className="text-gray-400">
-                  Rp {selectedPackage?.price.toLocaleString('id-ID') ?? '0'},-
+                  Rp {selectedItem?.price.toLocaleString('id-ID') ?? '0'},-
                 </span>
               </button>
             </div>
@@ -243,10 +240,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <div className="space-y-4">
             <div className="text-center">
               <p className="text-lg font-semibold text-gray-900">
-                Total Amount: Rp {selectedPackage?.price.toLocaleString('id-ID')},-
+                Total Amount: Rp {selectedItem?.price.toLocaleString('id-ID')},-
               </p>
               <p className="text-sm text-gray-500">
-                {selectedPackage?.amount} Diamonds for {product.name}
+                {selectedItem?.name} for {product.name}
               </p>
             </div>
 
@@ -280,12 +277,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             )}
 
             <div className="flex justify-center gap-3 mt-6">
-              {/* <Button
-                variant="outline"
-                onClick={() => setShowPaymentDialog(false)}
-              >
-                Cancel
-              </Button> */}
               <Button
                 onClick={handlePaymentComplete}
               >

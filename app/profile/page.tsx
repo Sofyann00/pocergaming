@@ -58,7 +58,7 @@ export default function ProfilePage() {
       <Tabs defaultValue="orders">
         <TabsList>
           <TabsTrigger value="orders">Orders</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          {/* <TabsTrigger value="settings">Settings</TabsTrigger> */}
         </TabsList>
         <TabsContent value="orders" className="mt-6 space-y-4">
           {user.orders.length === 0 ? (
