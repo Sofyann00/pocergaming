@@ -128,6 +128,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     <div className="container mx-auto px-4 py-4 mt-6">
       {/* Game Header with Banner */}
       <div className="relative rounded-xl overflow-hidden mb-8">
+        {/* Banner Image */}
         <div className="absolute inset-0">
           <Image
             src={product.banner}
@@ -136,20 +137,41 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
         </div>
-        <div className="relative flex items-center gap-4 p-6">
-          <div className="relative w-16 h-16">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold text-white">{product.name}</h1>
-            <p className="text-gray-300">{product.category}</p>
+
+        {/* Content Overlay */}
+        <div className="relative py-12 px-6">
+          <div className="max-w-7xl mx-auto">
+            {/* Game Logo */}
+            <div className="flex flex-col items-center mb-8">
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={180}
+                height={180}
+                className="object-contain mb-6 drop-shadow-2xl"
+              />
+              <h1 className="text-4xl md:text-5xl font-bold text-white text-center mb-4 drop-shadow-lg">{product.name}</h1>
+            </div>
+
+            {/* Badges */}
+            <div className="flex justify-center gap-4">
+              <div className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                Customer Service 24/7
+              </div>
+              {/* <div className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
+                <span className="w-2 h-2 bg-white rounded-full"></span>
+                Official Distributor
+              </div> */}
+            </div>
+
+            {/* Publisher */}
+            <div className="text-center mt-4">
+              <p className="text-gray-300 text-lg">{product.category}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -261,6 +283,29 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </span>
               </button>
             </div>
+
+            {/* Payment Instructions */}
+            {selectedPayment && (
+              <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10">
+                <h4 className="text-sm font-medium text-black mb-2">Cara Pembayaran:</h4>
+                {selectedPayment === 'qris' ? (
+                  <ol className="text-sm text-gray-400 space-y-1 list-decimal list-inside">
+                    <li>Scan QR Code yang muncul setelah konfirmasi</li>
+                    <li>Pilih aplikasi e-wallet atau mobile banking</li>
+                    <li>Masukkan nominal pembayaran</li>
+                    <li>Konfirmasi pembayaran</li>
+                  </ol>
+                ) : (
+                  <ol className="text-sm text-gray-400 space-y-1 list-decimal list-inside">
+                    <li>Nomor Virtual Account akan muncul setelah konfirmasi</li>
+                    <li>Buka aplikasi mobile banking</li>
+                    <li>Pilih menu Transfer ke Virtual Account</li>
+                    <li>Masukkan nomor Virtual Account</li>
+                    <li>Konfirmasi pembayaran</li>
+                  </ol>
+                )}
+              </div>
+            )}
 
             <Button
               size="lg"

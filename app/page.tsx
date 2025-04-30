@@ -28,6 +28,7 @@ export default function Home() {
   const [loaded, setLoaded] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [showSearchResults, setShowSearchResults] = useState(false)
+  const [openQna, setOpenQna] = useState<number | null>(null);
 
   const filteredProducts = products.filter(product => 
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -202,6 +203,49 @@ export default function Home() {
     },
   ];
 
+  const qnaList = [
+    {
+      question: "Apakah Diamonds/Chips/Item Game dari pocergeming.com Legal?",
+      answer: (
+        <span>
+          Semua Diamonds, item dalam game, dan voucher yang dijual di pocergeming.com <b>100% legal dan bersumber dari developer/publisher</b>. Jangan khawatir, berbelanja di Tokogame.com dijamin aman.
+        </span>
+      ),
+    },
+    {
+      question: "Bagaimana Cara Top-Up Diamonds atau Beli Voucher?", 
+      answer: (
+        <span>
+          Cukup pilih game Anda, pilih item atau voucher yang diinginkan, masukkan ID pemain, dan selesaikan pembayaran. Pesanan Anda akan diproses secara instan!
+        </span>
+      ),
+    },
+    {
+      question: "Apakah Bisa Bayar Menggunakan QRIS?",
+      answer: (
+        <span>
+          Ya, pocergeming.com mendukung berbagai metode pembayaran termasuk QRIS dan Virtual Account.
+        </span>
+      ),
+    },
+    {
+      question: "Pembayaran Berhasil, Tapi Item Belum Diterima?",
+      answer: (
+        <span>
+          Silakan hubungi layanan pelanggan kami dengan detail pesanan Anda. Kami akan membantu menyelesaikan masalah Anda secepatnya.
+        </span>
+      ),
+    },
+    {
+      question: "Mengapa Harus Beli di pocergeming.com?",
+      answer: (
+        <span>
+          Kami menawarkan pengiriman cepat, pembayaran aman, dan hanya produk resmi dan legal. Kepuasan dan keamanan Anda adalah prioritas kami!
+        </span>
+      ),
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-white text-gray-900">
       {/* Hero Section as Simple Carousel */}
@@ -282,6 +326,122 @@ export default function Home() {
         </div>
       </section>
 
+      {/* QnA Section */}
+      <section className="max-w-3xl mx-auto w-full mb-16 px-2 sm:px-0">
+        <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-gray-50 to-blue-50 shadow-xl p-2 sm:p-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-blue-700 font-sans tracking-tight">QnA</h2>
+          {qnaList.map((qna, idx) => (
+            <div key={qna.question} className="relative group">
+              <button
+                className={`w-full flex items-center justify-between py-6 px-4 sm:px-8 text-lg sm:text-xl font-semibold font-sans rounded-xl transition-all duration-200 text-gray-900 hover:bg-blue-50 focus:outline-none ${openQna === idx ? "bg-blue-50" : ""}`}
+                onClick={() => setOpenQna(openQna === idx ? null : idx)}
+                style={{ position: 'relative' }}
+              >
+                {/* Accent bar for active */}
+                <span className={`absolute left-0 top-1/2 -translate-y-1/2 h-10 w-1 rounded bg-blue-500 transition-all duration-300 ${openQna === idx ? 'opacity-100' : 'opacity-0'}`}></span>
+                <span className="text-left w-full flex-1 font-[600] font-sans" style={{fontFamily: 'Rajdhani, sans-serif'}}>{qna.question}</span>
+                <ChevronRight className={`ml-2 h-6 w-6 transition-transform duration-300 ${openQna === idx ? "rotate-90 text-blue-600" : "text-gray-400"}`} />
+              </button>
+              <div
+                style={{
+                  maxHeight: openQna === idx ? 200 : 0,
+                  overflow: 'hidden',
+                  transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)',
+                }}
+              >
+                {openQna === idx && (
+                  <div className="px-4 sm:px-8 pb-6 pt-2 text-center text-base sm:text-lg text-gray-800 font-sans animate-fade-in">
+                    {qna.answer}
+                  </div>
+                )}
+              </div>
+              {idx !== qnaList.length - 1 && (
+                <div className="mx-4 sm:mx-8 h-px bg-gradient-to-r from-transparent via-blue-100 to-transparent my-1" />
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Reseller Section */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="relative w-full">
+            <img
+              src="/reseller_banner.png"
+              alt="Reseller Program pocergaming.com"
+              className="w-full object-cover h-[400px] transition-transform duration-300 group-hover:scale-105"
+              style={{ borderRadius: '1rem' }}
+            />
+          </div>
+          <div className="p-8 text-center relative">
+            <div className="absolute inset-0 pointer-events-none" />
+            <div className="relative z-10">
+              <h2 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-4">
+                Program Reseller pocergaming.com
+              </h2>
+              <p className="text-gray-600 mb-6 text-lg max-w-2xl mx-auto">
+                Bergabunglah dengan program reseller kami dan dapatkan keuntungan menarik dengan menjual voucher game dan top up.
+              </p>
+              <Link href="/reseller" className="">
+                <div className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors hover:translate-x-1 duration-200">
+                  Learn More <ChevronRight className="w-5 h-5 ml-1" />
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          {/* Payment Methods Slider */}
+          <div className="mt-12 w-full overflow-hidden bg-gradient-to-r from-white/80 via-blue-50/30 to-white/80 rounded-2xl backdrop-blur-sm border border-blue-100/50 shadow-lg">
+            <div className="relative flex items-center py-10">
+              <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10" />
+              <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10" />
+              <style jsx>{`
+                @keyframes slide {
+                  from {
+                    transform: translateX(0);
+                  }
+                  to {
+                    transform: translateX(-50%);
+                  }
+                }
+                .animate-slide {
+                  animation: slide 10s linear infinite;
+                }
+                .animate-slide:hover {
+                  animation-play-state: paused;
+                }
+              `}</style>
+              <div className="flex animate-slide">
+                {[...Array(2)].map((_, i) => (
+                  <div key={i} className="flex gap-12 px-12">
+                    <div className="flex items-center justify-center bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 w-32 h-16">
+                      <img src="https://www.lapakgaming.com/static/images/payment-methods/dana.webp?w=128&q=75" alt="Dana" className="h-8 object-contain hover:scale-110 transition-transform duration-200" />
+                    </div>
+                    <div className="flex items-center justify-center bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 w-32 h-16">
+                      <img src="https://www.lapakgaming.com/static/images/payment-methods/gopay.webp?w=128&q=75" alt="Gopay" className="h-8 object-contain hover:scale-110 transition-transform duration-200" />
+                    </div>
+                    <div className="flex items-center justify-center bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 w-32 h-16">
+                      <img src="https://www.lapakgaming.com/static/images/payment-methods/shopeepay-horizontal.webp?w=128&q=75" alt="ShopeePay" className="h-8 object-contain hover:scale-110 transition-transform duration-200" />
+                    </div>
+                    <div className="flex items-center justify-center bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 w-32 h-16">
+                      <img src="https://www.lapakgaming.com/static/images/payment-methods/ovo.webp?w=128&q=75" alt="OVO" className="h-8 object-contain hover:scale-110 transition-transform duration-200" />
+                    </div>
+                    <div className="flex items-center justify-center bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 w-32 h-16">
+                      <img src="https://imgop.itemku.com/?url=https%3A%2F%2Ffiles.itemku.com%2Flogo%2Fpayment%2Fqris.png&w=96&q=75" alt="QRIS" className="h-8 object-contain hover:scale-110 transition-transform duration-200" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="text-center pb-8">
+              <p className="text-sm text-gray-500 font-medium">Supported Payment Methods</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section as Marketplace */}
       {/* <section className="py-24 relative">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
@@ -336,6 +496,56 @@ export default function Home() {
           </div>
         </div>
       </section> */}
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/6281234567890"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed z-50 bottom-6 right-6 group"
+        aria-label="Chat via WhatsApp"
+      >
+        <div className="relative">
+          {/* Outer pulse effect */}
+          <div className="absolute inset-0 rounded-full animate-ping bg-green-500 opacity-20"></div>
+          {/* Inner pulse effect */}
+          <div className="absolute inset-0 rounded-full animate-pulse-slow bg-green-400 opacity-40"></div>
+          {/* Floating animation container */}
+          <div className="animate-float">
+            <img
+              src="/wa_img.png"
+              alt="WhatsApp Chat"
+              className="w-16 h-16 rounded-full shadow-lg border-4 border-white p-2 transition-transform duration-200 group-hover:scale-110 group-hover:shadow-2xl relative z-10"
+            />
+          </div>
+        </div>
+        <style jsx>{`
+          @keyframes float {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+          @keyframes pulse-slow {
+            0%, 100% {
+              transform: scale(1);
+              opacity: 0.4;
+            }
+            50% {
+              transform: scale(1.1);
+              opacity: 0.2;
+            }
+          }
+          .animate-float {
+            animation: float 3s ease-in-out infinite;
+          }
+          .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+          }
+        `}</style>
+      </a>
     </div>
   )
 }
