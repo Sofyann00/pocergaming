@@ -250,7 +250,7 @@ export default function Home() {
     <div className="flex flex-col bg-white text-gray-900">
       {/* Hero Section as Simple Carousel */}
       <section className="relative mb-12 mt-32 max-h-[500px]">
-        <div className="w-full mx-auto -ml-4">
+        <div className="w-full mx-auto sm:-ml-4">
           <Slider
             {...sliderSettings}
             className="h-full max-h-[500px] [&_.slick-list]:h-full [&_.slick-slide.slick-active]:opacity-100 [&_.slick-slide]:ml-0 [&_.slick-slide]:opacity-70 [&_.slick-slide]:px-2 [&_.slick-track]:h-full"
@@ -499,7 +499,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/6281234567890"
+        href="https://wa.me/6285811959392"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed z-50 bottom-6 right-6 group"

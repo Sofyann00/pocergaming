@@ -114,11 +114,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         description: `Your purchase of ${selectedItem.name} for ${product.name} is being processed. We'll notify you via email once completed.`,
       })
     } catch (error) {
-      toast({
+    toast({
         title: "Error",
         description: "An error occurred while processing your purchase. Please try again.",
         variant: "destructive"
-      })
+    })
     } finally {
       setIsSendingEmail(false)
     }
@@ -218,9 +218,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             Informasi Pesanan
           </h2>
 
-          <div className="space-y-6">
+        <div className="space-y-6">
             {/* Player ID Input */}
-            <div>
+          <div>
               <label className="block text-sm font-medium text-gray-200 mb-2">
                 Masukkan Player ID
               </label>
@@ -233,11 +233,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               />
               <p className="text-xs text-gray-400 mt-2">
                 Simpan ID dengan fitur Save ID
-              </p>
-            </div>
+            </p>
+          </div>
 
             {/* Payment Methods */}
-            <div>
+          <div>
               <h3 className="text-lg font-semibold mb-4 text-black">Pilih Pembayaran</h3>
               
               {/* QRIS */}
@@ -282,7 +282,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   Rp {selectedItem?.price.toLocaleString('id-ID') ?? '0'},-
                 </span>
               </button>
-            </div>
+          </div>
 
             {/* Payment Instructions */}
             {selectedPayment && (
@@ -304,16 +304,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <li>Konfirmasi pembayaran</li>
                   </ol>
                 )}
-              </div>
+          </div>
             )}
 
-            <Button
-              size="lg"
+          <Button 
+            size="lg" 
               className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-              onClick={handleAddToCart}
-            >
+            onClick={handleAddToCart}
+          >
               Konfirmasi Top Up
-            </Button>
+          </Button>
           </div>
         </div>
       </div>

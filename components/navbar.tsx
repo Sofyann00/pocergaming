@@ -144,7 +144,7 @@ export function Navbar() {
                 >
                   Login
                 </Link>
-                <Link 
+                <Link
                   href="/register"
                   className="hidden md:flex px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
                 >
@@ -174,28 +174,28 @@ export function Navbar() {
 
             {/* Mobile Navigation Links */}
             <div className="space-y-2">
-              {user ? (
-                <>
-                  <Link
-                    href="/profile"
+                {user ? (
+                  <>
+                    <Link
+                      href="/profile"
                     className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Profile
-                  </Link>
-                  <button
+                    >
+                      Profile
+                    </Link>
+                    <button
                     onClick={() => {
                       logout()
                       router.push("/")
                       setIsMobileMenuOpen(false)
                     }}
                     className="w-full text-left px-4 py-2 text-sm font-medium text-red-600 hover:bg-gray-50 rounded-lg flex items-center"
-                  >
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Logout
-                  </button>
-                </>
-              ) : (
+                    >
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Logout
+                    </button>
+                  </>
+                ) : (
                 <>
                   <Link
                     href="/login"
@@ -204,13 +204,13 @@ export function Navbar() {
                   >
                     Login
                   </Link>
-                  <Link
+            <Link
                     href="/register"
                     className="block px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Daftar
-                  </Link>
+          </Link>
                 </>
               )}
             </div>
