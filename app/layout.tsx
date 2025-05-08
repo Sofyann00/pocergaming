@@ -12,8 +12,8 @@ import { FilterProvider } from "@/contexts/filter-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "pocergaming - Professional Architectural Design Services",
-  description: "Your trusted partner for professional architectural services. Specializing in residential design, commercial spaces, interior solutions, landscape design, and comprehensive architectural services. Transform your vision into remarkable spaces with our expert team.",
+  title: "pocergaming - Jual Voucher Game Online Termurah & Terpercaya",
+  description: "Pocergaming adalah partner terpercaya untuk pembelian voucher game online. Menyediakan berbagai voucher game populer, proses cepat, harga bersaing, dan layanan pelanggan terbaik. Top up game favorit Anda dengan mudah dan aman bersama kami.",
   icons: {
     icon: "/favicon/favicon.ico",
     shortcut: "/favicon/favicon-16x16.png",
