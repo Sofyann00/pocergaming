@@ -16,13 +16,13 @@ export async function POST(request: Request) {
     const { to, productName, itemName, price, playerId } = await request.json();
 
     const mailOptions = {
-      from: 'admin@pocergaming.com',
+      from: 'admin@pocergeming.com',
       to,
       subject: 'Purchase Confirmation - PocerGaming',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <img src="https://pocergaming.com/app_icon.png" alt="PocerGaming Logo" style="width: 150px; height: auto; margin-bottom: 20px;">
+            <img src="https://pocergeming.com/app_icon.png" alt="PocerGaming Logo" style="width: 150px; height: auto; margin-bottom: 20px;">
           </div>
           
           <h2 style="color: #2563eb; text-align: center;">Thank You For Your Purchase!</h2>
