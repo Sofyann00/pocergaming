@@ -58,12 +58,7 @@ export function PaymentSuccessDialog({
                     {paymentData?.paymentFiat?.bankName ?? ''}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Transaction ID</span>
-                  <span className="font-medium">
-                    {paymentData?.depositId ?? 'Unknown'}
-                  </span>
-                </div>
+                <div className="flex justify-between"><span className="text-gray-500">Transaction ID</span><span className="font-medium" title={paymentData?.depositId ?? 'Unknown'}>{(paymentData?.depositId ?? 'Unknown').length > 15 ? `${(paymentData?.depositId ?? 'Unknown').substring(0,15)}...` : (paymentData?.depositId ?? 'Unknown')}</span></div>
               </div>
             </div>
 

@@ -78,7 +78,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
     if (showPaymentDialog && paymentData?.depositId) {
       // Start polling when dialog is shown and we have a deposit ID
-      pollInterval = setInterval(checkPaymentStatus, 10000); // Poll every 10 seconds
+      pollInterval = setInterval(checkPaymentStatus, 15000); // Poll every 10 seconds
     }
 
     return () => {
@@ -121,6 +121,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       if (!response.ok) {
         throw new Error(data.message || 'Failed to create payment');
       }
+
+      console.log(data.data)
 
       setPaymentData(data.data);
       setShowPaymentDialog(true);
@@ -355,10 +357,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
               {/* Virtual Account */}
               <button
-                onClick={() => setSelectedPayment('va_bri')}
+                onClick={() => setSelectedPayment('va_permata')}
                 className={cn(
                   "w-full p-4 rounded-lg border flex items-center justify-between",
-                  selectedPayment === 'va'
+                  selectedPayment === 'va_permata'
                     ? "border-blue-500 bg-blue-500/10"
                     : "border-white/10 hover:border-white/20 bg-white/5"
                 )}
@@ -473,7 +475,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   <p>Expires at: {new Date(paymentData.expiredAt).toLocaleString()}</p>
                 </div>
               </div>
-            ) : selectedPayment === 'va_bri' && paymentData?.paymentFiat ? (
+            ) : selectedPayment === 'va_permata' && paymentData?.paymentFiat ? (
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <p className="text-sm text-gray-500 mb-1">Virtual Account Number:</p>
