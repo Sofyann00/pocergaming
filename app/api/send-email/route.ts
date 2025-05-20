@@ -18,11 +18,11 @@ export async function POST(request: Request) {
     const mailOptions = {
       from: 'admin@pocergeming.com',
       to,
-      subject: 'Purchase Confirmation - PocerGaming',
+      subject: 'Purchase Confirmation - pocergeming',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <img src="https://pocergeming.com/app_icon.png" alt="PocerGaming Logo" style="width: 150px; height: auto; margin-bottom: 20px;">
+            <img src="https://pocergeming.com/app_icon.png" alt="pocergeming Logo" style="width: 150px; height: auto; margin-bottom: 20px;">
           </div>
           
           <h2 style="color: #2563eb; text-align: center;">Thank You For Your Purchase!</h2>
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
           
           <p style="color: #6b7280; font-size: 14px; margin-top: 20px;">
             Best regards,<br>
-            PocerGaming Team
+            pocergeming Team
           </p>
         </div>
       `,

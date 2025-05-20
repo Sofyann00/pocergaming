@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - PocerGaming',
-  description: 'Privacy Policy for PocerGaming game voucher and top-up services',
+  title: 'Privacy Policy - pocergeming',
+  description: 'Privacy Policy for pocergeming game voucher and top-up services',
 }
 
 export default function PrivacyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
                 1. Information We Collect
               </h2>
               <p className="text-gray-600">
-                PocerGaming collects personal information including but not limited to: name, email address, phone number, game account details, player IDs, payment information, and transaction history when you purchase game vouchers, top-up credits, or create an account on our platform.
+                pocergeming collects personal information including but not limited to: name, email address, phone number, game account details, player IDs, payment information, and transaction history when you purchase game vouchers, top-up credits, or create an account on our platform.
               </p>
             </div>
 
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
                   <p>Jl Pramuka Kav 150, Utan Kayu Utara</p>
                   <p>Matraman, Jakarta Timur</p>
                   <p>DKI Jakarta, Indonesia</p>
-                  <p>Email: admin@pocergaming.com</p>
+                  <p>Email: admin@pocergeming.com</p>
                   <p>Phone: (021) 52067542</p>
                 </div>
               </div>

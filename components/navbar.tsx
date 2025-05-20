@@ -39,7 +39,7 @@ export function Navbar() {
           <Link href="/">
             <img 
               src="/app_icon.png" 
-              alt="pocergaming Logo"
+              alt="pocergeming Logo"
               width={252}
               height={252}
               className="brightness-100 md:block hidden"

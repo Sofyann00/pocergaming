@@ -10,7 +10,7 @@ export function Footer() {
           <div className="flex justify-start">
               <img 
                 src="/app_icon.png" 
-                alt="pocergaming Logo"
+                alt="pocergeming Logo"
                 width={220}
                 height={220}
                 className="brightness-100 object-cover -ml-8 sm:ml-0 -mt-8 sm:mt-0"
@@ -56,10 +56,10 @@ export function Footer() {
               <div className="space-y-2">
                 <p>
                   <a
-                    href="mailto:admin@pocergaming.com"
+                    href="mailto:admin@pocergeming.com"
                     className="hover:text-gray-900 transition-colors"
                   >
-                    admin@pocergaming.com
+                    admin@pocergeming.com
                   </a>
                 </p>
                 <p>

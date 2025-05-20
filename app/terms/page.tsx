@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service - PocerGaming',
-  description: 'Terms of Service and conditions for using PocerGaming game voucher and top-up services',
+  title: 'Terms of Service - pocergeming',
+  description: 'Terms of Service and conditions for using pocergeming game voucher and top-up services',
 }
 
 export default function TermsPage() {
@@ -23,7 +23,7 @@ export default function TermsPage() {
                 1. Agreement to Terms
               </h2>
               <p className="text-gray-600">
-                By accessing and using the game voucher and top-up services provided by PT DINAMIKA TEKNOLOGI ASIA (hereinafter referred to as "PocerGaming"), you accept and agree to be bound by the terms and provisions of this agreement.
+                By accessing and using the game voucher and top-up services provided by PT DINAMIKA TEKNOLOGI ASIA (hereinafter referred to as "pocergeming"), you accept and agree to be bound by the terms and provisions of this agreement.
               </p>
             </div>
 
@@ -32,7 +32,7 @@ export default function TermsPage() {
                 2. Game Services
               </h2>
               <p className="text-gray-600">
-                PocerGaming provides game voucher and top-up services including in-game currency, battle passes, premium accounts, and various game items. All service listings, including prices, availability, and specifications, are subject to change without prior notice. We guarantee the authenticity and validity of all game vouchers and items provided through our platform.
+                pocergeming provides game voucher and top-up services including in-game currency, battle passes, premium accounts, and various game items. All service listings, including prices, availability, and specifications, are subject to change without prior notice. We guarantee the authenticity and validity of all game vouchers and items provided through our platform.
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export default function TermsPage() {
                 4. Account and Information Use
               </h2>
               <p className="text-gray-600">
-                All game account information and personal details provided to PocerGaming will be treated with strict confidentiality. We will not disclose your information to third parties except when required by law or with your explicit permission. PocerGaming may use anonymized data for service improvement and customer support purposes.
+                All game account information and personal details provided to pocergeming will be treated with strict confidentiality. We will not disclose your information to third parties except when required by law or with your explicit permission. pocergeming may use anonymized data for service improvement and customer support purposes.
               </p>
             </div>
 
@@ -59,7 +59,7 @@ export default function TermsPage() {
                 5. Limitation of Liability
               </h2>
               <p className="text-gray-600">
-                While we guarantee the authenticity of our game vouchers and items, PocerGaming shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services. This includes but is not limited to game account issues, server problems, or platform-specific restrictions that may affect the use of purchased items.
+                While we guarantee the authenticity of our game vouchers and items, pocergeming shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services. This includes but is not limited to game account issues, server problems, or platform-specific restrictions that may affect the use of purchased items.
               </p>
             </div>
 
@@ -68,7 +68,7 @@ export default function TermsPage() {
                 6. User Responsibilities
               </h2>
               <p className="text-gray-600">
-                Users are responsible for providing accurate game account information and ensuring compliance with game platform terms of service. Users must verify all purchases before completing transactions and notify PocerGaming promptly of any issues. PocerGaming is not responsible for account issues resulting from incorrect information provided by users or violations of game platform terms.
+                Users are responsible for providing accurate game account information and ensuring compliance with game platform terms of service. Users must verify all purchases before completing transactions and notify pocergeming promptly of any issues. pocergeming is not responsible for account issues resulting from incorrect information provided by users or violations of game platform terms.
               </p>
             </div>
 
@@ -93,7 +93,7 @@ export default function TermsPage() {
                   <p>Jl Pramuka Kav 150, Utan Kayu Utara</p>
                   <p>Matraman, Jakarta Timur</p>
                   <p>DKI Jakarta, Indonesia</p>
-                  <p>Email: admin@pocergaming.com</p>
+                  <p>Email: admin@pocergeming.com</p>
                   <p>Phone: (021) 52067542</p>
                 </div>
               </div>

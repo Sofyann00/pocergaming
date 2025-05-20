@@ -7,7 +7,7 @@ export default function ResellerPage() {
         <div className="relative w-full h-56 sm:h-80">
           <Image
             src="/reseller_banner.png"
-            alt="Reseller Program pocergaming.com"
+            alt="Reseller Program pocergeming.com"
             fill
             className="object-cover w-full h-full"
             style={{ borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem' }}
@@ -16,9 +16,9 @@ export default function ResellerPage() {
         </div>
       </div>
       <article className="bg-white rounded-2xl shadow p-6 sm:p-10 border border-gray-100">
-        <h1 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-4">Program Reseller pocergaming.com</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-4">Program Reseller pocergeming.com</h1>
         <p className="text-lg text-gray-700 mb-4">
-          Selamat datang di program reseller <b>pocergaming.com</b>! Kami membuka peluang bagi Anda yang ingin menjadi mitra bisnis dalam penjualan voucher game, top up, dan produk digital lainnya dengan harga spesial reseller.
+          Selamat datang di program reseller <b>pocergeming.com</b>! Kami membuka peluang bagi Anda yang ingin menjadi mitra bisnis dalam penjualan voucher game, top up, dan produk digital lainnya dengan harga spesial reseller.
         </p>
         <ul className="list-disc pl-6 text-gray-700 mb-4">
           <li>Harga khusus reseller untuk semua produk</li>

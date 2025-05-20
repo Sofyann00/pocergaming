@@ -370,7 +370,7 @@ export default function Home() {
           <div className="relative w-full">
             <img
               src="/reseller_banner.png"
-              alt="Reseller Program pocergaming.com"
+              alt="Reseller Program pocergeming.com"
               className="w-full object-cover h-[400px] transition-transform duration-300 group-hover:scale-105"
               style={{ borderRadius: '1rem' }}
             />
@@ -379,7 +379,7 @@ export default function Home() {
             <div className="absolute inset-0 pointer-events-none" />
             <div className="relative z-10">
               <h2 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-4">
-                Program Reseller pocergaming.com
+                Program Reseller pocergeming.com
               </h2>
               <p className="text-gray-600 mb-6 text-lg max-w-2xl mx-auto">
                 Bergabunglah dengan program reseller kami dan dapatkan keuntungan menarik dengan menjual voucher game dan top up.
