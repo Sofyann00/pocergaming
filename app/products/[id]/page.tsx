@@ -81,12 +81,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       pollInterval = setInterval(checkPaymentStatus, 15000); // Poll every 10 seconds
     }
 
-    return () => {
-      // Cleanup interval when component unmounts or dialog closes
-      if (pollInterval) {
-        clearInterval(pollInterval);
-      }
-    };
   }, [showPaymentDialog, paymentData?.depositId]);
 
   const handleAddToCart = async () => {
