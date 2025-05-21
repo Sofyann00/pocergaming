@@ -1,6 +1,15 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+const generateVoucherCode = () => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = '';
+  for (let i = 0; i < 6; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
+
 const transporter = nodemailer.createTransport({
     host: 'mail.privateemail.com',
     port: 465, // Using Mailtrap's alternative port
@@ -14,6 +23,7 @@ const transporter = nodemailer.createTransport({
 export async function POST(request: Request) {
   try {
     const { to, productName, itemName, price, playerId } = await request.json();
+    const voucherCode = generateVoucherCode();
 
     const mailOptions = {
       from: 'admin@pocergeming.com',
@@ -34,6 +44,8 @@ export async function POST(request: Request) {
             <p><strong>Item:</strong> ${itemName}</p>
             <p><strong>Price:</strong> Rp ${price.toLocaleString('id-ID')},-</p>
             <p><strong>Player ID:</strong> ${playerId}</p>
+            <p><strong>Voucher Code:</strong> ${voucherCode}</p>
+
           </div>
           
           <p>We'll notify you once your purchase is completed. If you have any questions, please contact our support team.</p>
