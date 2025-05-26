@@ -64,10 +64,10 @@ export function Footer() {
                 </p>
                 <p>
                   <a
-                    href="tel:021-52067542"
+                    href="https://wa.me/6285811959392"
                     className="hover:text-gray-900 transition-colors"
                   >
-                    021-52067542
+                    +62 858-1195-9392
                   </a>
                 </p>
               </div>

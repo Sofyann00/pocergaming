@@ -326,6 +326,82 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Game Items Section */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block px-3 py-1 bg-gray-100 text-gray-900 rounded-full text-sm font-medium mb-4 border border-gray-200">
+              Game Items
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Dota 2</span> Items
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Exclusive Dota 2 items and sets from The International
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                id: "1",
+                name: "Tangled Tropics",
+                hero: "Monkey King",
+                image: "/dota_item/Tangled Tropics (Monkey King Set) TI11.png",
+                price: 20000,
+                description: "Exclusive Monkey King set from The International 11"
+              },
+              {
+                id: "2",
+                name: "Helm of Prosperity",
+                hero: "Ember Spirit",
+                image: "/dota_item/Phoenix Helm of Prosperity (Ember Spirit).png",
+                price: 15000,
+                description: "Rare Ember Spirit helmet with unique effects"
+              },
+              {
+                id: "3",
+                name: "Pudge Courier",
+                hero: "Courier",
+                image: "/dota_item/pudge_courier.webp",
+                price: 16000,
+                description: "Unique Pudge-themed courier with custom animations"
+              }
+            ].map((item, index) => (
+              <Card key={index} className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
+                  <div className="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-md text-sm font-medium">
+                    {item.hero}
+                  </div>
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-lg mb-2 line-clamp-1">{item.name}</h3>
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{item.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-bold text-blue-600">
+                      {formatPrice(item.price)}
+                    </span>
+                    <Link href={`/dota-items/${item.id}`}>
+                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                        Buy Now
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* QnA Section */}
       <section className="max-w-3xl mx-auto w-full mb-16 px-2 sm:px-0">
         <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-gray-50 to-blue-50 shadow-xl p-2 sm:p-6">
@@ -379,10 +455,10 @@ export default function Home() {
             <div className="absolute inset-0 pointer-events-none" />
             <div className="relative z-10">
               <h2 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-4">
-                Program Reseller pocergeming.com
+                Program Partnership pocergeming.com
               </h2>
               <p className="text-gray-600 mb-6 text-lg max-w-2xl mx-auto">
-                Bergabunglah dengan program reseller kami dan dapatkan keuntungan menarik dengan menjual voucher game dan top up.
+                Bergabunglah dengan program partnership kami dan dapatkan keuntungan menarik dengan menjual item game anda pada website kami.
               </p>
               <Link href="/reseller" className="">
                 <div className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors hover:translate-x-1 duration-200">

@@ -16,18 +16,17 @@ export default function ResellerPage() {
         </div>
       </div>
       <article className="bg-white rounded-2xl shadow p-6 sm:p-10 border border-gray-100">
-        <h1 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-4">Program Reseller pocergeming.com</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-blue-700 mb-4">Program Partnership pocergeming.com</h1>
         <p className="text-lg text-gray-700 mb-4">
-          Selamat datang di program reseller <b>pocergeming.com</b>! Kami membuka peluang bagi Anda yang ingin menjadi mitra bisnis dalam penjualan voucher game, top up, dan produk digital lainnya dengan harga spesial reseller.
+          Selamat datang di program partnership <b>pocergeming.com</b>! Kami membuka peluang bagi Anda yang ingin menjadi mitra bisnis dalam penjualan item game pribadi anda pada website kami. Berikut adalah syarat-syarat untuk menjadi partner kami:
         </p>
         <ul className="list-disc pl-6 text-gray-700 mb-4">
-          <li>Harga khusus reseller untuk semua produk</li>
-          <li>Proses transaksi mudah dan cepat</li>
-          <li>Dukungan customer service profesional</li>
-          <li>Pengiriman otomatis 24 jam</li>
+          <li>Memiliki rekening pribadi</li>
+          <li>Bersedia menandatangani PKS (Perjanjian Kerjasama)</li>
+          <li>Bersedia mengikuti semua persyaratan lainnya yang akan kami berikan</li>
         </ul>
         <p className="text-lg text-gray-700">
-          Daftar sekarang dan mulai tingkatkan penghasilan Anda bersama kami! Untuk informasi lebih lanjut dan pendaftaran, silakan hubungi tim kami melalui kontak yang tersedia di website.
+          Jika Anda memenuhi semua persyaratan di atas, segera daftarkan diri Anda untuk menjadi partner kami! Untuk informasi lebih lanjut dan pendaftaran, silakan hubungi tim kami melalui kontak yang tersedia di website.
         </p>
       </article>
     </div>
