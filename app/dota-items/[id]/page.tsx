@@ -16,6 +16,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
+import { useUser } from "@/contexts/user-context"
 
 const dotaItems = [
   {
@@ -46,6 +47,7 @@ const dotaItems = [
 
 export default function DotaItemPage({ params }: { params: { id: string } }) {
   const { toast } = useToast()
+  const { user } = useUser()
   const [steamTradeLink, setSteamTradeLink] = useState("")
   const [sellerNotes, setSellerNotes] = useState("")
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null)
@@ -63,6 +65,14 @@ export default function DotaItemPage({ params }: { params: { id: string } }) {
   }
 
   const handlePurchase = async () => {
+    if (!user) {
+        toast({
+          title: "Login Required",
+          description: "Please login to continue with your purchase.",
+          variant: "destructive"
+        })
+        return
+      }
     if (!steamTradeLink) {
       toast({
         title: "Missing Information",

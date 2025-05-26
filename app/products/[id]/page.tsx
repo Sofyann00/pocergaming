@@ -84,6 +84,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   }, [showPaymentDialog, paymentData?.depositId]);
 
   const handleAddToCart = async () => {
+    if (!user) {
+      toast({
+        title: "Login Required",
+        description: "Please login to continue with your purchase.",
+        variant: "destructive"
+      })
+      return
+    }
+
     if (!selectedItem || !playerId || !selectedPayment) {
       toast({
         title: "Missing information",

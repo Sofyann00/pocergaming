@@ -287,7 +287,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-8">
             {products.map((product) => (
               <Link href={`/products/${product.id}`} key={product.id}>
                 <Card className="overflow-hidden rounded-2xl shadow-md bg-white border border-gray-100 group relative hover:scale-105 transition-transform duration-200">
@@ -315,14 +315,6 @@ export default function Home() {
             ))}
           </div>
           
-          {/* <div className="mt-12 text-center">
-            <Link href="/marketplace">
-              <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium shadow-lg shadow-blue-500/20">
-                View All Products
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div> */}
         </div>
       </section>
 
@@ -342,7 +334,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 id: "1",
@@ -378,19 +370,19 @@ export default function Home() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
-                  <div className="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-md text-sm font-medium">
+                  <div className="absolute top-2 right-2 bg-blue-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md text-xs sm:text-sm font-medium">
                     {item.hero}
                   </div>
                 </div>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 line-clamp-1">{item.name}</h3>
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{item.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-blue-600">
+                <CardContent className="p-2 sm:p-4">
+                  <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2 line-clamp-1">{item.name}</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 line-clamp-2">{item.description}</p>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
+                    <span className="text-sm sm:text-base md:text-lg font-bold text-blue-600 whitespace-nowrap">
                       {formatPrice(item.price)}
                     </span>
-                    <Link href={`/dota-items/${item.id}`}>
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                    <Link href={`/dota-items/${item.id}`} className="w-full sm:w-auto">
+                      <Button size="sm" className="w-full sm:w-auto h-6 sm:h-8 md:h-9 px-1.5 sm:px-3 md:px-4 text-[10px] sm:text-xs md:text-sm bg-blue-600 hover:bg-blue-700 text-white whitespace-nowrap">
                         Buy Now
                       </Button>
                     </Link>
@@ -460,7 +452,7 @@ export default function Home() {
               <p className="text-gray-600 mb-6 text-lg max-w-2xl mx-auto">
                 Bergabunglah dengan program partnership kami dan dapatkan keuntungan menarik dengan menjual item game anda pada website kami.
               </p>
-              <Link href="/reseller" className="">
+              <Link href="/partnership" className="">
                 <div className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors hover:translate-x-1 duration-200">
                   Learn More <ChevronRight className="w-5 h-5 ml-1" />
                 </div>
