@@ -361,34 +361,39 @@ export default function Home() {
                 description: "Unique Pudge-themed courier with custom animations"
               }
             ].map((item, index) => (
-              <Card key={index} className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
-                  <div className="absolute top-2 right-2 bg-blue-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md text-xs sm:text-sm font-medium">
-                    {item.hero}
-                  </div>
-                </div>
-                <CardContent className="p-2 sm:p-4">
-                  <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2 line-clamp-1">{item.name}</h3>
-                  <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 line-clamp-2">{item.description}</p>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
-                    <span className="text-sm sm:text-base md:text-lg font-bold text-blue-600 whitespace-nowrap">
-                      {formatPrice(item.price)}
-                    </span>
-                    <Link href={`/dota-items/${item.id}`} className="w-full sm:w-auto">
-                      <Button size="sm" className="w-full sm:w-auto h-6 sm:h-8 md:h-9 px-1.5 sm:px-3 md:px-4 text-[10px] sm:text-xs md:text-sm bg-blue-600 hover:bg-blue-700 text-white whitespace-nowrap">
-                        Buy Now
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+              <div key={index} className="relative">
+                <Link href={`/dota-items/${item.id}`} className="block">
+                  <Card className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
+                      <div className="absolute top-2 right-2 bg-blue-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md text-xs sm:text-sm font-medium">
+                        {item.hero}
+                      </div>
+                    </div>
+                    <CardContent className="p-2 sm:p-4">
+                      <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2 line-clamp-1">{item.name}</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 line-clamp-2">{item.description}</p>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
+                        <span className="text-sm sm:text-base md:text-lg font-bold text-blue-600 whitespace-nowrap">
+                          {formatPrice(item.price)}
+                        </span>
+                        <div className="w-full sm:w-auto">
+                          <Button size="sm" className="w-full sm:w-auto h-6 sm:h-8 md:h-9 px-1.5 sm:px-3 md:px-4 text-[10px] sm:text-xs md:text-sm bg-blue-600 hover:bg-blue-700 text-white whitespace-nowrap">
+                            Buy Now
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              
+              </div>
             ))}
           </div>
         </div>
