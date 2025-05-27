@@ -348,7 +348,7 @@ export default function Home() {
                 id: "2",
                 name: "Helm of Prosperity",
                 hero: "Ember Spirit",
-                image: "/dota_item/Phoenix Helm of Prosperity (Ember Spirit).png",
+                image: "/dota_item/Phoenix Helm of Prosperity (Ember Spirit).webp",
                 price: 15000,
                 description: "Rare Ember Spirit helmet with unique effects"
               },
