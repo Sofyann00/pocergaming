@@ -151,51 +151,51 @@ export default function SellerPage({ params }: { params: { slug: string } }) {
       <Navbar />
       <div className="container mx-auto px-4 py-8">
         {/* Seller Profile Section */}
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <div className="flex items-center gap-6">
+        <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-8">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <div className="relative">
               <Image
                 src={seller.avatar}
                 alt={seller.name}
                 width={120}
                 height={120}
-                className="rounded-full border-4 border-blue-100"
+                className="rounded-full border-4 border-blue-100 w-24 h-24 sm:w-[120px] sm:h-[120px]"
               />
               <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
             </div>
-            <div className="flex-1">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{seller.name}</h1>
-              <div className="flex items-center gap-2 mb-4">
+            <div className="flex-1 text-center sm:text-left">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{seller.name}</h1>
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-4">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className={cn(
-                        "w-5 h-5",
+                        "w-4 h-4 sm:w-5 sm:h-5",
                         i < Math.floor(seller.rating) ? "text-yellow-400 fill-yellow-400" : "text-gray-300"
                       )}
                     />
                   ))}
                 </div>
-                <span className="text-lg text-gray-600">({seller.rating})</span>
+                <span className="text-base sm:text-lg text-gray-600">({seller.rating})</span>
               </div>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-blue-50 rounded-lg p-3">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-blue-600" />
-                    <span className="text-sm text-gray-600">100+ Sales</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
+                <div className="bg-blue-50 rounded-lg p-2 sm:p-3">
+                  <div className="flex items-center justify-center sm:justify-start gap-2">
+                    <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                    <span className="text-xs sm:text-sm text-gray-600">100+ Sales</span>
                   </div>
                 </div>
-                <div className="bg-green-50 rounded-lg p-3">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-green-600" />
-                    <span className="text-sm text-gray-600">Verified</span>
+                <div className="bg-green-50 rounded-lg p-2 sm:p-3">
+                  <div className="flex items-center justify-center sm:justify-start gap-2">
+                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
+                    <span className="text-xs sm:text-sm text-gray-600">Verified</span>
                   </div>
                 </div>
-                <div className="bg-purple-50 rounded-lg p-3">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-purple-600" />
-                    <span className="text-sm text-gray-600">Top Seller</span>
+                <div className="bg-purple-50 rounded-lg p-2 sm:p-3">
+                  <div className="flex items-center justify-center sm:justify-start gap-2">
+                    <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" />
+                    <span className="text-xs sm:text-sm text-gray-600">Top Seller</span>
                   </div>
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default function SellerPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Seller's Items */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {seller.items.map((item) => (
             <Link
               key={item.id}
@@ -219,21 +219,21 @@ export default function SellerPage({ params }: { params: { slug: string } }) {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">
+                  <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-xs sm:text-sm">
                     {item.hero}
                   </div>
                 </div>
-                <div className="p-4 flex flex-col flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
+                <div className="p-3 sm:p-4 flex flex-col flex-1">
+                  <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1 text-sm sm:text-base">
                     {item.name}
                   </h3>
-                  <div className="h-10 mb-2">
-                    <p className="text-sm text-gray-600 line-clamp-2">
+                  <div className="h-8 sm:h-10 mb-2">
+                    <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
                       {item.description}
                     </p>
                   </div>
                   <div className="flex items-center justify-between mt-auto">
-                    <p className="text-blue-600 font-semibold">
+                    <p className="text-blue-600 font-semibold text-sm sm:text-base">
                       {item.price.toLocaleString('id-ID')} IDR
                     </p>
                   </div>

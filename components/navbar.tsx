@@ -36,19 +36,19 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 h-16 flex items-center">
+        <div className="hidden md:flex items-center gap-8">
           <Link href="/">
             <img 
               src="/app_icon.png" 
               alt="pocergeming Logo"
               width={252}
               height={252}
-              className="brightness-100 md:block hidden"
+              className="brightness-100"
             />
           </Link>
           {/* Navigation Tabs */}
-          <div className="hidden md:flex space-x-8">
+          <div className="flex space-x-8">
             <Link
               href="/"
               className={cn(
@@ -74,26 +74,25 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? (
-            <X className="h-6 w-6 text-gray-700" />
-          ) : (
-            <Menu className="h-6 w-6 text-gray-700" />
-          )}
-        </button>
-
-        <div className="flex items-center gap-4">
-          <div className="relative">
+        <div className="flex-1 md:ml-auto flex items-center gap-4">
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-gray-700" />
+            ) : (
+              <Menu className="h-6 w-6 text-gray-700" />
+            )}
+          </button>
+          <div className="relative flex-1 md:flex-none md:w-64">
             <input
               type="text"
               placeholder="Search games..."
               value={searchQuery}
               onChange={handleSearch}
-              className="bg-gray-100 border border-gray-200 rounded-lg px-4 py-2 pl-10 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 w-64"
+              className="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-2 pl-10 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500"
             />
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
             
@@ -186,9 +185,9 @@ export function Navbar() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-t border-gray-200">
-          <div className="px-4 py-3">
+          <div className="px-2 sm:px-4 py-2">
             {/* Mobile Navigation Links */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Link
                 href="/"
                 className={cn(
@@ -245,7 +244,7 @@ export function Navbar() {
                   </Link>
                   <Link
                     href="/register"
-                    className="block px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                    className="block mx-4 px-4 py-2 text-sm text-center font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Daftar
