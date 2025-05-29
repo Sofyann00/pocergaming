@@ -11,7 +11,7 @@ const agents = [
     id: "1",
     name: "Genggam Dunia Game",
     rating: 5.0,
-    avatar: "/single_icon.png",
+    avatar: "/seller_ic/gdg_ic.png",
     items: [
       {
         id: "1",
@@ -33,9 +33,9 @@ const agents = [
   },
   {
     id: "2",
-    name: "Vocihub Official",
+    name: "Sahabat Gaming",
     rating: 5.0,
-    avatar: "/single_icon.png",
+    avatar: "/seller_ic/sg_ic.png",
     items: [
       {
         id: "3",
@@ -57,9 +57,9 @@ const agents = [
   },
   {
     id: "3",
-    name: "Legenda Game",
+    name: "Kasih Game Store",
     rating: 5.0,
-    avatar: "/single_icon.png",
+    avatar: "/seller_ic/kgs_ic.png",
     items: [
       {
         id: "5",
@@ -81,9 +81,9 @@ const agents = [
   },
   {
     id: "4",
-    name: "Game Master Pro",
+    name: "TopUp1212",
     rating: 5.0,
-    avatar: "/single_icon.png",
+    avatar: "/seller_ic/t12_ic.png",
     items: [
       {
         id: "7",
@@ -105,9 +105,9 @@ const agents = [
   },
   {
     id: "5",
-    name: "Dota Legends",
+    name: "Legenda TopUp",
     rating: 5.0,
-    avatar: "/single_icon.png",
+    avatar: "/seller_ic/lgt_ic.png",
     items: [
       {
         id: "9",
@@ -122,7 +122,7 @@ const agents = [
         name: "Nyx's Immortal Carapace",
         hero: "Nyx Assassin",
         image: "/dota_item/nyx_immo.png",
-        price: 33000,
+        price: 1200000,
         description: "Immortal back item for Nyx Assassin"
       }
     ]

@@ -21,41 +21,152 @@ import { useUser } from "@/contexts/user-context"
 const dotaItems = [
   {
     id: "1",
-    name: "Tangled Tropics",
-    hero: "Monkey King",
-    image: "/dota_item/Tangled Tropics (Monkey King Set) TI11.png",
-    price: 20000,
-    description: "Exclusive Monkey King set from The International 11",
+    name: "Doom's Infernal Blade",
+    hero: "Doom",
+    image: "/dota_item/doom_weapon.png",
+    price: 25000,
+    description: "Mythical weapon for Doom with custom particle effects",
     seller: {
+      id: "1",
       name: "Genggam Dunia Game",
       rating: 5.0,
-      avatar: "/single_icon.png"
+      avatar: "/seller_ic/gdg_ic.png",
+      slug: "genggam-dunia-game"
     }
   },
   {
     id: "2",
-    name: "Helm of Prosperity",
-    hero: "Ember Spirit",
-    image: "/dota_item/Phoenix Helm of Prosperity (Ember Spirit).webp",
-    price: 15000,
-    description: "Rare Ember Spirit helmet with unique effects",
+    name: "Terrorblade's Demon Edge",
+    hero: "Terrorblade",
+    image: "/dota_item/tb_full.png",
+    price: 30000,
+    description: "Legendary weapon for Terrorblade with demonic effects",
     seller: {
-      name: "Vocihub Official",
+      id: "1",
+      name: "Genggam Dunia Game",
       rating: 5.0,
-      avatar: "/single_icon.png"
+      avatar: "/seller_ic/gdg_ic.png",
+      slug: "genggam-dunia-game"
     }
   },
   {
     id: "3",
-    name: "Pudge Courier",
-    hero: "Courier",
-    image: "/dota_item/pudge_courier.webp",
-    price: 16000,
-    description: "Unique Pudge-themed courier with custom animations",
+    name: "Ursa's Savage Claws",
+    hero: "Ursa",
+    image: "/dota_item/ursa_back.png",
+    price: 22000,
+    description: "Rare back item for Ursa with custom animations",
     seller: {
-      name: "Legenda Game",
+      id: "2",
+      name: "Sahabat Gaming",
       rating: 5.0,
-      avatar: "/single_icon.png"
+      avatar: "/seller_ic/sg_ic.png",
+      slug: "sahabat-gaming"
+    }
+  },
+  {
+    id: "4",
+    name: "Razor's Storm Blade",
+    hero: "Razor",
+    image: "/dota_item/razor_weapon.png",
+    price: 28000,
+    description: "Epic weapon for Razor with lightning effects",
+    seller: {
+      id: "2",
+      name: "Sahabat Gaming",
+      rating: 5.0,
+      avatar: "/seller_ic/sg_ic.png",
+      slug: "sahabat-gaming"
+    }
+  },
+  {
+    id: "5",
+    name: "Venomancer's Toxic Mantle",
+    hero: "Venomancer",
+    image: "/dota_item/venomaner_top.png",
+    price: 18000,
+    description: "Rare top item for Venomancer with poison effects",
+    seller: {
+      id: "3",
+      name: "Kasih Game Store",
+      rating: 5.0,
+      avatar: "/seller_ic/kgs_ic.png",
+      slug: "kasih-game-store"
+    }
+  },
+  {
+    id: "6",
+    name: "Mirana's Starfall Shoulders",
+    hero: "Mirana",
+    image: "/dota_item/mirana_shoulder.png",
+    price: 32000,
+    description: "Legendary shoulder item for Mirana with star effects",
+    seller: {
+      id: "3",
+      name: "Kasih Game Store",
+      rating: 5.0,
+      avatar: "/seller_ic/kgs_ic.png",
+      slug: "kasih-game-store"
+    }
+  },
+  {
+    id: "7",
+    name: "Chaos Knight's Armor",
+    hero: "Chaos Knight",
+    image: "/dota_item/ck_shoulder.png",
+    price: 35000,
+    description: "Mythical shoulder armor for Chaos Knight",
+    seller: {
+      id: "4",
+      name: "TopUp1212",
+      rating: 5.0,
+      avatar: "/seller_ic/t12_ic.png",
+      slug: "topup1212"
+    }
+  },
+  {
+    id: "8",
+    name: "Night Stalker's Wings",
+    hero: "Night Stalker",
+    image: "/dota_item/ns_wings.png",
+    price: 27000,
+    description: "Rare wings for Night Stalker with night effects",
+    seller: {
+      id: "4",
+      name: "TopUp1212",
+      rating: 5.0,
+      avatar: "/seller_ic/t12_ic.png",
+      slug: "topup1212"
+    }
+  },
+  {
+    id: "9",
+    name: "Axe's Mythical Axe",
+    hero: "Axe",
+    image: "/dota_item/axe_myth.png",
+    price: 29000,
+    description: "Mythical weapon for Axe with custom animations",
+    seller: {
+      id: "5",
+      name: "Legenda TopUp",
+      rating: 5.0,
+      avatar: "/seller_ic/lgt_ic.png",
+      slug: "legenda-topup"
+    }
+  },
+  {
+    id: "10",
+    name: "Nyx's Immortal Carapace",
+    hero: "Nyx Assassin",
+    image: "/dota_item/nyx_immo.png",
+    price: 1200000,
+    description: "Immortal back item for Nyx Assassin",
+    seller: {
+      id: "5",
+      name: "Legenda TopUp",
+      rating: 5.0,
+      avatar: "/seller_ic/lgt_ic.png",
+      slug: "legenda-topup"
     }
   }
 ]
