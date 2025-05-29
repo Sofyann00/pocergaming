@@ -202,16 +202,16 @@ export function Navbar() {
                 Home
               </Link>
               <Link
-                href="/agent"
+                href="/items"
                 className={cn(
                   "block px-4 py-2 text-sm font-medium rounded-lg",
-                  pathname === "/agent"
+                  pathname === "/items"
                     ? "bg-blue-50 text-blue-600"
                     : "text-gray-700 hover:bg-gray-50"
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Agent
+                Items
               </Link>
               {user ? (
                 <>

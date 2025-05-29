@@ -17,6 +17,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"
 import { useUser } from "@/contexts/user-context"
+import Link from "next/link"
 
 const dotaItems = [
   {
@@ -275,7 +276,7 @@ export default function DotaItemPage({ params }: { params: { id: string } }) {
             <h1 className="text-3xl font-bold mb-4">{item.name}</h1>
             <p className="text-gray-600 mb-6">{item.description}</p>
             <div className="flex items-center gap-2 mb-6">
-              <div className="flex items-center">
+              <Link href={`/seller/${item.seller.slug}`} className="flex items-center hover:opacity-80 transition-opacity">
                 <Image
                   src={item.seller.avatar}
                   alt="Seller Avatar"
@@ -299,7 +300,7 @@ export default function DotaItemPage({ params }: { params: { id: string } }) {
                     <span className="text-xs text-gray-500 ml-1">({item.seller.rating})</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
             <div className="text-2xl font-bold text-blue-600 mb-6">
               {item.price.toLocaleString('id-ID')} IDR
