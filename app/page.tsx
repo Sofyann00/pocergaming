@@ -20,6 +20,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useRouter } from "next/navigation"
+import { cn } from "@/lib/utils"
+import { Star } from "lucide-react"
 
 export default function Home() {
   const { user, logout } = useUser()
@@ -334,7 +336,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {[
               {
                 id: "1",
@@ -342,7 +344,13 @@ export default function Home() {
                 hero: "Monkey King",
                 image: "/dota_item/Tangled Tropics (Monkey King Set) TI11.png",
                 price: 20000,
-                description: "Exclusive Monkey King set from The International 11"
+                description: "Exclusive Monkey King set from The International 11",
+                seller: {
+                  name: "Genggam Dunia Game",
+                  rating: 5.0,
+                  avatar: "/single_icon.png",
+                  slug: "genggam-dunia-game"
+                }
               },
               {
                 id: "2",
@@ -350,7 +358,13 @@ export default function Home() {
                 hero: "Ember Spirit",
                 image: "/dota_item/Phoenix Helm of Prosperity (Ember Spirit).webp",
                 price: 15000,
-                description: "Rare Ember Spirit helmet with unique effects"
+                description: "Rare Ember Spirit helmet with unique effects",
+                seller: {
+                  name: "Vocihub Official",
+                  rating: 5.0,
+                  avatar: "/single_icon.png",
+                  slug: "vocihub-official"
+                }
               },
               {
                 id: "3",
@@ -358,43 +372,121 @@ export default function Home() {
                 hero: "Courier",
                 image: "/dota_item/pudge_courier.webp",
                 price: 16000,
-                description: "Unique Pudge-themed courier with custom animations"
+                description: "Unique Pudge-themed courier with custom animations",
+                seller: {
+                  name: "Legenda Game",
+                  rating: 5.0,
+                  avatar: "/single_icon.png",
+                  slug: "legenda-game"
+                }
+              },
+              {
+                id: "4",
+                name: "Doom's Infernal Blade",
+                hero: "Doom",
+                image: "/dota_item/doom_weapon.png",
+                price: 25000,
+                description: "Mythical weapon for Doom with custom particle effects",
+                seller: {
+                  name: "Game Master Pro",
+                  rating: 5.0,
+                  avatar: "/single_icon.png",
+                  slug: "game-master-pro"
+                }
+              },
+              {
+                id: "5",
+                name: "Terrorblade's Demon Edge",
+                hero: "Terrorblade",
+                image: "/dota_item/tb_full.png",
+                price: 30000,
+                description: "Legendary weapon for Terrorblade with demonic effects",
+                seller: {
+                  name: "Dota Legends",
+                  rating: 5.0,
+                  avatar: "/single_icon.png",
+                  slug: "dota-legends"
+                }
               }
-            ].map((item, index) => (
-              <div key={index} className="relative">
-                <Link href={`/dota-items/${item.id}`} className="block">
-                  <Card className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
-                      <div className="absolute top-2 right-2 bg-blue-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md text-xs sm:text-sm font-medium">
-                        {item.hero}
-                      </div>
+            ].map((item) => (
+              <Link
+                key={item.id}
+                href={`/dota-items/${item.id}`}
+                className="group"
+              >
+                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+                  <div className="relative aspect-square">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">
+                      {item.hero}
                     </div>
-                    <CardContent className="p-2 sm:p-4">
-                      <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2 line-clamp-1">{item.name}</h3>
-                      <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 line-clamp-2">{item.description}</p>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
-                        <span className="text-sm sm:text-base md:text-lg font-bold text-blue-600 whitespace-nowrap">
-                          {formatPrice(item.price)}
-                        </span>
-                        <div className="w-full sm:w-auto">
-                          <Button size="sm" className="w-full sm:w-auto h-6 sm:h-8 md:h-9 px-1.5 sm:px-3 md:px-4 text-[10px] sm:text-xs md:text-sm bg-blue-600 hover:bg-blue-700 text-white whitespace-nowrap">
-                            Buy Now
-                          </Button>
+                  </div>
+                  <div className="p-4 flex flex-col flex-1">
+                    <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
+                      {item.name}
+                    </h3>
+                    <div className="h-10 mb-2">
+                      <p className="text-sm text-gray-600 line-clamp-2">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between mt-auto">
+                      <p className="text-blue-600 font-semibold">
+                        {item.price.toLocaleString('id-ID')} IDR
+                      </p>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-gray-100">
+                      <Link 
+                        href={`/seller/${item.seller.slug}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-2 hover:bg-gray-50 p-1 rounded-md transition-colors"
+                      >
+                        <Image
+                          src={item.seller.avatar}
+                          alt={item.seller.name}
+                          width={24}
+                          height={24}
+                          className="rounded-full"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-gray-900 truncate group-hover:text-blue-600">
+                            {item.seller.name}
+                          </p>
+                          <div className="flex items-center">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={cn(
+                                  "w-3 h-3",
+                                  i < Math.floor(item.seller.rating) ? "text-yellow-400 fill-yellow-400" : "text-gray-300"
+                                )}
+                              />
+                            ))}
+                            <span className="text-xs text-gray-500 ml-1">
+                              ({item.seller.rating})
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              
-              </div>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/agent"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+            >
+              Show More Items
+            </Link>
           </div>
         </div>
       </section>
