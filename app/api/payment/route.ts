@@ -9,39 +9,39 @@ export async function POST(request: Request) {
     const timestamp = new Date().toISOString()
     
     // Your client ID from Rampable
-    const clientId = '5293441ce1ac477bb38f0e70b92abe103337719'
+    const clientId = 'c6b8b9a971374978ab2a5afa313bd5835621713'
     
     // Generate signature string
     const stringToSign = `${clientId}:${timestamp}:${crypto.createHash('sha256').update(JSON.stringify(body)).digest('hex').toLowerCase()}`
     
     // Private key for signing
     const privateKey = `-----BEGIN PRIVATE KEY-----
-MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDeOA1T9Qvd3jpb
-V6a/jPlx1aS1lZlFaFpY47lCtVvR+mx3GJRYXD47HgvaFDZUM+5pe9M5NGhGIEqV
-LTjxCIbdyt6IW1+8ZhTMyGtWtU5ngoEZkkfZGt2tSySzuRclYTrDOipHc2q+ZOZ/
-K26zfMbQdcQ5UqRfkWehR0vjnDtx7U1BiNFMoPyW47P2DZiu6uJ5QR5HE+b3ufXn
-lTruiHqJUj6P6JDcIB6uKvsDCQq36pZmQ9TH4oGO+4xnTak4smFeFbd8VI0se6+t
-bxI4/X4014+CcW6fXu30s0ZxlMoilX8Cbg0XvgRjZvgkU2TiMEcw21shKVoqBgvL
-04uoE0DtAgMBAAECggEAL6OZGd1f+qPMY24mSYzdoh2QxrvoRKSzL7i8K/So11pm
-G98ZWFsIHVDa7hjkr8cFTrhUxz/4tcXw70unWCcBkLVP4TAjlUZWIbO6rTdHtHGa
-HyMIw56alO7V0rC0qVcPi7BhxXkVEnWbo3oqbJCsp56Dn11b70ADFSRtfMFuzgSQ
-5hm8v76yTab/Kznnqle0Px14vEjPT0OiyRMFFe/nVXor9A+B2Plc2kdFn+va/la8
-q8t0OVWDdo7I+pUo4eRg0vcvCP60nxi4fjel3I725oGQQ28IzzCwSzQoH3cA+0qT
-g0f30VNCQOK1K/Eo5muRAEf4RsB8GlJmWxtuiGfAGQKBgQD6nMJMURMdnSP5d7w0
-0R3WgLHaFgy30Ft7IaxvT2S6YXA6BXalKim5CBDHu1ak0/Ibg7tMeGv09f4Z3xVD
-xnJtmT+GONh3XlIYqKT7qFdooPLZLaHI6LDX6aXMDkspnWXoJNbE62rk55jLwJ+o
-juXrljB6vWiDcLL4nAtfb8pAaQKBgQDi/wfRKQaNWAchbupSFTHwbb5pSg7r/W4R
-FBuxV95YuNueb3XhgDl7D3n53L6mCwE9VE/WbEjJUVO2wPngUFl50Z5Zh1gkZ2dV
-pvG+oHxnkpUIFrxpIRz/VlaInJTERzAhYktpnxoKMcBjYKq0mk6p+a5ljIprgZT8
-bbSHKeYr5QKBgQCNLH0vbIRuLDU1tMNqpVo/mWOWzNEBQvgllsSCN6EwdO85YBaD
-2AqE1wxM1zVpyJMb+MsrurJl3aT0gfyCn2maX7evLpqSM6nfhjDaKuyCXhgvS0tV
-1+620kG5f1vL54SejxIE//DJXcVvEeVemJDgc0x/9+7GDFhlP9IQQvMV8QKBgQCv
-HGhuXUS1swvFKehPrBQbUr3KQZxjRt0rBaUbWRqovOqHPZrle+Jb4aOKMlVMiD7L
-jggM9Pnte/Sljhb1iWaNCD0s+bDwXGil9aSWFv4BdF3NoKR2QVo6S+Nzfb9x7yzd
-BBQDBf6zkI/G2iK2Mjeu/nMf2ZxKtOs3FHZostTiVQKBgQCNkr2YvHyi4r1pPabg
-mdhnIA8qynZrhPC3CWeXdL5Z3Qoja+6zvAe7qIJKkfObcBLyDZI5UR364FNhzZx7
-eP/EmsvWh421zt+D4GzgWgndom169WVgYqz4nWDVZYFY1cJqVmSwbdxEgmx/JrR0
-RN7VeOMYKYv8bPnlur1dVr7Pog==
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCx9iKpb7JxP3bF
+PLQvFDXw42D75XdvJ9+r37UALjXXzXELcxkZ7p/4YXNsnNoqqHboV1HyHnYo7nR7
+wi5ReYzpACHZoXxxge2eew79lLhr+d5WQBA7SHEAsadwpctZX0TFnEbFf0wL5Ln+
+LN7IQdFo192Na62Cpz6tORYe3sg47YqOr3nU3wCJt6YHbS9/xCXAtj6KQYYy7Beq
+5vxVrff8Mptuzf+WuN4i47Iu+8N9FPztv8TEXj2cXI4tRBZRPq3G62Tyv54J0712
+XBteqoAdtAL/IK1MzuoRO+8N5QEoVjsU3XM7xVzVBBnOgiHK2162uYIour+pLIph
+DpfQ3bhHAgMBAAECggEAPubVfJcu9ulsNS4OMB/QKxtrkc2bSA5LeGhDhVNQE72Z
+aeceZbSbFYN4dVkBohdWpCwNGmva7v/N61qI3aJ9hHPYAyEZp9M5Zo1vkIELKJsy
+k8DkG9gwnQKuQNpRRH8wgzqIJ1Gl0wRfG3DHs/fTqV+3fz+ini44MKkfYPz0v23b
+cva6QYAnSiZaUIIT4k851bU+i4spSzAsYWYpM99x1eGhqY3kCAZjXG54hW/t3tCN
+eT3fiHP9q1vgSRzjFam4XST5u/5tkmZ67PIggb09dQrhVnrK5iHK2OdweI3IzsRT
+8a2k+jjm1LmkG5X4XS7xyIGxoBzcUPb5l/04BEY9UQKBgQDm7YhFdxRyvTHpUMiN
+xZz3jUVGUzIXiyLnw2TbwCMff2mnSfxJYzIAerCb2ul69w04YGIufEP52n1knHVM
+j1baerQ02g3J93iSjfHmr0Xi8/SNrxXwmGMeFhgAbU5R/iPHAckZ49zWEhkQ/rs6
+JqmWqa4v44ONOdBS6CQoXDeAcQKBgQDFSHEQaeYmy+yPScm+VyiyzUPHE9Cq65pm
+ea3Z2tgSC4ZvU30XGznHMnLmA0I3HtVSDQ4Yy4UdHLxcJHl9xHuSN7Hl+wq93abF
+qU4oa2hbsQY16ZEDTUmQug+h0fgMbU4fr58aYSpJgfVUpM7sVibRnzt4iE2h0uyu
+CwoTUJMgNwKBgQDNBpN4aTMkc8l+hpSpGow0VZ7twyu0L3n8H0TKvhnw+ySIvG1b
+ktBwEH4AwimNXQ7FwP0qnHWVvWCbFTYnlRPdwheA3SBk8myAYbolv/PifgngSVTH
+WeSWb7M7ndBth5+oLnOnouEMxuCucBs2k+D5vQjDx9Gib3QAR87ibo1wYQKBgQCm
+anRNpzco1O5o9JKEyFshcPtSjEmCVJn7BXt8gRmxJx2w/RlRC3tSqCC6HFeXzZ+e
+xjp0+gEAzMOram09hSfD8M1VNc4a2UWcCTRP7kKqzgpyIeNciK6csgcLtuXp/a5g
+FjI8+2fDeCftzdRrEkVOoGZ3R2tNLXLPYaqPHnHtQwKBgASVA9iZY0DvoJkeMVrN
+2FMFvCjyBaJ6X+9LU7ZJfqKLRWJEcXHdi010tcmQTpn0gq4uV5uJFpq2RbdIdNXW
+CecGNWPAMKhBZBoxF4cgPdivMx4zgJI6knbx+wAhh8f8ianC2zj4cveZel8tBxkC
+G1swLyTBM0H/5lin/n6oSk4k
 -----END PRIVATE KEY-----`
     
     const sign = crypto.createSign('SHA256')
