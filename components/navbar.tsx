@@ -36,8 +36,8 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 h-16 flex items-center">
-        <div className="hidden md:flex items-center gap-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-8">
           <Link href="/">
             <img 
               src="/app_icon.png" 
@@ -48,7 +48,7 @@ export function Navbar() {
             />
           </Link>
           {/* Navigation Tabs */}
-          <div className="flex space-x-8">
+          <div className="hidden md:flex space-x-8">
             <Link
               href="/"
               className={cn(
@@ -74,7 +74,7 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="flex-1 md:ml-auto flex items-center gap-4">
+        <div className="flex items-center gap-4">
           {/* Mobile Menu Button */}
           <button 
             className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -86,7 +86,7 @@ export function Navbar() {
               <Menu className="h-6 w-6 text-gray-700" />
             )}
           </button>
-          <div className="relative flex-1 md:flex-none md:w-64">
+          <div className="relative hidden md:block w-64">
             <input
               type="text"
               placeholder="Search games..."
