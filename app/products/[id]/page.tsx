@@ -52,7 +52,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         setIsCheckingPayment(true);
         const response = await fetch(`/api/payment/status?depositId=${paymentData.depositId}`);
         const data = await response.json();
-
+        clearInterval(pollInterval);
+        setShowPaymentDialog(false);
+        setShowSuccessDialog(true);
         if (data.data?.status === 'completed') {
           // Payment completed successfully
           clearInterval(pollInterval);
