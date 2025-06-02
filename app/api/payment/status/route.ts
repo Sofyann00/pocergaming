@@ -58,7 +58,7 @@ G1swLyTBM0H/5lin/n6oSk4k
 
     const response = await fetch(`https://api.mayaramp.com/v1/deposit/${depositId}`, {
       headers: {
-        'Content-Type': 'application/json',
+        'X-Bypass-Secret': 'YZKNsyPLlvQJ5FwRNPrnLo0UsQZzEOgm',
         'X-SIGNATURE': signature,
         'X-TIMESTAMP': timestamp,
         'X-CLIENT-ID': clientId
