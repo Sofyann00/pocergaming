@@ -11,7 +11,32 @@ const createSlug = (name: string) => {
   return name.toLowerCase().replace(/\s+/g, '-')
 }
 
-const agents = [
+interface VoucherItem {
+  id: string
+  name: string
+  price: number
+  iconUrl: string
+  description: string
+}
+
+interface Seller {
+  id: string
+  name: string
+  rating: number
+  avatar: string
+  items: VoucherItem[]
+}
+
+interface VoucherWithSeller extends VoucherItem {
+  seller: {
+    name: string
+    rating: number
+    avatar: string
+    slug: string
+  }
+}
+
+const agents: Seller[] = [
   {
     id: "1",
     name: "Genggam Dunia Game",
@@ -20,19 +45,17 @@ const agents = [
     items: [
       {
         id: "1",
-        name: "Doom's Infernal Blade",
-        hero: "Doom",
-        image: "/dota_item/doom_weapon.png",
-        price: 25000,
-        description: "Mythical weapon for Doom with custom particle effects"
+        name: "60 Diamonds",
+        price: 16000,
+        iconUrl: "/voucher_ic/diamond_ic.png",
+        description: "Mobile Legends Diamond Voucher"
       },
       {
         id: "2",
-        name: "Terrorblade's Demon Edge",
-        hero: "Terrorblade",
-        image: "/dota_item/tb_full.png",
-        price: 30000,
-        description: "Legendary weapon for Terrorblade with demonic effects"
+        name: "300 Diamonds",
+        price: 79000,
+        iconUrl: "/voucher_ic/diamond_ic.png",
+        description: "Mobile Legends Diamond Voucher"
       }
     ]
   },
@@ -44,19 +67,17 @@ const agents = [
     items: [
       {
         id: "3",
-        name: "Ursa's Savage Claws",
-        hero: "Ursa",
-        image: "/dota_item/ursa_back.png",
-        price: 22000,
-        description: "Rare back item for Ursa with custom animations"
+        name: "980 Diamonds",
+        price: 249000,
+        iconUrl: "/voucher_ic/diamond_ic.png",
+        description: "Mobile Legends Diamond Voucher"
       },
       {
         id: "4",
-        name: "Razor's Storm Blade",
-        hero: "Razor",
-        image: "/dota_item/razor_weapon.png",
-        price: 28000,
-        description: "Epic weapon for Razor with lightning effects"
+        name: "1980 Diamonds",
+        price: 479000,
+        iconUrl: "/voucher_ic/diamond_ic.png",
+        description: "Mobile Legends Diamond Voucher"
       }
     ]
   },
@@ -68,75 +89,25 @@ const agents = [
     items: [
       {
         id: "5",
-        name: "Venomancer's Toxic Mantle",
-        hero: "Venomancer",
-        image: "/dota_item/venomaner_top.png",
-        price: 18000,
-        description: "Rare top item for Venomancer with poison effects"
+        name: "3280 Diamonds",
+        price: 799000,
+        iconUrl: "/voucher_ic/diamond_ic.png",
+        description: "Mobile Legends Diamond Voucher"
       },
       {
         id: "6",
-        name: "Mirana's Starfall Shoulders",
-        hero: "Mirana",
-        image: "/dota_item/mirana_shoulder.png",
-        price: 32000,
-        description: "Legendary shoulder item for Mirana with star effects"
-      }
-    ]
-  },
-  {
-    id: "4",
-    name: "TopUp1212",
-    rating: 5.0,
-    avatar: "/seller_ic/t12_ic.png",
-    items: [
-      {
-        id: "7",
-        name: "Chaos Knight's Armor",
-        hero: "Chaos Knight",
-        image: "/dota_item/ck_shoulder.png",
-        price: 35000,
-        description: "Mythical shoulder armor for Chaos Knight"
-      },
-      {
-        id: "8",
-        name: "Night Stalker's Wings",
-        hero: "Night Stalker",
-        image: "/dota_item/ns_wings.png",
-        price: 27000,
-        description: "Rare wings for Night Stalker with night effects"
-      }
-    ]
-  },
-  {
-    id: "5",
-    name: "Legenda TopUp",
-    rating: 5.0,
-    avatar: "/seller_ic/lgt_ic.png",
-    items: [
-      {
-        id: "9",
-        name: "Axe's Mythical Axe",
-        hero: "Axe",
-        image: "/dota_item/axe_myth.png",
-        price: 29000,
-        description: "Mythical weapon for Axe with custom animations"
-      },
-      {
-        id: "10",
-        name: "Nyx's Immortal Carapace",
-        hero: "Nyx Assassin",
-        image: "/dota_item/nyx_immo.png",
-        price: 1200000,
-        description: "Immortal back item for Nyx Assassin"
+        name: "6480 Diamonds",
+        price: 1599000,
+        iconUrl: "/voucher_ic/diamond_ic.png",
+        description: "Mobile Legends Diamond Voucher"
       }
     ]
   }
 ]
 
-export default function AgentPage() {
+export default function VoucherPage() {
   // Flatten all items into a single array
-  const allItems = agents.flatMap(agent => 
+  const allItems: VoucherWithSeller[] = agents.flatMap(agent => 
     agent.items.map(item => ({
       ...item,
       seller: {
@@ -152,25 +123,25 @@ export default function AgentPage() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">Dota 2 Items</h1>
+        <h1 className="text-2xl font-bold mb-6">Game Vouchers</h1>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {allItems.map((item) => (
             <Link
               key={item.id}
-              href={`/dota-items/${item.id}`}
+              href={`/voucher/${item.id}`}
               className="group"
             >
               <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
                 <div className="relative aspect-square">
                   <Image
-                    src={item.image}
+                    src={item.iconUrl}
                     alt={item.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">
-                    {item.hero}
+                    Voucher
                   </div>
                 </div>
                 <div className="p-4 flex flex-col flex-1">

@@ -332,13 +332,13 @@ export default function Home() {
             <div className="max-w-7xl mx-auto px-4">
               <div className="text-center mb-16">
                 <span className="inline-block px-3 py-1 bg-gray-100 text-gray-900 rounded-full text-sm font-medium mb-4 border border-gray-200">
-                  Game Items
+                  Exclusive Voucher
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Dota 2</span> Items
+                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Game Voucher</span>
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Exclusive Dota 2 items and sets from The International
+                  Exclusive Game Voucher from the agent
                 </p>
               </div>
 
@@ -497,10 +497,10 @@ export default function Home() {
 
               <div className="text-center mt-12">
                 <Link 
-                  href="/items"
+                  href="/voucher"
                   className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
                 >
-                  Show More Items
+                  Show More Vouchers
                 </Link>
               </div>
             </div>

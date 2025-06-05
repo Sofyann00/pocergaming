@@ -61,15 +61,15 @@ export function Navbar() {
               Home
             </Link>
             <Link
-              href="/items"
+              href="/voucher"
               className={cn(
                 "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
-                pathname === "/items"
+                pathname === "/voucher"
                   ? "border-blue-500 text-gray-900"
                   : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
               )}
             >
-              Items
+              Special Vouchers
             </Link>
           </div>
         </div>
@@ -201,16 +201,16 @@ export function Navbar() {
                 Home
               </Link>
               <Link
-                href="/items"
+                href="/voucher"
                 className={cn(
                   "block px-4 py-2 text-sm font-medium rounded-lg",
-                  pathname === "/items"
+                  pathname === "/voucher"
                     ? "bg-blue-50 text-blue-600"
                     : "text-gray-700 hover:bg-gray-50"
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Items
+                Special Vouchers
               </Link>
               {user ? (
                 <>
