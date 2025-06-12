@@ -237,7 +237,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         body: JSON.stringify({
           productCode: selectedItem.productCode,
           playerId,
-          serverId
+          serverId: product.name.toLowerCase().includes('mobile legends') ? serverId : undefined
         })
       })
 
@@ -432,7 +432,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 className="bg-white/10 border-white/20 text-black placeholder:text-gray-400"
               />
           </div>
-          <div>
+
+          {/* Only show Server ID for Mobile Legends */}
+          {product.name.toLowerCase().includes('mobile legends') && (
+            <div>
               <label className="block text-sm font-medium text-gray-200 mb-2">
                 Masukkan Server ID (Optional)
               </label>
@@ -443,7 +446,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 onChange={(e) => setServerId(e.target.value)}
                 className="bg-white/10 border-white/20 text-black placeholder:text-gray-400"
               />
-          </div>
+            </div>
+          )}
 
             {/* Payment Methods */}
           <div>
