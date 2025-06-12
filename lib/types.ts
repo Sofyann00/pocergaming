@@ -3,6 +3,7 @@ export interface Item {
   updatedDate: string;
   id: number;
   name: string;
+  productCode?: string;
   price: number;
   priceDiscount: number | null;
   iconUrl: string | null;

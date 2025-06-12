@@ -26,6 +26,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const { user, addOrder } = useUser()
   const [selectedItem, setSelectedItem] = useState<any | null>(null)
   const [playerId, setPlayerId] = useState("")
+  const [serverId, setServerId] = useState("")
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null)
   const [showPaymentDialog, setShowPaymentDialog] = useState(false)
   const [showSuccessDialog, setShowSuccessDialog] = useState(false)
@@ -176,6 +177,25 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         itemName: selectedItem.name
       })
 
+      // Call our backend API for Digiflazz transaction
+      const digiflazzResponse = await fetch('/api/digiflazz/transaction', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productCode: selectedItem.productCode,
+          playerId,
+          serverId
+        })
+      })
+
+      const digiflazzData = await digiflazzResponse.json()
+      
+      if (!digiflazzResponse.ok) {
+        throw new Error(digiflazzData.error || 'Failed to process transaction')
+      }
+
       // Send confirmation email via API
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -324,9 +344,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 onChange={(e) => setPlayerId(e.target.value)}
                 className="bg-white/10 border-white/20 text-black placeholder:text-gray-400"
               />
-              <p className="text-xs text-gray-400 mt-2">
-                Simpan ID dengan fitur Save ID
-            </p>
+          </div>
+          <div>
+              <label className="block text-sm font-medium text-gray-200 mb-2">
+                Masukkan Server ID (Optional)
+              </label>
+              <Input
+                type="text"
+                placeholder="Enter your Server ID"
+                value={serverId}
+                onChange={(e) => setServerId(e.target.value)}
+                className="bg-white/10 border-white/20 text-black placeholder:text-gray-400"
+              />
           </div>
 
             {/* Payment Methods */}

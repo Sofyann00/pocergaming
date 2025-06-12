@@ -10,464 +10,12 @@ export const products: Product[] = [
     banner:"https://static-src.vocagame.com/vocagame/Banner_Mobile_Legnds-d29d.webp",
     items: [
       {
-          "createdDate": "2023-03-23T07:02:43.194Z",
-          "updatedDate": "2025-01-23T10:39:57.000Z",
-          "id": 1017,
-          "name": "Weekly Diamond Pass",
-          "price": 28524,
-          "priceDiscount": 28000,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp",
-          "priceInc": [
-              "45409",
-              "45409"
-          ],
-          "priceExc": [
-              "40909",
-              "40909"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 1,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:22:13.644Z",
-              "updatedDate": "2024-03-24T21:01:46.850Z",
-              "id": 2,
-              "name": "Weekly",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp"
-          }
-      },
-      {
-          "createdDate": "2023-05-18T05:25:41.842Z",
-          "updatedDate": "2025-01-23T10:39:57.000Z",
-          "id": 1164,
-          "name": "Weekly Diamond Pass x2",
-          "price": 57049,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp",
-          "priceInc": [
-              "",
-              ""
-          ],
-          "priceExc": [
-              "",
-              ""
-          ],
-          "voucherStock": 1,
-          "sortOrder": 2,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:22:13.644Z",
-              "updatedDate": "2024-03-24T21:01:46.850Z",
-              "id": 2,
-              "name": "Weekly",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp"
-          }
-      },
-      {
-          "createdDate": "2023-05-18T05:27:58.842Z",
-          "updatedDate": "2025-01-23T10:39:57.000Z",
-          "id": 1165,
-          "name": "Weekly Diamond Pass x3",
-          "price": 85573,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp",
-          "priceInc": [
-              "",
-              ""
-          ],
-          "priceExc": [
-              "",
-              ""
-          ],
-          "voucherStock": 1,
-          "sortOrder": 3,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:22:13.644Z",
-              "updatedDate": "2024-03-24T21:01:46.850Z",
-              "id": 2,
-              "name": "Weekly",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp"
-          }
-      },
-      {
-          "createdDate": "2023-05-18T05:29:34.645Z",
-          "updatedDate": "2025-01-23T10:39:57.000Z",
-          "id": 1166,
-          "name": "Weekly Diamond Pass x4",
-          "price": 114098,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp",
-          "priceInc": [
-              "",
-              ""
-          ],
-          "priceExc": [
-              "",
-              ""
-          ],
-          "voucherStock": 1,
-          "sortOrder": 4,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:22:13.644Z",
-              "updatedDate": "2024-03-24T21:01:46.850Z",
-              "id": 2,
-              "name": "Weekly",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp"
-          }
-      },
-      {
-          "createdDate": "2023-05-18T05:31:01.428Z",
-          "updatedDate": "2025-01-23T10:39:57.000Z",
-          "id": 1167,
-          "name": "Weekly Diamond Pass x5",
-          "price": 142622,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp",
-          "priceInc": [
-              "",
-              ""
-          ],
-          "priceExc": [
-              "",
-              ""
-          ],
-          "voucherStock": 1,
-          "sortOrder": 5,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:22:13.644Z",
-              "updatedDate": "2024-03-24T21:01:46.850Z",
-              "id": 2,
-              "name": "Weekly",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/Weekly_Diamon_Pass-8287.webp"
-          }
-      },
-      {
-          "createdDate": "2022-07-24T19:14:50.048Z",
-          "updatedDate": "2025-03-02T06:12:45.000Z",
-          "id": 327,
-          "name": "Twilight Pass",
-          "price": 153628,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/TwilightPass_MLBB-611d-8eb2.png",
-          "priceInc": [
-              "",
-              "198024"
-          ],
-          "priceExc": [
-              "",
-              "178400"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 7,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T16:52:49.954Z",
-              "updatedDate": "2024-03-24T21:01:46.918Z",
-              "id": 3,
-              "name": "Twilight Pass",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/TwilightPass_MLBB-611d-8eb2-10452-original.png"
-          }
-      },
-      {
-          "createdDate": "2024-01-16T07:24:32.114Z",
-          "updatedDate": "2025-01-23T10:40:12.000Z",
-          "id": 1982,
-          "name": "3 Diamonds",
-          "price": 1075,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965-16c6-original.png",
-          "priceInc": [
-              "",
-              ""
-          ],
-          "priceExc": [
-              "",
-              ""
-          ],
-          "voucherStock": 1,
-          "sortOrder": 8,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2022-11-18T09:51:28.737Z",
-          "updatedDate": "2025-03-02T09:23:40.000Z",
-          "id": 649,
-          "name": "5 Diamonds",
-          "price": 1539,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965.png",
-          "priceInc": [
-              "2677",
-              "2516"
-          ],
-          "priceExc": [
-              "2412",
-              "2267"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 9,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2023-09-19T13:43:14.163Z",
-          "updatedDate": "2025-03-01T09:17:06.000Z",
-          "id": 1577,
-          "name": "10 Diamonds (9 + 1 Bonus)",
-          "price": 3077,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/dm-87c4-original.png",
-          "priceInc": [
-              "",
-              ""
-          ],
-          "priceExc": [
-              "",
-              ""
-          ],
-          "voucherStock": 1,
-          "sortOrder": 10,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2022-12-15T07:54:05.297Z",
-          "updatedDate": "2025-03-01T08:54:23.000Z",
-          "id": 662,
-          "name": "12 Diamonds (11 + 1 Bonus)",
-          "price": 3590,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965.png",
-          "priceInc": [
-              "5826",
-              "5477"
-          ],
-          "priceExc": [
-              "5249",
-              "4934"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 11,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2022-07-24T19:14:49.997Z",
-          "updatedDate": "2025-01-23T10:40:12.000Z",
-          "id": 316,
-          "name": "14 Diamonds (13 + 1 Bonus)",
-          "price": 4138,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965-104a9.png",
-          "priceInc": [
-              "",
-              "5594"
-          ],
-          "priceExc": [
-              "",
-              "5040"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 12,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2023-09-19T13:44:56.286Z",
-          "updatedDate": "2025-01-23T10:40:12.000Z",
-          "id": 1578,
-          "name": "18 Diamonds (17 + 1 Bonus)",
-          "price": 5173,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/dm-87c4-original.png",
-          "priceInc": [
-              "",
-              ""
-          ],
-          "priceExc": [
-              "",
-              ""
-          ],
-          "voucherStock": 1,
-          "sortOrder": 13,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2022-11-18T09:52:02.765Z",
-          "updatedDate": "2025-03-01T09:08:13.000Z",
-          "id": 650,
-          "name": "19 Diamonds (17 + 2 Bonus)",
-          "price": 5642,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965.png",
-          "priceInc": [
-              "",
-              "8585"
-          ],
-          "priceExc": [
-              "",
-              "7734"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 14,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2022-11-18T09:52:30.887Z",
-          "updatedDate": "2025-03-01T09:17:06.000Z",
-          "id": 651,
-          "name": "28 Diamonds (25 + 3 Bonus)",
-          "price": 8208,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965.png",
-          "priceInc": [
-              "12533",
-              "11782"
-          ],
-          "priceExc": [
-              "11291",
-              "10614"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 15,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2022-12-15T07:54:50.769Z",
-          "updatedDate": "2025-01-23T10:40:12.000Z",
-          "id": 663,
-          "name": "36 Diamonds (33 + 3 Bonus)",
-          "price": 10346,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965.png",
-          "priceInc": [
-              "",
-              "15540"
-          ],
-          "priceExc": [
-              "",
-              "14000"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 16,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2022-12-15T07:55:21.117Z",
-          "updatedDate": "2025-03-01T09:17:06.000Z",
-          "id": 664,
-          "name": "44 Diamonds (40 + 4 Bonus)",
-          "price": 12313,
-          "priceDiscount": 0,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965.png",
-          "priceInc": [
-              "",
-              "18648"
-          ],
-          "priceExc": [
-              "",
-              "16800"
-          ],
-          "voucherStock": 1,
-          "sortOrder": 18,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
-          "createdDate": "2025-01-23T10:27:01.142Z",
-          "updatedDate": "2025-01-23T10:40:12.000Z",
-          "id": 2960,
-          "name": "46 Diamonds (42 + 4 Bonus)",
-          "price": 13495,
-          "priceDiscount": null,
-          "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 100-e3e5-original.webp",
-          "priceInc": null,
-          "priceExc": null,
-          "voucherStock": 1,
-          "sortOrder": 19,
-          "isActive": true,
-          "variant": {
-              "createdDate": "2023-06-14T09:18:21.806Z",
-              "updatedDate": "2024-03-24T21:01:46.797Z",
-              "id": 1,
-              "name": "Diamonds",
-              "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png"
-          }
-      },
-      {
           "createdDate": "2023-11-03T08:55:45.427Z",
           "updatedDate": "2025-03-01T08:30:52.000Z",
           "id": 1657,
           "name": "54 Diamonds (50 + 4 Bonus)",
           "price": 15519,
+          "productCode": "ml54",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm-87c4-original.png",
           "priceInc": [
@@ -495,6 +43,7 @@ export const products: Product[] = [
           "id": 665,
           "name": "59 Diamonds (53 + 6 Bonus)",
           "price": 16417,
+          "productCode": "ml59",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965.png",
           "priceInc": [
@@ -522,6 +71,7 @@ export const products: Product[] = [
           "id": 1845,
           "name": "71 Diamonds (64 + 7 Bonus)",
           "price": 20007,
+          "productCode": "ml71",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-c965-16c6-original.png",
           "priceInc": [
@@ -549,6 +99,7 @@ export const products: Product[] = [
           "id": 1358,
           "name": "74 Diamonds (67 + 7 Bonus)",
           "price": 20691,
+          "productCode": "ml74",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-a2a8-f37e-original.png",
           "priceInc": [
@@ -576,6 +127,7 @@ export const products: Product[] = [
           "id": 1357,
           "name": "85 Diamonds (77 + 8 Bonus)",
           "price": 23599,
+          "productCode": "ml85",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/50orless_MLBB_Diamonds-a2a8-f37e-original.png",
           "priceInc": [
@@ -603,6 +155,7 @@ export const products: Product[] = [
           "id": 1660,
           "name": "88 Diamonds (80 + 8 Bonus)",
           "price": 24829,
+          "productCode": "ml88",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original-dc3d-original.webp",
           "priceInc": [
@@ -630,6 +183,7 @@ export const products: Product[] = [
           "id": 1661,
           "name": "110 Diamonds (100 + 10 Bonus)",
           "price": 31037,
+          "productCode": "ml110",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -657,6 +211,7 @@ export const products: Product[] = [
           "id": 1579,
           "name": "113 Diamonds (102 + 11 Bonus)",
           "price": 31808,
+          "productCode": "ml113",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -684,6 +239,7 @@ export const products: Product[] = [
           "id": 1664,
           "name": "128 Diamonds (117 + 11 Bonus)",
           "price": 36210,
+          "productCode": "ml128",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -711,6 +267,7 @@ export const products: Product[] = [
           "id": 1666,
           "name": "148 Diamonds (134 + 14 Bonus)",
           "price": 41381,
+          "productCode": "ml148",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -738,7 +295,8 @@ export const products: Product[] = [
           "id": 1356,
           "name": "170 Diamonds (154 + 16 Bonus)",
           "price": 47198,
-          "priceDiscount": 0,
+          "productCode": "ml170",
+        "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/150orMore_MLBB_Diamonds-5c92-108f-original.png",
           "priceInc": [
               "",
@@ -765,6 +323,7 @@ export const products: Product[] = [
           "id": 2961,
           "name": "176 Diamonds (160 + 16 Bonus)",
           "price": 49899,
+          "productCode": "ml176",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -786,6 +345,7 @@ export const products: Product[] = [
           "id": 1668,
           "name": "184 Diamonds (167 + 17 Bonus)",
           "price": 51727,
+          "productCode": "ml184",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -813,6 +373,7 @@ export const products: Product[] = [
           "id": 1355,
           "name": "222 Diamonds (200 + 22 Bonus)",
           "price": 62072,
+          "productCode": "ml222",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/150orMore_MLBB_Diamonds-5c92-108f-original.png",
           "priceInc": [
@@ -840,6 +401,7 @@ export const products: Product[] = [
           "id": 1354,
           "name": "240 Diamonds (217 + 23 Bonus)",
           "price": 66554,
+          "productCode": "ml240",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/150orMore_MLBB_Diamonds-5c92-108f-original.png",
           "priceInc": [
@@ -867,6 +429,7 @@ export const products: Product[] = [
           "id": 1671,
           "name": "258 Diamonds (233 + 25 Bonus)",
           "price": 72418,
+          "productCode": "ml258",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -894,6 +457,7 @@ export const products: Product[] = [
           "id": 1682,
           "name": "277 Diamonds (250 + 27 Bonus)",
           "price": 77590,
+          "productCode": "ml277",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -921,6 +485,7 @@ export const products: Product[] = [
           "id": 1580,
           "name": "284 Diamonds (257 + 27 Bonus)",
           "price": 78867,
+          "productCode": "ml284",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm gede-fc3e-original.png",
           "priceInc": [
@@ -948,6 +513,7 @@ export const products: Product[] = [
           "id": 1353,
           "name": "296 Diamonds (256 + 40 Bonus)",
           "price": 81898,
+          "productCode": "ml296",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/150orMore_MLBB_Diamonds-5c92-108f-original.png",
           "priceInc": [
@@ -975,6 +541,7 @@ export const products: Product[] = [
           "id": 2962,
           "name": "301 Diamonds (261 + 40 Bonus)",
           "price": 82495,
+          "productCode": "ml301",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -996,6 +563,7 @@ export const products: Product[] = [
           "id": 2963,
           "name": "305 Diamonds (276 + 29 Bonus)",
           "price": 86286,
+          "productCode": "ml305",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -1017,6 +585,7 @@ export const products: Product[] = [
           "id": 2964,
           "name": "333 Diamonds (302 + 31 Bonus)",
           "price": 93595,
+          "productCode": "ml333",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -1038,6 +607,7 @@ export const products: Product[] = [
           "id": 2965,
           "name": "346 Diamonds (314 + 32 Bonus)",
           "price": 96856,
+          "productCode": "ml346",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -1059,6 +629,7 @@ export const products: Product[] = [
           "id": 2966,
           "name": "356 Diamonds (322 + 34 Bonus)",
           "price": 99819,
+          "productCode": "ml356",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -1080,6 +651,7 @@ export const products: Product[] = [
           "id": 1352,
           "name": "370 Diamonds (333 + 37 Bonus)",
           "price": 103454,
+          "productCode": "ml370",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/150orMore_MLBB_Diamonds-5c92-108f-original.png",
           "priceInc": [
@@ -1107,6 +679,7 @@ export const products: Product[] = [
           "id": 2967,
           "name": "384 Diamonds (346 + 38 Bonus)",
           "price": 106995,
+          "productCode": "ml384",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -1128,6 +701,7 @@ export const products: Product[] = [
           "id": 1351,
           "name": "408 Diamonds (367 + 41 Bonus)",
           "price": 112633,
+          "productCode": "ml408",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/150orMore_MLBB_Diamonds-5c92-108f-original.png",
           "priceInc": [
@@ -1155,6 +729,7 @@ export const products: Product[] = [
           "id": 2968,
           "name": "424 Diamonds (383 + 41 Bonus)",
           "price": 117195,
+          "productCode": "ml424",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -1176,6 +751,7 @@ export const products: Product[] = [
           "id": 2969,
           "name": "452 Diamonds (407 + 45 Bonus)",
           "price": 123495,
+          "productCode": "ml452",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 500-f627-original.webp",
           "priceInc": null,
@@ -1197,6 +773,7 @@ export const products: Product[] = [
           "id": 2970,
           "name": "518 Diamonds (467 + 51 Bonus)",
           "price": 142195,
+          "productCode": "ml518",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 1000-19c1-original.webp",
           "priceInc": null,
@@ -1218,6 +795,7 @@ export const products: Product[] = [
           "id": 1350,
           "name": "568 Diamonds (503 + 65 Bonus)",
           "price": 153628,
+          "productCode": "ml568",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 1000-19c1-original.webp",
           "priceInc": [
@@ -1245,6 +823,7 @@ export const products: Product[] = [
           "id": 2971,
           "name": "601 Diamonds (533 + 68 Bonus)",
           "price": 161495,
+          "productCode": "ml601",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 1000-19c1-original.webp",
           "priceInc": null,
@@ -1266,6 +845,7 @@ export const products: Product[] = [
           "id": 1677,
           "name": "642 Diamonds (570 + 72 Bonus)",
           "price": 174319,
+          "productCode": "ml642",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original.png",
           "priceInc": [
@@ -1293,6 +873,7 @@ export const products: Product[] = [
           "id": 1300,
           "name": "716 Diamonds (637 + 79 Bonus)",
           "price": 195010,
+          "productCode": "ml716",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original-6289-original.png",
           "priceInc": [
@@ -1320,6 +901,7 @@ export const products: Product[] = [
           "id": 2972,
           "name": "758 Diamonds (675 + 83 Bonus)",
           "price": 205195,
+          "productCode": "ml758",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 1000-19c1-original.webp",
           "priceInc": null,
@@ -1341,6 +923,7 @@ export const products: Product[] = [
           "id": 1678,
           "name": "790 Diamonds (703 + 87 Bonus)",
           "price": 215700,
+          "productCode": "ml790",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original.png",
           "priceInc": [
@@ -1368,6 +951,7 @@ export const products: Product[] = [
           "id": 1679,
           "name": "845 Diamonds (753 + 92 Bonus)",
           "price": 231218,
+          "productCode": "ml845",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original.png",
           "priceInc": [
@@ -1395,6 +979,7 @@ export const products: Product[] = [
           "id": 1344,
           "name": "875 Diamonds (774 + 101 Bonus)",
           "price": 235479,
+          "productCode": "ml875",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original-6289-original.png",
           "priceInc": [
@@ -1422,6 +1007,7 @@ export const products: Product[] = [
           "id": 2973,
           "name": "966 Diamonds (836 + 130 Bonus)",
           "price": 256995,
+          "productCode": "ml966",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB under 1000-19c1-original.webp",
           "priceInc": null,
@@ -1443,6 +1029,7 @@ export const products: Product[] = [
           "id": 1681,
           "name": "938 Diamonds (836 + 102 Bonus)",
           "price": 257082,
+          "productCode": "ml938",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original.png",
           "priceInc": [
@@ -1470,6 +1057,7 @@ export const products: Product[] = [
           "id": 1656,
           "name": "966 Diamonds (862 + 104 Bonus)",
           "price": 265358,
+          "productCode": "ml966",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original.png",
           "priceInc": [
@@ -1497,6 +1085,7 @@ export const products: Product[] = [
           "id": 1846,
           "name": "1045 Diamonds (928 + 117 Bonus)",
           "price": 282677,
+          "productCode": "ml1045",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/500-999orMore_MLBB_Diamonds-7bc2-original-6289-original.png",
           "priceInc": [
@@ -1524,6 +1113,7 @@ export const products: Product[] = [
           "id": 1582,
           "name": "1136 Diamonds (1006 + 130 Bonus)",
           "price": 307256,
+          "productCode": "ml1136",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1551,6 +1141,7 @@ export const products: Product[] = [
           "id": 2974,
           "name": "1159 Diamonds (1028 + 131 Bonus)",
           "price": 310395,
+          "productCode": "ml1159",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -1572,6 +1163,7 @@ export const products: Product[] = [
           "id": 1847,
           "name": "1443 Diamonds (1277 + 166 Bonus)",
           "price": 389107,
+          "productCode": "ml1443",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1599,6 +1191,7 @@ export const products: Product[] = [
           "id": 2975,
           "name": "1506 Diamonds (1339 + 167 Bonus)",
           "price": 406495,
+          "productCode": "ml1506",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -1620,6 +1213,7 @@ export const products: Product[] = [
           "id": 1680,
           "name": "1704 Diamonds (1509 + 195 Bonus)",
           "price": 460884,
+          "productCode": "ml1704",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1647,6 +1241,7 @@ export const products: Product[] = [
           "id": 1342,
           "name": "2010 Diamonds (1708 + 302 Bonus)",
           "price": 511909,
+          "productCode": "ml2010",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/5000orMore_MLBB_Diamonds-e18b-aba5-original.png",
           "priceInc": [
@@ -1674,6 +1269,7 @@ export const products: Product[] = [
           "id": 1676,
           "name": "2232 Diamonds (1908 + 324 Bonus)",
           "price": 573981,
+          "productCode": "ml2232",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1701,6 +1297,7 @@ export const products: Product[] = [
           "id": 1675,
           "name": "2380 Diamonds (2041 + 339 Bonus)",
           "price": 615362,
+          "productCode": "ml2380",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1728,6 +1325,7 @@ export const products: Product[] = [
           "id": 1673,
           "name": "2578 Diamonds (2211 + 367 Bonus)",
           "price": 665537,
+          "productCode": "ml2578",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1755,6 +1353,7 @@ export const products: Product[] = [
           "id": 1848,
           "name": "2625 Diamonds (2253 + 372 Bonus)",
           "price": 679388,
+          "productCode": "ml2625",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1782,6 +1381,7 @@ export const products: Product[] = [
           "id": 2976,
           "name": "3453 Diamonds (2985 + 468 Bonus)",
           "price": 901016,
+          "productCode": "ml3453",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -1803,6 +1403,7 @@ export const products: Product[] = [
           "id": 1849,
           "name": "3738 Diamonds (3247 + 491 Bonus)",
           "price": 984691,
+          "productCode": "ml3738",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1830,6 +1431,7 @@ export const products: Product[] = [
           "id": 1672,
           "name": "4020 Diamonds (3416 + 604 Bonus)",
           "price": 1023817,
+          "productCode": "ml4020",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1857,6 +1459,7 @@ export const products: Product[] = [
           "id": 1670,
           "name": "4588 Diamonds (3919 + 669 Bonus)",
           "price": 1177445,
+          "productCode": "ml4588",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1884,6 +1487,7 @@ export const products: Product[] = [
           "id": 1669,
           "name": "4830 Diamonds (4003 + 827 Bonus)",
           "price": 1228468,
+          "productCode": "ml4830",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1911,6 +1515,7 @@ export const products: Product[] = [
           "id": 1667,
           "name": "5398 Diamonds (4506 + 892 Bonus)",
           "price": 1382096,
+          "productCode": "ml5398",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1938,6 +1543,7 @@ export const products: Product[] = [
           "id": 1665,
           "name": "6030 Diamonds (5124 + 906 Bonus)",
           "price": 1535726,
+          "productCode": "ml6030",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1965,6 +1571,7 @@ export const products: Product[] = [
           "id": 1663,
           "name": "6840 Diamonds (5711 + 1129 Bonus)",
           "price": 1740377,
+          "productCode": "ml6840",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -1992,6 +1599,7 @@ export const products: Product[] = [
           "id": 1662,
           "name": "8040 Diamonds (6832 + 1208 Bonus)",
           "price": 2047634,
+          "productCode": "ml8040",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -2019,6 +1627,7 @@ export const products: Product[] = [
           "id": 1659,
           "name": "9660 Diamonds (8006 + 1654 Bonus)",
           "price": 2456937,
+          "productCode": "ml9660",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -2046,6 +1655,7 @@ export const products: Product[] = [
           "id": 2977,
           "name": "10050 Diamonds (8540 + 1510 Bonus)",
           "price": 2529495,
+          "productCode": "ml10050",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -2067,6 +1677,7 @@ export const products: Product[] = [
           "id": 1658,
           "name": "14490 Diamonds (12009 + 2481 Bonus)",
           "price": 3685405,
+          "productCode": "ml14490",
           "priceDiscount": 0,
           "iconUrl": "https://static-src.vocagame.com/vocagame/dm super gede-515c-original.png",
           "priceInc": [
@@ -2094,6 +1705,7 @@ export const products: Product[] = [
           "id": 2978,
           "name": "16080 Diamonds (13664 + 2416 Bonus)",
           "price": 4047095,
+          "productCode": "ml16080",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -2115,6 +1727,7 @@ export const products: Product[] = [
           "id": 2979,
           "name": "18090 Diamonds (15372 + 2718 Bonus)",
           "price": 4607177,
+          "productCode": "ml18090",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -2135,6 +1748,7 @@ export const products: Product[] = [
           "updatedDate": "2025-01-23T10:40:23.000Z",
           "id": 2980,
           "name": "19320 Diamonds (16012 + 3308 Bonus)",
+          "productCode": "ml19320",
           "price": 4913873,
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
@@ -2156,6 +1770,7 @@ export const products: Product[] = [
           "updatedDate": "2025-01-23T10:40:23.000Z",
           "id": 2981,
           "name": "20100 Diamonds (17080 + 3020 Bonus)",
+          "productCode": "ml20100",
           "price": 5098895,
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
@@ -2178,6 +1793,7 @@ export const products: Product[] = [
           "id": 2982,
           "name": "21330 Diamonds (17720 + 3610 Bonus)",
           "price": 5286610,
+          "productCode": "ml21330",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -2199,6 +1815,7 @@ export const products: Product[] = [
           "id": 2983,
           "name": "23340 Diamonds (19428 + 3912 Bonus)",
           "price": 5785389,
+          "productCode": "ml23340",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -2220,6 +1837,7 @@ export const products: Product[] = [
           "id": 2984,
           "name": "24150 Diamonds (20015 + 4135 Bonus)",
           "price": 5984790,
+          "productCode": "ml24150",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -2241,6 +1859,7 @@ export const products: Product[] = [
           "id": 2985,
           "name": "26160 Diamonds (21723 + 4437 Bonus)",
           "price": 6483569,
+          "productCode": "ml26160",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,
@@ -2262,6 +1881,7 @@ export const products: Product[] = [
           "id": 2986,
           "name": "28170 Diamonds (23431 + 4739 Bonus)",
           "price": 6982346,
+          "productCode": "ml28170",
           "priceDiscount": null,
           "iconUrl": "https://static-src.vocagame.com/vocagame/MLBB 1000 up-74b9-original.webp",
           "priceInc": null,

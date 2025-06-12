@@ -17,10 +17,10 @@ export async function GET(request: Request) {
     const timestamp = new Date().toISOString()
     
     // Your client ID from Rampable
-    const clientId = '5293441ce1ac477bb38f0e70b92abe103337719'
+    const clientId = 'c6b8b9a971374978ab2a5afa313bd5835621713'
     
     // Generate signature string
-    const stringToSign = `${clientId}:${timestamp}:${crypto.createHash('sha256').update(depositId).digest('hex').toLowerCase()}`
+    const stringToSign = `${clientId}:${timestamp}`
     
     // Private key for signing
     const privateKey = `-----BEGIN PRIVATE KEY-----
