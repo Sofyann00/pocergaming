@@ -297,9 +297,14 @@ export default function Home() {
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-8">
-                {products.map((product) => (
-                  <Link href={`/products/${product.id}`} key={product.id}>
-                    <Card className="overflow-hidden rounded-2xl shadow-md bg-white border border-gray-100 group relative hover:scale-105 transition-transform duration-200">
+                {products.map((product) => {
+                  const isHighlighted = product.name.toLowerCase().includes('mobile legends') || 
+                    product.name.toLowerCase().includes('free fire diamonds') ||
+                    product.name.toLowerCase().includes('pubg mobile') ||
+                    product.name.toLowerCase().includes('ragnarok m eternal love');
+                  
+                  const CardContent = (
+                    <Card className={`overflow-hidden rounded-2xl shadow-md bg-white border border-gray-100 group relative hover:scale-105 transition-transform duration-200 ${!isHighlighted ? 'opacity-50 cursor-not-allowed' : ''}`}>
                       <div className="relative aspect-[4/5] w-full">
                         <Image
                           src={product.image}
@@ -320,8 +325,18 @@ export default function Home() {
                         </div>
                       </div>
                     </Card>
-                  </Link>
-                ))}
+                  );
+
+                  return isHighlighted ? (
+                    <Link href={`/products/${product.id}`} key={product.id}>
+                      {CardContent}
+                    </Link>
+                  ) : (
+                    <div key={product.id}>
+                      {CardContent}
+                    </div>
+                  );
+                })}
               </div>
 
             </div>

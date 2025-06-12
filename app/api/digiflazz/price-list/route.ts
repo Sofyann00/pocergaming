@@ -1,7 +1,20 @@
 import { NextResponse } from 'next/server'
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url)
+    const brand = searchParams.get('brand')
+
+    // Map product names to Digiflazz brand names
+    const brandMap: { [key: string]: string } = {
+      'mobile legends': 'MOBILE LEGENDS',
+      'free fire': 'FREE FIRE',
+      'pubg mobile': 'PUBG MOBILE',
+      'ragnarok m eternal love': 'Ragnarok M: Eternal Love'
+    }
+
+    const digiflazzBrand = brand ? brandMap[brand.toLowerCase()] : 'MOBILE LEGENDS'
+
     const response = await fetch('https://api.digiflazz.com/v1/price-list', {
       method: 'POST',
       headers: {
@@ -12,7 +25,7 @@ export async function GET() {
         username: 'vipigaWmRVGg',
         sign: '4057af2c3806ada663835a2a3a8d861d',
         category: 'Games',
-        brand: 'MOBILE LEGENDS'
+        brand: digiflazzBrand
       })
     })
 

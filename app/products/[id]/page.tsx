@@ -43,34 +43,55 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     notFound()
   }
 
-  // Fetch Digiflazz items for Mobile Legends
+  // Fetch Digiflazz items for highlighted products
   useEffect(() => {
     const fetchDigiflazzItems = async () => {
-      if (product.id === 1) { // Mobile Legends
+      const isHighlightedProduct = product.name.toLowerCase().includes('mobile legends') || 
+        product.name.toLowerCase().includes('free fire') ||
+        product.name.toLowerCase().includes('pubg mobile') ||
+        product.name.toLowerCase().includes('ragnarok m eternal love');
+
+      if (isHighlightedProduct) {
         try {
-          const response = await fetch('/api/digiflazz/price-list')
-          const data = await response.json()
+          // Determine the brand based on product name
+          let brand = '';
+          if (product.name.toLowerCase().includes('mobile legends')) {
+            brand = 'mobile legends';
+          } else if (product.name.toLowerCase().includes('free fire')) {
+            brand = 'free fire';
+          } else if (product.name.toLowerCase().includes('pubg mobile')) {
+            brand = 'pubg mobile';
+          } else if (product.name.toLowerCase().includes('ragnarok m eternal love')) {
+            brand = 'ragnarok m eternal love';
+          }
+
+          const response = await fetch(`/api/digiflazz/price-list?brand=${encodeURIComponent(brand)}`);
+          const data = await response.json();
           
           if (data.data) {
-            // Sort items by price and clean up names
+            // Filter items by price and status
             const sortedItems = data.data
-              .filter((item: any) => item.price >= 15000 && item.buyer_product_status === true) // Filter by price and status
+              .filter((item: any) => item.price >= 15000 && item.buyer_product_status === true)
               .map((item: any) => ({
                 ...item,
-                product_name: item.product_name.replace('MOBILELEGEND - ', '')
+                product_name: item.product_name
+                  .replace('MOBILELEGEND - ', '')
+                  .replace('FREEFIRE - ', '')
+                  .replace('PUBGM - ', '')
+                  .replace('RAGNAROK - ', '')
               }))
-              .sort((a: any, b: any) => a.price - b.price)
+              .sort((a: any, b: any) => a.price - b.price);
             
-            setDigiflazzItems(sortedItems)
+            setDigiflazzItems(sortedItems);
           }
         } catch (error) {
-          console.error('Error fetching Digiflazz items:', error)
+          console.error('Error fetching Digiflazz items:', error);
         }
       }
-    }
+    };
 
-    fetchDigiflazzItems()
-  }, [product.id])
+    fetchDigiflazzItems();
+  }, [product.id, product.name]);
 
   // Add polling mechanism
   useEffect(() => {
