@@ -34,6 +34,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const [paymentData, setPaymentData] = useState<any>(null)
   const [isLoadingPayment, setIsLoadingPayment] = useState(false)
   const [isCheckingPayment, setIsCheckingPayment] = useState(false)
+  const [digiflazzItems, setDigiflazzItems] = useState<any[]>([])
   const { Canvas } = useQRCode()
 
   const product = products.find(p => p.id === parseInt(params.id))
@@ -41,6 +42,35 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   if (!product) {
     notFound()
   }
+
+  // Fetch Digiflazz items for Mobile Legends
+  useEffect(() => {
+    const fetchDigiflazzItems = async () => {
+      if (product.id === 1) { // Mobile Legends
+        try {
+          const response = await fetch('/api/digiflazz/price-list')
+          const data = await response.json()
+          
+          if (data.data) {
+            // Sort items by price and clean up names
+            const sortedItems = data.data
+              .filter((item: any) => item.price >= 15000 && item.buyer_product_status === true) // Filter by price and status
+              .map((item: any) => ({
+                ...item,
+                product_name: item.product_name.replace('MOBILELEGEND - ', '')
+              }))
+              .sort((a: any, b: any) => a.price - b.price)
+            
+            setDigiflazzItems(sortedItems)
+          }
+        } catch (error) {
+          console.error('Error fetching Digiflazz items:', error)
+        }
+      }
+    }
+
+    fetchDigiflazzItems()
+  }, [product.id])
 
   // Add polling mechanism
   useEffect(() => {
@@ -292,34 +322,70 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Items Grid */}
         <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-4">
-          {product.items.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setSelectedItem(item)}
-              className={cn(
-                "flex items-center gap-2 p-4 rounded-lg border transition-all",
-                selectedItem?.id === item.id
-                  ? "border-blue-500 bg-blue-500/10"
-                  : "border-white/10 hover:border-white/20 bg-white/5"
-              )}
-            >
-              {item.iconUrl && (
+          {product.id === 1 ? (
+            // Display Digiflazz items for Mobile Legends
+            digiflazzItems.map((item) => (
+              <button
+                key={item.buyer_sku_code}
+                onClick={() => setSelectedItem({
+                  id: item.buyer_sku_code,
+                  name: item.product_name,
+                  price: item.price,
+                  productCode: item.buyer_sku_code
+                })}
+                className={cn(
+                  "flex items-center gap-2 p-4 rounded-lg border transition-all",
+                  selectedItem?.id === item.buyer_sku_code
+                    ? "border-blue-500 bg-blue-500/10"
+                    : "border-white/10 hover:border-white/20 bg-white/5"
+                )}
+              >
                 <Image
-                  src={item.iconUrl}
-                  alt={item.name}
+                  src="/diamond_img.webp"
+                  alt="Diamond"
                   width={24}
                   height={24}
                   className="object-contain"
                 />
-              )}
-              <div className="text-left">
-                <p className="font-semibold text-black">{item.name}</p>
-                <p className="text-sm text-gray-400">
-                  Rp {item.price.toLocaleString('id-ID')},-
-                </p>
-              </div>
-            </button>
-          ))}
+                <div className="text-left">
+                  <p className="font-semibold text-black">{item.product_name}</p>
+                  <p className="text-sm text-gray-400">
+                    Rp {item.price.toLocaleString('id-ID')},-
+                  </p>
+                </div>
+              </button>
+            ))
+          ) : (
+            // Display regular items for other products
+            product.items.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setSelectedItem(item)}
+                className={cn(
+                  "flex items-center gap-2 p-4 rounded-lg border transition-all",
+                  selectedItem?.id === item.id
+                    ? "border-blue-500 bg-blue-500/10"
+                    : "border-white/10 hover:border-white/20 bg-white/5"
+                )}
+              >
+                {item.iconUrl && (
+                  <Image
+                    src={item.iconUrl}
+                    alt={item.name}
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                )}
+                <div className="text-left">
+                  <p className="font-semibold text-black">{item.name}</p>
+                  <p className="text-sm text-gray-400">
+                    Rp {item.price.toLocaleString('id-ID')},-
+                  </p>
+                </div>
+              </button>
+            ))
+          )}
         </div>
 
         {/* Order Information */}
