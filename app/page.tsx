@@ -314,7 +314,7 @@ export default function Home() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-gray-900/20 to-transparent" />
                         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[90%] flex flex-col items-center space-y-2">
-                          <div className="w-full px-3 py-1.5 rounded-full bg-blue-500">
+                          <div className={`w-full px-3 py-1.5 rounded-full ${isHighlighted ? 'bg-blue-500' : 'bg-gray-400'}`}>
                             <p className="text-white font-medium text-sm text-center break-words line-clamp-2">
                               More
                             </p>
