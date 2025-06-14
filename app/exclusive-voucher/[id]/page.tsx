@@ -59,6 +59,7 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
   const { user } = useUser()
   const router = useRouter()
   const [userId, setUserId] = useState("")
+  const [serverId, setServerId] = useState("")
   const [sellerNotes, setSellerNotes] = useState("")
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'qris' | 'va'>('qris')
   const [showPaymentDialog, setShowPaymentDialog] = useState(false)
@@ -71,27 +72,243 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
   const { Canvas } = useQRCode()
 
   useEffect(() => {
-    const fetchVoucher = async () => {
-      try {
-        const response = await fetch('/api/digiflazz/price-list')
-        if (!response.ok) {
-          throw new Error('Failed to fetch voucher')
+    // Hardcoded vouchers with 5 specific sellers
+    const hardcodedVouchers = [
+      {
+        id: "ml80",
+        name: "MOBILELEGEND - 80 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 21028,
+        description: "80 Diamonds for Mobile Legends",
+        seller: {
+          id: "1",
+          name: "Genggam Dunia Game",
+          rating: 4.9,
+          avatar: "/seller_ic/gdg_ic.png",
+          slug: "genggam-dunia-game"
         }
-        const data = await response.json()
-        const foundVoucher = data.find((v: Voucher) => v.id === params.id)
-        if (!foundVoucher) {
-          throw new Error('Voucher not found')
+      },
+      {
+        id: "ml85",
+        name: "MOBILELEGEND - 85 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 24780,
+        description: "85 Diamonds for Mobile Legends",
+        seller: {
+          id: "2",
+          name: "Kasih Game Store",
+          rating: 4.8,
+          avatar: "/seller_ic/kgs_ic.png",
+          slug: "kasih-game-store"
         }
-        setVoucher(foundVoucher)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred')
-      } finally {
-        setLoading(false)
+      },
+      {
+        id: "ml86",
+        name: "MOBILELEGEND - 86 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 24010,
+        description: "86 Diamonds for Mobile Legends",
+        seller: {
+          id: "3",
+          name: "Legenda Topup",
+          rating: 4.7,
+          avatar: "/seller_ic/lgt_ic.png",
+          slug: "legenda-topup"
+        }
+      },
+      {
+        id: "ml88",
+        name: "MOBILELEGEND - 88 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 22814,
+        description: "88 Diamonds for Mobile Legends",
+        seller: {
+          id: "4",
+          name: "Sahabat Gaming",
+          rating: 4.9,
+          avatar: "/seller_ic/sg_ic.png",
+          slug: "sahabat-gaming"
+        }
+      },
+      {
+        id: "ml89",
+        name: "MOBILELEGEND - 89 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 23271,
+        description: "89 Diamonds for Mobile Legends",
+        seller: {
+          id: "5",
+          name: "TopUp1212",
+          rating: 4.8,
+          avatar: "/seller_ic/t12_ic.png",
+          slug: "topup1212"
+        }
+      },
+      {
+        id: "ml90",
+        name: "MOBILELEGEND - 90 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 23241,
+        description: "90 Diamonds for Mobile Legends",
+        seller: {
+          id: "1",
+          name: "Genggam Dunia Game",
+          rating: 4.9,
+          avatar: "/seller_ic/gdg_ic.png",
+          slug: "genggam-dunia-game"
+        }
+      },
+      {
+        id: "mlweek",
+        name: "MOBILE LEGENDS Weekly Diamond Pass",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 21000,
+        description: "Weekly Diamond Pass for Mobile Legends",
+        seller: {
+          id: "2",
+          name: "Kasih Game Store",
+          rating: 4.8,
+          avatar: "/seller_ic/kgs_ic.png",
+          slug: "kasih-game-store"
+        }
+      },
+      {
+        id: "pbgrp",
+        name: "Pubg Royale Pass",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 142200,
+        description: "Royal Pass + Bonus for PUBG Mobile",
+        seller: {
+          id: "3",
+          name: "Legenda Topup",
+          rating: 4.7,
+          avatar: "/seller_ic/lgt_ic.png",
+          slug: "legenda-topup"
+        }
+      },
+      {
+        id: "pm105",
+        name: "PUBG MOBILE 105 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 27125,
+        description: "105 UC for PUBG Mobile",
+        seller: {
+          id: "4",
+          name: "Sahabat Gaming",
+          rating: 4.9,
+          avatar: "/seller_ic/sg_ic.png",
+          slug: "sahabat-gaming"
+        }
+      },
+      {
+        id: "pm120",
+        name: "PUBG MOBILE 120 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 26874,
+        description: "120 UC for PUBG Mobile",
+        seller: {
+          id: "5",
+          name: "TopUp1212",
+          rating: 4.8,
+          avatar: "/seller_ic/t12_ic.png",
+          slug: "topup1212"
+        }
+      },
+      {
+        id: "pm122",
+        name: "PUBG MOBILE 122 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 40682,
+        description: "122 UC for PUBG Mobile",
+        seller: {
+          id: "1",
+          name: "Genggam Dunia Game",
+          rating: 4.9,
+          avatar: "/seller_ic/gdg_ic.png",
+          slug: "genggam-dunia-game"
+        }
+      },
+      {
+        id: "pm125",
+        name: "PUBG MOBILE 125 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 48500,
+        description: "125 UC for PUBG Mobile",
+        seller: {
+          id: "2",
+          name: "Kasih Game Store",
+          rating: 4.8,
+          avatar: "/seller_ic/kgs_ic.png",
+          slug: "kasih-game-store"
+        }
+      },
+      {
+        id: "pm131",
+        name: "PUBG MOBILE 131 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 40681,
+        description: "131 UC for PUBG Mobile",
+        seller: {
+          id: "3",
+          name: "Legenda Topup",
+          rating: 4.7,
+          avatar: "/seller_ic/lgt_ic.png",
+          slug: "legenda-topup"
+        }
+      },
+      {
+        id: "pm62",
+        name: "PUBG MOBILE 62 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 27125,
+        description: "62 UC for PUBG Mobile",
+        seller: {
+          id: "4",
+          name: "Sahabat Gaming",
+          rating: 4.9,
+          avatar: "/seller_ic/sg_ic.png",
+          slug: "sahabat-gaming"
+        }
+      },
+      {
+        id: "pm70",
+        name: "PUBG MOBILE 70 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 21107,
+        description: "70 UC for PUBG Mobile",
+        seller: {
+          id: "5",
+          name: "TopUp1212",
+          rating: 4.8,
+          avatar: "/seller_ic/t12_ic.png",
+          slug: "topup1212"
+        }
       }
-    }
+    ];
 
-    fetchVoucher()
-  }, [params.id])
+    const foundVoucher = hardcodedVouchers.find(v => v.id === params.id);
+    if (!foundVoucher) {
+      setError('Voucher not found');
+    } else {
+      setVoucher(foundVoucher);
+    }
+    setLoading(false);
+  }, [params.id]);
 
   const handlePurchase = async () => {
     if (!user) {
@@ -111,6 +328,15 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
       return
     }
 
+    if (voucher?.game === "Mobile Legends" && !serverId) {
+      toast({
+        title: "Missing Information",
+        description: "Please provide your server ID for Mobile Legends.",
+        variant: "destructive"
+      })
+      return
+    }
+
     if (!selectedPaymentMethod) {
       toast({
         title: "Missing Information",
@@ -122,26 +348,21 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
 
     setIsProcessing(true)
     try {
-      const response = await fetch('/api/payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          voucherId: params.id,
-          userId,
-          paymentMethod: selectedPaymentMethod,
-          sellerNotes,
-        }),
-      })
+      // Simulate API call with hardcoded response
+      const mockPaymentDetails = {
+        type: selectedPaymentMethod,
+        amount: voucher?.price || 0,
+        expiredAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        ...(selectedPaymentMethod === 'qris' ? {
+          qrCode: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=example-qris-payment"
+        } : {
+          bank: "BCA",
+          accountNumber: "1234567890"
+        })
+      };
 
-      if (!response.ok) {
-        throw new Error('Failed to process payment')
-      }
-
-      const data = await response.json()
-      setPaymentDetails(data.data.payment)
-      setShowPaymentDialog(true)
+      setPaymentDetails(mockPaymentDetails);
+      setShowPaymentDialog(true);
     } catch (err) {
       toast({
         title: "Error",
@@ -247,6 +468,21 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
                 placeholder="Enter your game user ID"
               />
             </div>
+            {voucher?.game === "Mobile Legends" && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Server ID
+                </label>
+                <Input
+                  value={serverId}
+                  onChange={(e) => setServerId(e.target.value)}
+                  placeholder="Enter your server ID (e.g., 1234)"
+                />
+                <p className="mt-1 text-sm text-gray-500">
+                  You can find your server ID in your profile
+                </p>
+              </div>
+            )}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Seller Notes (Optional)

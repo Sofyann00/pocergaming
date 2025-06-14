@@ -58,46 +58,237 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    const fetchVouchers = async () => {
-      try {
-        const response = await fetch('/api/digiflazz/price-list');
-        if (!response.ok) {
-          throw new Error('Failed to fetch vouchers');
+    // Hardcoded vouchers with 5 specific sellers
+    const hardcodedVouchers = [
+      {
+        id: "ml80",
+        name: "MOBILELEGEND - 80 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 21028,
+        description: "80 Diamonds for Mobile Legends",
+        seller: {
+          id: "1",
+          name: "Genggam Dunia Game",
+          rating: 4.9,
+          avatar: "/seller_ic/gdg_ic.png",
+          slug: "genggam-dunia-game"
         }
-        const data = await response.json();
-        
-        // Check if data is an array and has items
-        if (!Array.isArray(data) || data.length === 0) {
-          throw new Error('No vouchers available');
+      },
+      {
+        id: "ml85",
+        name: "MOBILELEGEND - 85 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 24780,
+        description: "85 Diamonds for Mobile Legends",
+        seller: {
+          id: "2",
+          name: "Kasih Game Store",
+          rating: 4.8,
+          avatar: "/seller_ic/kgs_ic.png",
+          slug: "kasih-game-store"
         }
-
-        // Transform the data to match our Voucher interface
-        const transformedVouchers = data.map((item: any) => ({
-          id: item.buyer_sku_code,
-          name: item.product_name,
-          game: item.category,
-          image: item.icon_url || '/placeholder.png',
-          price: item.price,
-          description: item.desc || item.product_name,
-          seller: {
-            id: '1',
-            name: 'Pocergaming',
-            rating: 5.0,
-            avatar: '/seller_ic/gdg_ic.png',
-            slug: 'pocergaming'
-          }
-        }));
-
-        // Only show the first 4 vouchers on the home page
-        setVouchers(transformedVouchers.slice(0, 4));
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
+      },
+      {
+        id: "ml86",
+        name: "MOBILELEGEND - 86 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 24010,
+        description: "86 Diamonds for Mobile Legends",
+        seller: {
+          id: "3",
+          name: "Legenda Topup",
+          rating: 4.7,
+          avatar: "/seller_ic/lgt_ic.png",
+          slug: "legenda-topup"
+        }
+      },
+      {
+        id: "ml88",
+        name: "MOBILELEGEND - 88 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 22814,
+        description: "88 Diamonds for Mobile Legends",
+        seller: {
+          id: "4",
+          name: "Sahabat Gaming",
+          rating: 4.9,
+          avatar: "/seller_ic/sg_ic.png",
+          slug: "sahabat-gaming"
+        }
+      },
+      {
+        id: "ml89",
+        name: "MOBILELEGEND - 89 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 23271,
+        description: "89 Diamonds for Mobile Legends",
+        seller: {
+          id: "5",
+          name: "TopUp1212",
+          rating: 4.8,
+          avatar: "/seller_ic/t12_ic.png",
+          slug: "topup1212"
+        }
+      },
+      {
+        id: "ml90",
+        name: "MOBILELEGEND - 90 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 23241,
+        description: "90 Diamonds for Mobile Legends",
+        seller: {
+          id: "1",
+          name: "Genggam Dunia Game",
+          rating: 4.9,
+          avatar: "/seller_ic/gdg_ic.png",
+          slug: "genggam-dunia-game"
+        }
+      },
+      {
+        id: "mlweek",
+        name: "MOBILE LEGENDS Weekly Diamond Pass",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 21000,
+        description: "Weekly Diamond Pass for Mobile Legends",
+        seller: {
+          id: "2",
+          name: "Kasih Game Store",
+          rating: 4.8,
+          avatar: "/seller_ic/kgs_ic.png",
+          slug: "kasih-game-store"
+        }
+      },
+      {
+        id: "pbgrp",
+        name: "Pubg Royale Pass",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 142200,
+        description: "Royal Pass + Bonus for PUBG Mobile",
+        seller: {
+          id: "3",
+          name: "Legenda Topup",
+          rating: 4.7,
+          avatar: "/seller_ic/lgt_ic.png",
+          slug: "legenda-topup"
+        }
+      },
+      {
+        id: "pm105",
+        name: "PUBG MOBILE 105 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 27125,
+        description: "105 UC for PUBG Mobile",
+        seller: {
+          id: "4",
+          name: "Sahabat Gaming",
+          rating: 4.9,
+          avatar: "/seller_ic/sg_ic.png",
+          slug: "sahabat-gaming"
+        }
+      },
+      {
+        id: "pm120",
+        name: "PUBG MOBILE 120 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 26874,
+        description: "120 UC for PUBG Mobile",
+        seller: {
+          id: "5",
+          name: "TopUp1212",
+          rating: 4.8,
+          avatar: "/seller_ic/t12_ic.png",
+          slug: "topup1212"
+        }
+      },
+      {
+        id: "pm122",
+        name: "PUBG MOBILE 122 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 40682,
+        description: "122 UC for PUBG Mobile",
+        seller: {
+          id: "1",
+          name: "Genggam Dunia Game",
+          rating: 4.9,
+          avatar: "/seller_ic/gdg_ic.png",
+          slug: "genggam-dunia-game"
+        }
+      },
+      {
+        id: "pm125",
+        name: "PUBG MOBILE 125 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 48500,
+        description: "125 UC for PUBG Mobile",
+        seller: {
+          id: "2",
+          name: "Kasih Game Store",
+          rating: 4.8,
+          avatar: "/seller_ic/kgs_ic.png",
+          slug: "kasih-game-store"
+        }
+      },
+      {
+        id: "pm131",
+        name: "PUBG MOBILE 131 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 40681,
+        description: "131 UC for PUBG Mobile",
+        seller: {
+          id: "3",
+          name: "Legenda Topup",
+          rating: 4.7,
+          avatar: "/seller_ic/lgt_ic.png",
+          slug: "legenda-topup"
+        }
+      },
+      {
+        id: "pm62",
+        name: "PUBG MOBILE 62 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 27125,
+        description: "62 UC for PUBG Mobile",
+        seller: {
+          id: "4",
+          name: "Sahabat Gaming",
+          rating: 4.9,
+          avatar: "/seller_ic/sg_ic.png",
+          slug: "sahabat-gaming"
+        }
+      },
+      {
+        id: "pm70",
+        name: "PUBG MOBILE 70 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 21107,
+        description: "70 UC for PUBG Mobile",
+        seller: {
+          id: "5",
+          name: "TopUp1212",
+          rating: 4.8,
+          avatar: "/seller_ic/t12_ic.png",
+          slug: "topup1212"
+        }
       }
-    };
+    ];
 
-    fetchVouchers();
+    setVouchers(hardcodedVouchers);
+    setLoading(false);
   }, []);
 
   const filteredProducts = products.filter(product => 
