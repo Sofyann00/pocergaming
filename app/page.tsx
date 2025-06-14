@@ -24,6 +24,22 @@ import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Star } from "lucide-react"
 
+interface Voucher {
+  id: string;
+  name: string;
+  game: string;
+  image: string;
+  price: number;
+  description: string;
+  seller: {
+    id: string;
+    name: string;
+    rating: number;
+    avatar: string;
+    slug: string;
+  };
+}
+
 export default function Home() {
   const { user, logout } = useUser()
   const router = useRouter()
@@ -33,10 +49,56 @@ export default function Home() {
   const [showSearchResults, setShowSearchResults] = useState(false)
   const [openQna, setOpenQna] = useState<number | null>(null)
   const [isMounted, setIsMounted] = useState(false)
+  const [vouchers, setVouchers] = useState<Voucher[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
+
+  useEffect(() => {
+    const fetchVouchers = async () => {
+      try {
+        const response = await fetch('/api/digiflazz/price-list');
+        if (!response.ok) {
+          throw new Error('Failed to fetch vouchers');
+        }
+        const data = await response.json();
+        
+        // Check if data is an array and has items
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error('No vouchers available');
+        }
+
+        // Transform the data to match our Voucher interface
+        const transformedVouchers = data.map((item: any) => ({
+          id: item.buyer_sku_code,
+          name: item.product_name,
+          game: item.category,
+          image: item.icon_url || '/placeholder.png',
+          price: item.price,
+          description: item.desc || item.product_name,
+          seller: {
+            id: '1',
+            name: 'Pocergaming',
+            rating: 5.0,
+            avatar: '/seller_ic/gdg_ic.png',
+            slug: 'pocergaming'
+          }
+        }));
+
+        // Only show the first 4 vouchers on the home page
+        setVouchers(transformedVouchers.slice(0, 4));
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchVouchers();
+  }, []);
 
   const filteredProducts = products.filter(product => 
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -342,7 +404,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Game Items Section */}
+          {/* Game Voucher Section */}
           <section className="py-24 relative">
             <div className="max-w-7xl mx-auto px-4">
               <div className="text-center mb-16">
@@ -357,158 +419,99 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {[
-                   {
-                    id: "1",
-                    name: "Doom's Infernal Blade",
-                    hero: "Doom",
-                    image: "/dota_item/doom_weapon.png",
-                    price: 25000,
-                    description: "Mythical weapon for Doom with custom particle effects",
-                    seller: {
-                      id: "1",
-                      name: "Genggam Dunia Game",
-                      rating: 5.0,
-                      avatar: "/seller_ic/gdg_ic.png",
-                      slug: "genggam-dunia-game"
-                    }
-                  },
-                  {
-                    id: "2",
-                    name: "Terrorblade's Demon Edge",
-                    hero: "Terrorblade",
-                    image: "/dota_item/tb_full.png",
-                    price: 30000,
-                    description: "Legendary weapon for Terrorblade with demonic effects",
-                    seller: {
-                      id: "1",
-                      name: "Genggam Dunia Game",
-                      rating: 5.0,
-                      avatar: "/seller_ic/gdg_ic.png",
-                      slug: "genggam-dunia-game"
-                    }
-                  },
-                  {
-                    id: "3",
-                    name: "Ursa's Savage Claws",
-                    hero: "Ursa",
-                    image: "/dota_item/ursa_back.png",
-                    price: 22000,
-                    description: "Rare back item for Ursa with custom animations",
-                    seller: {
-                      id: "2",
-                      name: "Sahabat Gaming",
-                      rating: 5.0,
-                      avatar: "/seller_ic/sg_ic.png",
-                      slug: "sahabat-gaming"
-                    }
-                  },
-                  {
-                    id: "4",
-                    name: "Razor's Storm Blade",
-                    hero: "Razor",
-                    image: "/dota_item/razor_weapon.png",
-                    price: 28000,
-                    description: "Epic weapon for Razor with lightning effects",
-                    seller: {
-                      id: "2",
-                      name: "Sahabat Gaming",
-                      rating: 5.0,
-                      avatar: "/seller_ic/sg_ic.png",
-                      slug: "sahabat-gaming"
-                    }
-                  },
-                  {
-                    id: "5",
-                    name: "Venomancer's Toxic Mantle",
-                    hero: "Venomancer",
-                    image: "/dota_item/venomaner_top.png",
-                    price: 18000,
-                    description: "Rare top item for Venomancer with poison effects",
-                    seller: {
-                      id: "3",
-                      name: "Kasih Game Store",
-                      rating: 5.0,
-                      avatar: "/seller_ic/kgs_ic.png",
-                      slug: "kasih-game-store"
-                    }
-                  }
-                ].map((item) => (
-                  <Link
-                    key={item.id}
-                    href={`/dota-items/${item.id}`}
-                    className="group"
+              {loading ? (
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                  <p className="mt-4 text-gray-600">Loading vouchers...</p>
+                </div>
+              ) : error ? (
+                <div className="text-center text-red-600">
+                  <p>Error: {error}</p>
+                  <button
+                    onClick={() => window.location.reload()}
+                    className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                   >
-                    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
-                      <div className="relative aspect-square">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">
-                          {item.hero}
+                    Try Again
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {vouchers.map((voucher) => (
+                    <Link
+                      key={voucher.id}
+                      href={`/exclusive-voucher/${voucher.id}`}
+                      className="group"
+                    >
+                      <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+                        <div className="relative aspect-square">
+                          <Image
+                            src={voucher.image}
+                            alt={voucher.name}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">
+                            {voucher.game}
+                          </div>
                         </div>
-                      </div>
-                      <div className="p-4 flex flex-col flex-1">
-                        <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
-                          {item.name}
-                        </h3>
-                        <div className="h-10 mb-2">
-                          <p className="text-sm text-gray-600 line-clamp-2">
-                            {item.description}
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between mt-auto">
-                          <p className="text-blue-600 font-semibold">
-                            {item.price.toLocaleString('id-ID')} IDR
-                          </p>
-                        </div>
-                        <div className="mt-3 pt-3 border-t border-gray-100">
-                          <Link 
-                            href={`/seller/${item.seller.slug}`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              router.push(`/seller/${item.seller.slug}`);
-                            }}
-                            className="flex items-center gap-2 hover:bg-gray-50 p-1 rounded-md transition-colors"
-                          >
-                            <Image
-                              src={item.seller.avatar}
-                              alt={item.seller.name}
-                              width={24}
-                              height={24}
-                              className="rounded-full"
-                            />
-                            <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-gray-900 truncate group-hover:text-blue-600">
-                                {item.seller.name}
-                              </p>
-                              <div className="flex items-center">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star
-                                    key={i}
-                                    className={cn(
-                                      "w-3 h-3",
-                                      i < Math.floor(item.seller.rating) ? "text-yellow-400 fill-yellow-400" : "text-gray-300"
-                                    )}
-                                  />
-                                ))}
-                                <span className="text-xs text-gray-500 ml-1">
-                                  ({item.seller.rating})
-                                </span>
+                        <div className="p-4 flex flex-col flex-1">
+                          <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
+                            {voucher.name}
+                          </h3>
+                          <div className="h-10 mb-2">
+                            <p className="text-sm text-gray-600 line-clamp-2">
+                              {voucher.description}
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-between mt-auto">
+                            <p className="text-blue-600 font-semibold">
+                              {voucher.price.toLocaleString('id-ID')} IDR
+                            </p>
+                          </div>
+                          <div className="mt-3 pt-3 border-t border-gray-100">
+                            <Link 
+                              href={`/seller/${voucher.seller.slug}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                router.push(`/seller/${voucher.seller.slug}`);
+                              }}
+                              className="flex items-center gap-2 hover:bg-gray-50 p-1 rounded-md transition-colors"
+                            >
+                              <Image
+                                src={voucher.seller.avatar}
+                                alt={voucher.seller.name}
+                                width={24}
+                                height={24}
+                                className="rounded-full"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium text-gray-900 truncate group-hover:text-blue-600">
+                                  {voucher.seller.name}
+                                </p>
+                                <div className="flex items-center">
+                                  {[...Array(5)].map((_, i) => (
+                                    <Star
+                                      key={i}
+                                      className={cn(
+                                        "w-3 h-3",
+                                        i < Math.floor(voucher.seller.rating) ? "text-yellow-400 fill-yellow-400" : "text-gray-300"
+                                      )}
+                                    />
+                                  ))}
+                                  <span className="text-xs text-gray-500 ml-1">
+                                    ({voucher.seller.rating})
+                                  </span>
+                                </div>
                               </div>
-                            </div>
-                          </Link>
+                            </Link>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
 
               <div className="text-center mt-12">
                 <Link 
