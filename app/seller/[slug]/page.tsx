@@ -10,120 +10,165 @@ const agents = [
   {
     id: "1",
     name: "Genggam Dunia Game",
-    rating: 5.0,
+    rating: 4.9,
     avatar: "/seller_ic/gdg_ic.png",
+    slug: "genggam-dunia-game",
     items: [
       {
-        id: "1",
-        name: "Doom's Infernal Blade",
-        hero: "Doom",
-        image: "/dota_item/doom_weapon.png",
-        price: 25000,
-        description: "Mythical weapon for Doom with custom particle effects"
+        id: "ml80",
+        name: "MOBILELEGEND - 80 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 21028,
+        description: "80 Diamonds for Mobile Legends"
       },
       {
-        id: "2",
-        name: "Terrorblade's Demon Edge",
-        hero: "Terrorblade",
-        image: "/dota_item/tb_full.png",
-        price: 30000,
-        description: "Legendary weapon for Terrorblade with demonic effects"
+        id: "ml90",
+        name: "MOBILELEGEND - 90 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 23241,
+        description: "90 Diamonds for Mobile Legends"
+      },
+      {
+        id: "pm122",
+        name: "PUBG MOBILE 122 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 40682,
+        description: "122 UC for PUBG Mobile"
       }
     ]
   },
   {
     id: "2",
-    name: "Sahabat Gaming",
-    rating: 5.0,
-    avatar: "/seller_ic/sg_ic.png",
+    name: "Kasih Game Store",
+    rating: 4.8,
+    avatar: "/seller_ic/kgs_ic.png",
+    slug: "kasih-game-store",
     items: [
       {
-        id: "3",
-        name: "Ursa's Savage Claws",
-        hero: "Ursa",
-        image: "/dota_item/ursa_back.png",
-        price: 22000,
-        description: "Rare back item for Ursa with custom animations"
+        id: "ml85",
+        name: "MOBILELEGEND - 85 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 24780,
+        description: "85 Diamonds for Mobile Legends"
       },
       {
-        id: "4",
-        name: "Razor's Storm Blade",
-        hero: "Razor",
-        image: "/dota_item/razor_weapon.png",
-        price: 28000,
-        description: "Epic weapon for Razor with lightning effects"
+        id: "mlweek",
+        name: "MOBILE LEGENDS Weekly Diamond Pass",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 21000,
+        description: "Weekly Diamond Pass for Mobile Legends"
+      },
+      {
+        id: "pm125",
+        name: "PUBG MOBILE 125 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 48500,
+        description: "125 UC for PUBG Mobile"
       }
     ]
   },
   {
     id: "3",
-    name: "Kasih Game Store",
-    rating: 5.0,
-    avatar: "/seller_ic/kgs_ic.png",
+    name: "Legenda Topup",
+    rating: 4.7,
+    avatar: "/seller_ic/lgt_ic.png",
+    slug: "legenda-topup",
     items: [
       {
-        id: "5",
-        name: "Venomancer's Toxic Mantle",
-        hero: "Venomancer",
-        image: "/dota_item/venomaner_top.png",
-        price: 18000,
-        description: "Rare top item for Venomancer with poison effects"
+        id: "ml86",
+        name: "MOBILELEGEND - 86 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 24010,
+        description: "86 Diamonds for Mobile Legends"
       },
       {
-        id: "6",
-        name: "Mirana's Starfall Shoulders",
-        hero: "Mirana",
-        image: "/dota_item/mirana_shoulder.png",
-        price: 32000,
-        description: "Legendary shoulder item for Mirana with star effects"
+        id: "pbgrp",
+        name: "Pubg Royale Pass",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 142200,
+        description: "Royal Pass + Bonus for PUBG Mobile"
+      },
+      {
+        id: "pm131",
+        name: "PUBG MOBILE 131 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 40681,
+        description: "131 UC for PUBG Mobile"
       }
     ]
   },
   {
     id: "4",
-    name: "TopUp1212",
-    rating: 5.0,
-    avatar: "/seller_ic/t12_ic.png",
+    name: "Sahabat Gaming",
+    rating: 4.9,
+    avatar: "/seller_ic/sg_ic.png",
+    slug: "sahabat-gaming",
     items: [
       {
-        id: "7",
-        name: "Chaos Knight's Armor",
-        hero: "Chaos Knight",
-        image: "/dota_item/ck_shoulder.png",
-        price: 35000,
-        description: "Mythical shoulder armor for Chaos Knight"
+        id: "ml88",
+        name: "MOBILELEGEND - 88 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 22814,
+        description: "88 Diamonds for Mobile Legends"
       },
       {
-        id: "8",
-        name: "Night Stalker's Wings",
-        hero: "Night Stalker",
-        image: "/dota_item/ns_wings.png",
-        price: 27000,
-        description: "Rare wings for Night Stalker with night effects"
+        id: "pm105",
+        name: "PUBG MOBILE 105 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 27125,
+        description: "105 UC for PUBG Mobile"
+      },
+      {
+        id: "pm62",
+        name: "PUBG MOBILE 62 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 27125,
+        description: "62 UC for PUBG Mobile"
       }
     ]
   },
   {
     id: "5",
-    name: "Legenda TopUp",
-    rating: 5.0,
-    avatar: "/seller_ic/lgt_ic.png",
+    name: "TopUp1212",
+    rating: 4.8,
+    avatar: "/seller_ic/t12_ic.png",
+    slug: "topup1212",
     items: [
       {
-        id: "9",
-        name: "Axe's Mythical Axe",
-        hero: "Axe",
-        image: "/dota_item/axe_myth.png",
-        price: 29000,
-        description: "Mythical weapon for Axe with custom animations"
+        id: "ml89",
+        name: "MOBILELEGEND - 89 Diamond",
+        game: "Mobile Legends",
+        image: "https://static-src.vocagame.com/vocagame/mobilelegends-4702-original.webp",
+        price: 23271,
+        description: "89 Diamonds for Mobile Legends"
       },
       {
-        id: "10",
-        name: "Nyx's Immortal Carapace",
-        hero: "Nyx Assassin",
-        image: "/dota_item/nyx_immo.png",
-        price: 1200000,
-        description: "Immortal back item for Nyx Assassin"
+        id: "pm120",
+        name: "PUBG MOBILE 120 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 26874,
+        description: "120 UC for PUBG Mobile"
+      },
+      {
+        id: "pm70",
+        name: "PUBG MOBILE 70 UC",
+        game: "PUBG Mobile",
+        image: "https://static-src.vocagame.com/vocagame/pubg_global-afab-original.webp",
+        price: 21107,
+        description: "70 UC for PUBG Mobile"
       }
     ]
   }
@@ -131,9 +176,7 @@ const agents = [
 
 export default function SellerPage({ params }: { params: { slug: string } }) {
   // Find the seller based on the slug
-  const seller = agents.find(agent => 
-    agent.name.toLowerCase().replace(/\s+/g, '-') === params.slug
-  )
+  const seller = agents.find(agent => agent.slug === params.slug)
 
   if (!seller) {
     return (
@@ -208,7 +251,7 @@ export default function SellerPage({ params }: { params: { slug: string } }) {
           {seller.items.map((item) => (
             <Link
               key={item.id}
-              href={`/dota-items/${item.id}`}
+              href={`/exclusive-voucher/${item.id}`}
               className="group"
             >
               <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
@@ -220,7 +263,7 @@ export default function SellerPage({ params }: { params: { slug: string } }) {
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-xs sm:text-sm">
-                    {item.hero}
+                    {item.game}
                   </div>
                 </div>
                 <div className="p-3 sm:p-4 flex flex-col flex-1">
