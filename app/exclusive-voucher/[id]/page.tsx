@@ -56,7 +56,7 @@ interface PaymentDetails {
 
 export default function ExclusiveVoucherPage({ params }: { params: { id: string } }) {
   const { toast } = useToast()
-  const { user } = useUser()
+  const { user, addOrder } = useUser()
   const router = useRouter()
   const [userId, setUserId] = useState("")
   const [serverId, setServerId] = useState("")
@@ -442,7 +442,31 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
       return
     }
 
+    if (!voucher) {
+      toast({
+        title: "Error",
+        description: "Voucher information is missing.",
+        variant: "destructive"
+      })
+      return
+    }
+
     try {
+      // Add order to user's orders
+      addOrder({
+        items: [{
+          id: voucher.id.toString(),
+          name: voucher.name,
+          price: voucher.price,
+          quantity: 1,
+          image: voucher.image
+        }],
+        total: voucher.price,
+        status: "completed",
+        productName: voucher.game,
+        itemName: voucher.name
+      })
+
       // Call our backend API for Digiflazz transaction
       const digiflazzResponse = await fetch('/api/digiflazz/transaction', {
         method: 'POST',
@@ -450,9 +474,9 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          productCode: voucher?.id,
+          productCode: voucher.id,
           playerId: userId,
-          serverId: voucher?.game === "Mobile Legends" ? serverId : undefined
+          serverId: voucher.game === "Mobile Legends" ? serverId : undefined
         })
       })
 
@@ -470,9 +494,9 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
         },
         body: JSON.stringify({
           to: user.email,
-          productName: voucher?.name,
-          itemName: voucher?.name,
-          price: voucher?.price,
+          productName: voucher.name,
+          itemName: voucher.name,
+          price: voucher.price,
           playerId: userId
         }),
       });
@@ -490,7 +514,7 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
       setShowPaymentDialog(false)
       toast({
         title: "Thank You For Purchasing",
-        description: `Your purchase of ${voucher?.name} is being processed. We'll notify you via email once completed.`,
+        description: `Your purchase of ${voucher.name} is being processed. We'll notify you via email once completed.`,
       })
     } catch (error) {
       toast({
