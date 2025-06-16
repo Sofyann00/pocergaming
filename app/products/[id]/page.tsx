@@ -343,9 +343,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Items Grid */}
         <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-4">
-          {product.id === 1 ? (
-            // Display Digiflazz items for Mobile Legends
-            digiflazzItems.map((item) => (
+       {digiflazzItems.map((item) => (
               <button
                 key={item.buyer_sku_code}
                 onClick={() => {
@@ -379,37 +377,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
               </button>
             ))
-          ) : (
-            // Display regular items for other products
-            product.items.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setSelectedItem(item)}
-                className={cn(
-                  "flex items-center gap-2 p-4 rounded-lg border transition-all",
-                  selectedItem?.id === item.id
-                    ? "border-blue-500 bg-blue-500/10"
-                    : "border-white/10 hover:border-white/20 bg-white/5"
-                )}
-              >
-                {item.iconUrl && (
-                  <Image
-                    src={item.iconUrl}
-                    alt={item.name}
-                    width={24}
-                    height={24}
-                    className="object-contain"
-                  />
-                )}
-                <div className="text-left">
-                  <p className="font-semibold text-black">{item.name}</p>
-                  <p className="text-sm text-gray-400">
-                    Rp {item.price.toLocaleString('id-ID')},-
-                  </p>
-                </div>
-              </button>
-            ))
-          )}
+          }
         </div>
 
         {/* Order Information */}
