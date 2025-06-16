@@ -70,6 +70,9 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
   const [error, setError] = useState<string | null>(null)
   const [paymentDetails, setPaymentDetails] = useState<PaymentDetails | null>(null)
   const { Canvas } = useQRCode()
+  const [isLoadingPayment, setIsLoadingPayment] = useState(false)
+  const [isCheckingPayment, setIsCheckingPayment] = useState(false)
+  const [paymentData, setPaymentData] = useState<any>(null)
 
   useEffect(() => {
     // Hardcoded vouchers with 5 specific sellers
@@ -310,6 +313,53 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
     setLoading(false);
   }, [params.id]);
 
+  // Add polling mechanism
+  useEffect(() => {
+    let pollInterval: NodeJS.Timeout;
+
+    const checkPaymentStatus = async () => {
+      if (!paymentData?.depositId || isCheckingPayment) return;
+
+      try {
+        setIsCheckingPayment(true);
+        const response = await fetch(`/api/payment/status?depositId=${paymentData.depositId}`);
+        const data = await response.json();
+
+        if (data.data?.status === 'completed') {
+          // Payment completed successfully
+          clearInterval(pollInterval);
+          setShowPaymentDialog(false);
+          setShowSuccessDialog(true);
+          // Handle successful payment
+          handlePaymentComplete();
+        } else if (data.data?.status === 'failed' || data.data?.status === 'expired') {
+          // Payment failed or expired
+          clearInterval(pollInterval);
+          toast({
+            title: "Payment Failed",
+            description: "Your payment has failed or expired. Please try again.",
+            variant: "destructive"
+          });
+        }
+      } catch (error) {
+        console.error('Error checking payment status:', error);
+      } finally {
+        setIsCheckingPayment(false);
+      }
+    };
+
+    if (showPaymentDialog && paymentData?.depositId) {
+      // Start polling when dialog is shown and we have a deposit ID
+      pollInterval = setInterval(checkPaymentStatus, 10000); // Poll every 10 seconds
+    }
+
+    return () => {
+      if (pollInterval) {
+        clearInterval(pollInterval);
+      }
+    };
+  }, [showPaymentDialog, paymentData?.depositId]);
+
   const handlePurchase = async () => {
     if (!user) {
       toast({
@@ -346,37 +396,109 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
       return
     }
 
-    setIsProcessing(true)
+    setIsLoadingPayment(true)
     try {
-      // Simulate API call with hardcoded response
-      const mockPaymentDetails = {
-        type: selectedPaymentMethod,
-        amount: voucher?.price || 0,
-        expiredAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-        ...(selectedPaymentMethod === 'qris' ? {
-          qrCode: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=example-qris-payment"
-        } : {
-          bank: "BCA",
-          accountNumber: "1234567890"
+      const response = await fetch('/api/payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          outputCurrency: "IDR",
+          reference: `order-${Date.now()}`,
+          inputCurrency: "IDR",
+          balanceType: "fiat",
+          paymentMethod: selectedPaymentMethod,
+          inputAmount: voucher?.price || 0
         })
-      };
+      });
 
-      setPaymentDetails(mockPaymentDetails);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to create payment');
+      }
+
+      setPaymentData(data.data);
       setShowPaymentDialog(true);
-    } catch (err) {
+    } catch (error) {
       toast({
         title: "Error",
-        description: err instanceof Error ? err.message : "Failed to process payment",
+        description: error instanceof Error ? error.message : "Failed to process payment",
         variant: "destructive"
       })
     } finally {
-      setIsProcessing(false)
+      setIsLoadingPayment(false)
     }
   }
 
-  const handleConfirmPayment = () => {
-    setShowPaymentDialog(false)
-    setShowSuccessDialog(true)
+  const handlePaymentComplete = async () => {
+    if (!user?.email) {
+      toast({
+        title: "Error",
+        description: "Please log in to complete your purchase.",
+        variant: "destructive"
+      })
+      return
+    }
+
+    try {
+      // Call our backend API for Digiflazz transaction
+      const digiflazzResponse = await fetch('/api/digiflazz/transaction', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productCode: voucher?.id,
+          playerId: userId,
+          serverId: voucher?.game === "Mobile Legends" ? serverId : undefined
+        })
+      })
+
+      const digiflazzData = await digiflazzResponse.json()
+      
+      if (!digiflazzResponse.ok) {
+        throw new Error(digiflazzData.error || 'Failed to process transaction')
+      }
+
+      // Send confirmation email via API
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: user.email,
+          productName: voucher?.name,
+          itemName: voucher?.name,
+          price: voucher?.price,
+          playerId: userId
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        toast({
+          title: "Email Error",
+          description: "Failed to send confirmation email, but your purchase was successful.",
+          variant: "destructive"
+        })
+      }
+      
+      setShowPaymentDialog(false)
+      toast({
+        title: "Thank You For Purchasing",
+        description: `Your purchase of ${voucher?.name} is being processed. We'll notify you via email once completed.`,
+      })
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An error occurred while processing your purchase. Please try again.",
+        variant: "destructive"
+      })
+    }
   }
 
   if (loading) {
@@ -521,9 +643,9 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
               <Button
                 onClick={handlePurchase}
                 className="w-full"
-                disabled={isProcessing}
+                disabled={isLoadingPayment}
               >
-                {isProcessing ? 'Processing...' : 'Purchase Now'}
+                {isLoadingPayment ? 'Processing...' : 'Purchase Now'}
               </Button>
             </div>
           </div>
@@ -532,65 +654,93 @@ export default function ExclusiveVoucherPage({ params }: { params: { id: string 
 
       {/* Payment Dialog */}
       <Dialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Complete Your Payment</DialogTitle>
+            <DialogTitle>Payment Details</DialogTitle>
             <DialogDescription>
-              Please complete your payment before the expiration time.
+              Complete your payment using the selected method
             </DialogDescription>
           </DialogHeader>
-          {paymentDetails && (
-            <div className="mt-4">
-              {paymentDetails.type === 'qris' ? (
-                <div className="text-center">
-                  <Image
-                    src={paymentDetails.qrCode!}
-                    alt="QRIS Code"
-                    width={200}
-                    height={200}
-                    className="mx-auto"
-                  />
-                  <p className="mt-4 text-sm text-gray-600">
-                    Scan this QR code with your mobile banking app
-                  </p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-600">Bank</p>
-                    <p className="font-medium">{paymentDetails.bank}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Account Number</p>
-                    <p className="font-medium">{paymentDetails.accountNumber}</p>
-                  </div>
-                </div>
-              )}
-              <div className="mt-4">
-                <p className="text-sm text-gray-600">Amount</p>
-                <p className="text-xl font-bold text-blue-600">
-                  {paymentDetails.amount.toLocaleString('id-ID')} IDR
-                </p>
-              </div>
-              <div className="mt-2">
-                <p className="text-sm text-gray-600">Expires at</p>
-                <p className="font-medium">
-                  {new Date(paymentDetails.expiredAt).toLocaleString()}
-                </p>
-              </div>
+          
+          <div className="space-y-4">
+            <div className="text-center">
+              <p className="text-lg font-semibold text-gray-900">
+                Total Amount: Rp {voucher?.price.toLocaleString('id-ID')},-
+              </p>
+              <p className="text-sm text-gray-500">
+                {voucher?.name}
+              </p>
             </div>
-          )}
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setShowPaymentDialog(false)}
-            >
-              Cancel
-            </Button>
-            <Button onClick={handleConfirmPayment}>
-              I've Paid
-            </Button>
-          </DialogFooter>
+
+            {selectedPaymentMethod === 'qris' && paymentData?.paymentFiat?.qrData ? (
+              <div className="flex flex-col items-center space-y-4">
+                <div className="relative w-64 h-64">
+                  <Canvas
+                    text={paymentData.paymentFiat.qrData}
+                    options={{
+                      errorCorrectionLevel: 'M',
+                      margin: 3,
+                      scale: 4,
+                      width: 256,
+                      color: {
+                        dark: '#000000FF',
+                        light: '#FFFFFFFF',
+                      },
+                    }}
+                  />
+                </div>
+                <p className="text-sm text-gray-500">
+                  Scan QR code using your preferred payment app
+                </p>
+                <div className="text-sm text-gray-500">
+                  <p>Expires at: {new Date(paymentData.expiredAt).toLocaleString()}</p>
+                </div>
+              </div>
+            ) : selectedPaymentMethod === 'va' && paymentData?.paymentFiat ? (
+              <div className="space-y-4">
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <p className="text-sm text-gray-500 mb-1">Virtual Account Number:</p>
+                  <p className="text-lg font-mono font-semibold text-gray-900">{paymentData.paymentFiat.accountNumber}</p>
+                  <p className="text-sm text-gray-500 mt-1">Bank: {paymentData.paymentFiat.bankName}</p>
+                </div>
+                <ul className="text-sm text-gray-500 space-y-2">
+                  <li>1. Login to your mobile banking app</li>
+                  <li>2. Select Virtual Account payment</li>
+                  <li>3. Enter the VA number above</li>
+                  <li>4. Confirm and complete your payment</li>
+                </ul>
+                <div className="text-sm text-gray-500">
+                  <p>Expires at: {new Date(paymentData.expiredAt).toLocaleString()}</p>
+                </div>
+              </div>
+            ) : null}
+
+            <div className="flex justify-center gap-3 mt-6">
+              <Button
+                onClick={() => setShowPaymentDialog(false)}
+                variant="outline"
+                disabled={isCheckingPayment}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => setShowPaymentDialog(false)}
+                disabled={isCheckingPayment}
+              >
+                {isCheckingPayment ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Checking Payment...
+                  </>
+                ) : (
+                  "I have completed the payment"
+                )}
+              </Button>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
 
