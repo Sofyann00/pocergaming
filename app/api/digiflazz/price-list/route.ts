@@ -10,7 +10,7 @@ export async function GET(request: Request) {
       'mobile legends': 'MOBILE LEGENDS',
       'free fire': 'FREE FIRE',
       'pubg mobile': 'PUBG MOBILE',
-      'ragnarok m eternal love': 'Ragnarok M: Eternal Love'
+      'ragnarok m classic': 'Ragnarok M Classic'
     }
 
     const digiflazzBrand = brand ? brandMap[brand.toLowerCase()] : 'MOBILE LEGENDS'

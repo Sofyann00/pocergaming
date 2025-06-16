@@ -49,7 +49,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       const isHighlightedProduct = product.name.toLowerCase().includes('mobile legends') || 
         product.name.toLowerCase().includes('free fire') ||
         product.name.toLowerCase().includes('pubg mobile') ||
-        product.name.toLowerCase().includes('ragnarok m eternal love');
+        product.name.toLowerCase().includes('ragnarok m classic');
 
       if (isHighlightedProduct) {
         try {
@@ -61,8 +61,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             brand = 'free fire';
           } else if (product.name.toLowerCase().includes('pubg mobile')) {
             brand = 'pubg mobile';
-          } else if (product.name.toLowerCase().includes('ragnarok m eternal love')) {
-            brand = 'ragnarok m eternal love';
+          } else if (product.name.toLowerCase().includes('ragnarok m classic')) {
+            brand = 'ragnarok m classic';
           }
 
           const response = await fetch(`/api/digiflazz/price-list?brand=${encodeURIComponent(brand)}`);

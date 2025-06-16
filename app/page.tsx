@@ -554,7 +554,7 @@ export default function Home() {
                   const isHighlighted = product.name.toLowerCase().includes('mobile legends') || 
                     product.name.toLowerCase().includes('free fire diamonds') ||
                     product.name.toLowerCase().includes('pubg mobile') ||
-                    product.name.toLowerCase().includes('ragnarok m eternal love');
+                    product.name.toLowerCase().includes('ragnarok m classic');
                   
                   const CardContent = (
                     <Card className={`overflow-hidden rounded-2xl shadow-md bg-white border border-gray-100 group relative hover:scale-105 transition-transform duration-200 ${!isHighlighted ? 'opacity-50 cursor-not-allowed' : ''}`}>
