@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const requestBody = {
       username,
       buyer_sku_code: productCode,
-      customer_no: `${playerId}${serverId || ''}`,
+      customer_no: serverId ? `${playerId}${serverId}` : playerId,
       ref_id: refId,
       testing: false,
       sign
