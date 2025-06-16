@@ -348,12 +348,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             digiflazzItems.map((item) => (
               <button
                 key={item.buyer_sku_code}
-                onClick={() => setSelectedItem({
-                  id: item.buyer_sku_code,
-                  name: item.product_name,
-                  price: item.price,
-                  productCode: item.buyer_sku_code
-                })}
+                onClick={() => {
+                  console.log('Selected Digiflazz Item:', item);
+                  setSelectedItem({
+                    id: item.buyer_sku_code,
+                    name: item.product_name,
+                    price: item.price,
+                    productCode: item.buyer_sku_code
+                  })
+                }}
                 className={cn(
                   "flex items-center gap-2 p-4 rounded-lg border transition-all",
                   selectedItem?.id === item.buyer_sku_code

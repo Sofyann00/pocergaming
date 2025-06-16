@@ -16,13 +16,6 @@ export async function POST(request: Request) {
     const username = 'vipigaWmRVGg'
     const apiKey = 'c5f04bdb-dfdb-573e-8e21-00babcd8c6f1'
 
-    if (!username || !apiKey) {
-      return NextResponse.json(
-        { error: 'API configuration error' },
-        { status: 500 }
-      )
-    }
-
     const refId = `tu${productCode}`
     const sign = crypto.createHash('md5').update(username + apiKey + refId).digest('hex')
 
