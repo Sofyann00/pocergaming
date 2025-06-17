@@ -1,6 +1,31 @@
 import { NextResponse } from 'next/server'
 import crypto from 'crypto'
 
+// CORS headers configuration
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*', // In production, replace with specific domains
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
+
+// Handle OPTIONS request for CORS preflight
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders })
+}
+
+/**
+ * Digiflazz Transaction API
+ * 
+ * This endpoint processes transactions through the Digiflazz API.
+ * 
+ * @param {Object} body - Request body
+ * @param {string} body.productCode - The product code to purchase
+ * @param {string} body.playerId - The player's ID
+ * @param {string} [body.serverId] - Optional server ID
+ * 
+ * @returns {Object} Response object containing transaction details
+ * @throws {Object} Error response if request fails
+ */
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -9,7 +34,7 @@ export async function POST(request: Request) {
     if (!productCode || !playerId) {
       return NextResponse.json(
         { error: 'Missing required fields' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       )
     }
 
@@ -49,16 +74,16 @@ export async function POST(request: Request) {
       })
       return NextResponse.json(
         { error: data.message || data.data?.message || 'Failed to process transaction' },
-        { status: response.status }
+        { status: response.status, headers: corsHeaders }
       )
     }
 
-    return NextResponse.json(data)
+    return NextResponse.json(data, { headers: corsHeaders })
   } catch (error) {
     console.error('Digiflazz transaction error:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     )
   }
 } 
