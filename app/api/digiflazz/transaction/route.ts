@@ -41,7 +41,17 @@ export async function POST(request: Request) {
     const username = 'vipigaWmRVGg'
     const apiKey = 'c5f04bdb-dfdb-573e-8e21-00babcd8c6f1'
 
-    const refId = `tu${productCode}`
+    // Generate random 6-character string
+    const generateRandomString = (length: number) => {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+      let result = ''
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      return result
+    }
+
+    const refId = `${generateRandomString(6)}${productCode}`
     const sign = crypto.createHash('md5').update(username + apiKey + refId).digest('hex')
 
     const requestBody = {
