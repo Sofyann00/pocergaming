@@ -72,7 +72,7 @@ export function Footer() {
                 </p>
                 <p>
                   <a
-                    href="https://wa.me/6285811959392"
+                    href="https://wa.me/6285123286761"
                     className="hover:text-gray-900 transition-colors"
                   >
                     +62 858-1195-9392

@@ -66,7 +66,7 @@ export default function RefundPolicyPage() {
                   To request a refund, you <strong>must contact our customer service team via WhatsApp</strong>. We do not process refund requests through other channels to ensure proper verification and documentation.
                 </p>
                 <Link 
-                  href="https://wa.me/6285811959392"
+                  href="https://wa.me/6285123286761"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
