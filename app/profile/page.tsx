@@ -6,12 +6,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import createIcon from "ethereum-blockies";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BlockiesAvatar } from "../../components/ui/blockies-avatar";
+import { OrderReceiptDialog } from "../components/order-receipt-dialog";
 
 export default function ProfilePage() {
   const { user, isLoading } = useUser();
   const router = useRouter();
+  const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
+  const [showReceiptDialog, setShowReceiptDialog] = useState(false);
 
   useEffect(() => {
     const redirectTimer = setTimeout(() => {
@@ -71,7 +74,14 @@ export default function ProfilePage() {
             </Card>
           ) : (
             user.orders.map((order) => (
-              <Card key={order.id}>
+              <Card 
+                key={order.id} 
+                className="cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => {
+                  setSelectedOrder(order);
+                  setShowReceiptDialog(true);
+                }}
+              >
                 <CardHeader>
                   <CardTitle className="flex justify-between">
                     <span>Order #{order.id}</span>
@@ -103,6 +113,16 @@ export default function ProfilePage() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Order Receipt Dialog */}
+      <OrderReceiptDialog
+        isOpen={showReceiptDialog}
+        onClose={() => {
+          setShowReceiptDialog(false);
+          setSelectedOrder(null);
+        }}
+        order={selectedOrder}
+      />
     </div>
   );
 }
