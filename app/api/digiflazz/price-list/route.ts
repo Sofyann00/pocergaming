@@ -1,9 +1,12 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 
-export async function GET(request: Request) {
+// Explicitly mark this route as dynamic since it uses search parameters
+export const dynamic = 'force-dynamic'
+
+export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url)
-    const brand = searchParams.get('brand')
+    // Use NextRequest's built-in searchParams instead of parsing request.url
+    const brand = request.nextUrl.searchParams.get('brand')
 
     // Map product names to Digiflazz brand names
     const brandMap: { [key: string]: string } = {
