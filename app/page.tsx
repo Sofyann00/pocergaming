@@ -469,7 +469,7 @@ export default function Home() {
       question: "Apakah Diamonds/Chips/Item Game dari pocergeming.com Legal?",
       answer: (
         <span>
-          Semua Diamonds, item dalam game, dan voucher yang dijual di pocergeming.com <b>100% legal dan bersumber dari developer/publisher</b>. Jangan khawatir, berbelanja di Tokogame.com dijamin aman.
+          Semua Diamonds, item dalam game, dan voucher yang dijual di pocergeming.com <b>100% legal dan bersumber dari developer/publisher</b>. Jangan khawatir, berbelanja di pocergeming.com dijamin aman.
         </span>
       ),
     },
