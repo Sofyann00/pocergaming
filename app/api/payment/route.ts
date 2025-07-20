@@ -48,7 +48,7 @@ VZLJs+xxwAgjusTOGAQU8mp7
     sign.update(stringToSign)
     const signature = sign.sign(privateKey, 'base64')
 
-    const response = await fetch('https://api.mayaramp.com/v1/deposit/fiat', {
+    const response = await fetch('https://sandbox.mayaramp.com/v1/deposit/fiat', {
       method: 'POST',
       headers: {
         'X-Bypass-Secret': 'YZKNsyPLlvQJ5FwRNPrnLo0UsQZzEOgm',
