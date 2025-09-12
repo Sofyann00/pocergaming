@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const timestamp = new Date().toISOString()
     
     // Your client ID from Rampable
-    const clientId = '5293441ce1ac477bb38f0e70b92abe103337719'
+    const clientId = 'ixNMeYyjCANtFubknAqkmMgqkUALjvwav'
     
     // Generate signature string
     const stringToSign = `${clientId}:${timestamp}:${crypto.createHash('sha256').update(JSON.stringify(body)).digest('hex').toLowerCase()}`
