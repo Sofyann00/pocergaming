@@ -98,14 +98,14 @@ export default function PrivacyPage() {
               </p>
             </div>
 
-            <div>
+            {/* <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
                 8. Contact Information
               </h2>
               <div className="text-gray-600">
                 <p>For any questions about this Privacy Policy or our data practices, please contact us at:</p>
                 <div className="mt-2">
-                  <p>PT DINAMIKA TEKNOLOGI ASIA</p>
+                  <p>POCERGEMING</p>
                   <p>Gedung Is Plaza Lt. 5</p>
                   <p>Jl Pramuka Kav 150, Utan Kayu Utara</p>
                   <p>Matraman, Jakarta Timur</p>
@@ -114,7 +114,7 @@ export default function PrivacyPage() {
                   <p>Phone: (021) 52067542</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </section>
         </div>
       </div>

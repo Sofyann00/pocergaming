@@ -83,7 +83,7 @@ export function Footer() {
           </div>
 
           {/* Office Location section */}
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-6">Office Location</h3>
             <div className="text-sm text-gray-600">
               <p className="leading-relaxed">
@@ -94,12 +94,12 @@ export function Footer() {
                 Jakarta Timur 13120
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Copyright section */}
           <div className="col-span-1 md:col-span-4 mt-16 pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-600 text-center">
-              © {new Date().getFullYear()} PT DINAMIKA TEKNOLOGI ASIA.
+              © {new Date().getFullYear()} POCERGEMING.
             </p>
           </div>
         </div>

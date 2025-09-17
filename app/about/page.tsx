@@ -64,14 +64,14 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div>
+            {/* <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
                 Office Location
               </h2>
               <div className="text-gray-600">
                 <p>Visit our office:</p>
                 <div className="mt-2">
-                  <p>PT DINAMIKA TEKNOLOGI ASIA</p>
+                  <p>POCERGEMING</p>
                   <p>Gedung Is Plaza Lt. 5</p>
                   <p>Jl Pramuka Kav 150, Utan Kayu Utara</p>
                   <p>Matraman, Jakarta Timur</p>
@@ -79,7 +79,7 @@ export default function AboutPage() {
                   <p>Kode Pos: 13120</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">

@@ -23,7 +23,7 @@ export default function TermsPage() {
                 1. Agreement to Terms
               </h2>
               <p className="text-gray-600">
-                By accessing and using the game voucher and top-up services provided by PT DINAMIKA TEKNOLOGI ASIA (hereinafter referred to as "pocergeming"), you accept and agree to be bound by the terms and provisions of this agreement.
+                By accessing and using the game voucher and top-up services provided by POCERGEMING (hereinafter referred to as "pocergeming"), you accept and agree to be bound by the terms and provisions of this agreement.
               </p>
             </div>
 
@@ -81,14 +81,14 @@ export default function TermsPage() {
               </p>
             </div>
 
-            <div>
+            {/* <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">
                 8. Contact Information
               </h2>
               <div className="text-gray-600">
                 <p>For any questions about these Terms of Service, please contact us at:</p>
                 <div className="mt-2">
-                  <p>PT DINAMIKA TEKNOLOGI ASIA</p>
+                  <p>POCERGEMING</p>
                   <p>Gedung Is Plaza Lt. 5</p>
                   <p>Jl Pramuka Kav 150, Utan Kayu Utara</p>
                   <p>Matraman, Jakarta Timur</p>
@@ -97,7 +97,7 @@ export default function TermsPage() {
                   <p>Phone: (021) 52067542</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </section>
         </div>
       </div>
