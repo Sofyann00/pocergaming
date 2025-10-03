@@ -43,6 +43,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     notFound()
   }
 
+  // Round prices to the nearest allowed bucket
+  const bucketPrice = (value: number) => {
+    const buckets = [15000, 20000, 30000, 40000]
+    let closest = buckets[0]
+    for (const bucket of buckets) {
+      if (Math.abs(value - bucket) < Math.abs(closest - value)) {
+        closest = bucket
+      }
+    }
+    return closest
+  }
+
   // Fetch Digiflazz items for highlighted products
   useEffect(() => {
     const fetchDigiflazzItems = async () => {
@@ -74,6 +86,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               .filter((item: any) => item.price >= 15000 && item.buyer_product_status === true)
               .map((item: any) => ({
                 ...item,
+                price: bucketPrice(item.price),
                 product_name: item.product_name
                   .replace('MOBILELEGEND - ', '')
                   .replace('FREEFIRE - ', '')
