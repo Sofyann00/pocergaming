@@ -43,9 +43,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     notFound()
   }
 
-  // Round prices to the nearest allowed bucket
   const bucketPrice = (value: number) => {
-    const buckets = [15000, 20000, 30000, 40000]
+    // Expanded buckets to produce more varied prices from 15,000 up to 1,000,000
+    const buckets = [
+      15000, 20000, 25000, 30000, 40000, 50000, 60000, 75000,
+      100000, 125000, 150000, 200000, 250000, 300000, 400000,
+      500000, 600000, 750000, 1000000
+    ]
     let closest = buckets[0]
     for (const bucket of buckets) {
       if (Math.abs(value - bucket) < Math.abs(closest - value)) {
@@ -54,7 +58,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     }
     return closest
   }
-
   // Fetch Digiflazz items for highlighted products
   useEffect(() => {
     const fetchDigiflazzItems = async () => {
